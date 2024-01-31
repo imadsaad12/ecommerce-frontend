@@ -9,12 +9,11 @@ export const OperationsContainer = styled.div`
 `;
 
 export const TableContainerStyle = {
-  height: "100%",
-  borderRadius: "20px",
+  height: "88%",
 };
 export const StyledTableHead = style(TableHead)`
   & .MuiTableCell-root {
-    background-color: gray;
+    font-weight:bold
   }
 `;
 export const StyledTableContainer = style(TableContainer)`

@@ -1,13 +1,19 @@
 import styled from "styled-components";
+import { breakingPoints } from "../../global/breakingPoints";
 
 export const Container = styled.div`
-  width: 230px;
+  width: ${({ isOpen }) => (isOpen ? "300px" : "80px")};
   box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   padding-top: 50px;
+  transition: all 0.3s ease;
+  position: relative;
+  @media (max-width: ${breakingPoints.sm}px) {
+    width: ${({ isOpen }) => (isOpen ? "450px" : "80px")};
+  }
 `;
 
 export const Row = styled.div`
@@ -30,6 +36,15 @@ export const Row = styled.div`
 export const Text = styled.div`
   font-size: 17px;
   margin-left: 20px;
+  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
 `;
 
 export const iconStyle = { fontSize: 20, marginLeft: "20px" };
+export const openCloseIconsStyles = {
+  position: "absolute",
+  right: "-10px",
+  fontSize: "20px",
+  top: "50%",
+  color: "#3f0097",
+  cursor: "pointer",
+};

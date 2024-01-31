@@ -3,16 +3,12 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { TableProps } from "../types";
 import {
-  OperationsContainer,
   StyledTableContainer,
   StyledTableHead,
   TableContainerStyle,
 } from "./styles";
-import { isEmpty } from "lodash";
-import { Checkbox, IconButton, Tooltip } from "@mui/material";
-import { formatAsDDMMYYYY } from "../../utils/formatDates";
+import { formatAsDDMMYYYY } from "../../utilities/dates";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -31,9 +27,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 export default function CustomizedTables({
   tableData = [],
   tableHeaders = [],
-  actions = [],
-  isActiveColumn,
-  handleOnActivate = () => {},
 }) {
   const isDateValue = (headerValue) =>
     headerValue === "created_at" || headerValue === "updated_at";
@@ -57,15 +50,10 @@ export default function CustomizedTables({
         </style>
         <StyledTableHead>
           <TableRow>
-            {isActiveColumn && (
-              <StyledTableCell style={{ fontSize: "18px" }} align="center">
-                Active
-              </StyledTableCell>
-            )}
             {tableHeaders.map(({ headerKey }) => {
               return (
                 <StyledTableCell
-                  style={{ fontSize: "18px" }}
+                  style={{ fontSize: "18px", backgroundColor: "white" }}
                   align="center"
                   key={headerKey}
                 >
@@ -73,26 +61,11 @@ export default function CustomizedTables({
                 </StyledTableCell>
               );
             })}
-            {!isEmpty(actions) && (
-              <StyledTableCell align="center" key="operations">
-                Actions
-              </StyledTableCell>
-            )}
           </TableRow>
         </StyledTableHead>
         <TableBody>
           {tableData.map((row, index) => (
             <TableRow key={index}>
-              {isActiveColumn && (
-                <StyledTableCell align="center">
-                  <Checkbox
-                    checked={!!row.is_active}
-                    onChange={({ target: { checked } }) =>
-                      handleOnActivate(row.id, checked)
-                    }
-                  />
-                </StyledTableCell>
-              )}
               {tableHeaders.map(({ headerValue }) => {
                 return (
                   <StyledTableCell
@@ -106,25 +79,6 @@ export default function CustomizedTables({
                   </StyledTableCell>
                 );
               })}
-              {!isEmpty(actions) && (
-                <StyledTableCell align="center">
-                  <OperationsContainer>
-                    {actions.map(({ Icon, handleOnClick, text }) => {
-                      return (
-                        <Tooltip title={text} arrow>
-                          <IconButton>
-                            <Icon
-                              size={"20px"}
-                              onClick={() => handleOnClick(row?.id)}
-                              style={{ cursor: "pointer" }}
-                            />
-                          </IconButton>
-                        </Tooltip>
-                      );
-                    })}
-                  </OperationsContainer>
-                </StyledTableCell>
-              )}
             </TableRow>
           ))}
         </TableBody>

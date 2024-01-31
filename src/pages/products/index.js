@@ -1,31 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  BoxContent,
-  Container,
-  IconContainer,
-  Number,
-  StatisticsContainer,
-  TableContainer,
-  TableHeader,
-  Text,
-  Title,
-} from "./styles";
+import { Container, TableContainer, TableHeader, Title } from "./styles";
 import CustomizedTables from "../../components/table";
-import { FiShoppingBag } from "react-icons/fi";
-import { MdOutlineShoppingCart } from "react-icons/md";
-import { GiTwoCoins } from "react-icons/gi";
 import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/breakingPoints";
 
-export default function Admin() {
+export default function Products() {
   const [isOpen, setIsOpen] = useState(false);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
-  const boxes = [
-    { title: "Products", number: "20", Icon: FiShoppingBag },
-    { title: "Orders", number: "20", Icon: MdOutlineShoppingCart },
-    { title: "Profits", number: "1,000 USD", Icon: GiTwoCoins },
-  ];
 
   useEffect(() => {
     const observeSizeChanges = () => {
@@ -51,21 +32,6 @@ export default function Admin() {
 
   return (
     <Container isOpen={isOpen}>
-      <StatisticsContainer>
-        {boxes.map(({ title, number, Icon }) => {
-          return (
-            <Box>
-              <BoxContent>
-                <Text>{title}</Text>
-                <Number>{number}</Number>
-              </BoxContent>
-              <IconContainer>
-                <Icon color="white" style={{ fontSize: "3em" }} />
-              </IconContainer>
-            </Box>
-          );
-        })}
-      </StatisticsContainer>
       <TableContainer>
         <TableHeader>
           <Title>Recent Orders</Title>
