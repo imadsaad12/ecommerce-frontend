@@ -4,7 +4,6 @@ import { breakingPoints } from "../../../global/breakingPoints";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   width: 80%;
   height: 80vh;
@@ -69,6 +68,11 @@ export const ImageInputsContainer = styled.div`
   width: 80%;
   align-items: center;
   gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    flex-direction: column;
+  }
 `;
 
 export const FileInputContainer = styled.div`
@@ -97,9 +101,38 @@ export const HiddenFileInput = styled.input`
 `;
 
 export const AddedImagesContainer = styled.div`
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 70%;
+  width: 60%;
+  border-bottom: 1px solid lightgray;
+  @media (max-width: ${breakingPoints.sm}px) {
+    flex-direction: column;
+    border-bottom: 1px solid lightgray;
+  }
+`;
+
+export const Image = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+`;
+
+export const Text = styled.p`
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 18px;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  @media (max-width: ${breakingPoints.sm}px) {
+    width: 100%;
+  }
 `;

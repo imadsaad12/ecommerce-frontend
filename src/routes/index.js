@@ -5,11 +5,12 @@ import {
   Routes as RoutesWrapper,
   Route,
 } from "react-router-dom";
-import { ADMIN, PRODUCTS, SIGN_IN } from "./URLs";
+import { ADMIN, ORDERS, PRODUCTS, SIGN_IN } from "./URLs";
 import withLayout from "../HOCs/withLayout";
 import Admin from "../pages/admin";
 import Products from "../pages/products";
 import SignIn from "../pages/signIn";
+import Orders from "../pages/orders";
 
 export default function Routes() {
   const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ export default function Routes() {
         </RoutesWrapper>
         <RoutesWrapper>
           <Route path={ADMIN} Component={withLayout(Admin)} />
+          <Route path={ORDERS} Component={withLayout(Orders)} />
           <Route path={PRODUCTS} Component={withLayout(Products)} />
         </RoutesWrapper>
       </QueryClientProvider>

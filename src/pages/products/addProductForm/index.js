@@ -3,19 +3,22 @@ import TextField from "@mui/material/TextField";
 import { useEffect, useState } from "react";
 import {
   AddedImagesContainer,
+  ButtonsContainer,
   Container,
-  FileInput,
   FileInputContainer,
   FormContainer,
   HiddenFileInput,
+  Image,
   ImageInputsContainer,
   ImagesContainer,
   SizesContainer,
   SizesRow,
+  Text,
   UploadText,
 } from "./styles";
-import { FaPlus } from "react-icons/fa";
+import { FaCheck, FaPlus, FaSave } from "react-icons/fa";
 import {
+  Checkbox,
   Collapse,
   FormControl,
   InputLabel,
@@ -26,20 +29,22 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowForward, IoMdClose } from "react-icons/io";
 import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/breakingPoints";
-import x from "./x.png";
+import { LoadingButton } from "@mui/lab";
 
 export default function AddProductForm() {
   const [isProductInfoOpen, setIsProductInfoOpen] = useState(false);
   const [isProductSizesOpen, setIsProductSizesOpen] = useState(false);
   const [isProductImagesOpen, setIsProductImagesOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
+  const [color, setColor] = useState("");
 
   const [sizes, setSizes] = useState([
     { name: "", description: "", price: "" },
   ]);
+  const [images, setImages] = useState([]);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
 
   const fields = [
@@ -53,6 +58,10 @@ export default function AddProductForm() {
     const url = URL.createObjectURL(file);
     setImageUrl(url);
   };
+
+  useEffect(() => {
+    console.log(images);
+  }, [images]);
 
   return (
     <Container>
@@ -158,10 +167,6 @@ export default function AddProductForm() {
               startIcon={<FaPlus />}
               style={{ marginBottom: "15px" }}
               onClick={() => {
-                // setValue("sizes", [
-                //   ...getValues().sizes,
-                //   { name: "", description: "", price: "" },
-                // ]);
                 setSizes([...sizes, { name: "", description: "", price: "" }]);
               }}
             >
@@ -181,53 +186,99 @@ export default function AddProductForm() {
         </ListItemButton>
         <Collapse in={isProductImagesOpen}>
           <ImagesContainer>
-            <AddedImagesContainer>
-              <img src={x} style={{ width: "50px", height: "50px" }} />
-              <p>Red</p>
-            </AddedImagesContainer>
-            <AddedImagesContainer>
-              <img src={x} style={{ width: "50px", height: "50px" }} />
-              <p>Red</p>
-            </AddedImagesContainer>
-            <AddedImagesContainer>
-              <img src={x} style={{ width: "50px", height: "50px" }} />
-              <p>Red</p>
-            </AddedImagesContainer>
-            <AddedImagesContainer>
-              <img src={x} style={{ width: "50px", height: "50px" }} />
-              <p>Red</p>
-            </AddedImagesContainer>
-            {/* {imageUrl && (
-              <img
-                src={imageUrl}
-                alt="Uploaded Image"
-                style={{ width: "200px", height: "200px" }}
-              />
-            )} */}
+            {images?.map((elm, index) => {
+              return (
+                <>
+                  {elm !== null && (
+                    <AddedImagesContainer>
+                      <Image src={elm.url} />
+                      <Text>{elm.color}</Text>
+                      <ButtonsContainer>
+                        <Button
+                          variant="outlined"
+                          color="error"
+                          style={{
+                            height: "40px",
+                            width: isSmallScreen ? "90%" : "45%",
+                            textTransform: "capitalize",
+                            fontSize: "12px",
+                          }}
+                          onClick={() => {
+                            const newImages = images.map((elm, i) => {
+                              if (i === index) {
+                                elm = null;
+                              }
+                              return elm;
+                            });
+                            setImages(newImages);
+                          }}
+                        >
+                          Delete
+                        </Button>
+                        <Checkbox
+                          sx={{
+                            color: "gray",
+                            fontSize: 50,
+                            "&.Mui-checked": {
+                              color: "blue",
+                            },
+                            "& .MuiSvgIcon-root": { fontSize: 50 },
+                          }}
+                          value={elm.inStock}
+                          // sx={{ "& .MuiSvgIcon-root": { fontSize: 50 } }}
+                          onChange={({ target: { checked } }) => {
+                            const newImages = images.map((elm, i) => {
+                              if (i == index) {
+                                elm.inStock = checked;
+                              }
+                              return elm;
+                            });
+                            setImages(newImages);
+                          }}
+                        />
+                      </ButtonsContainer>
+                    </AddedImagesContainer>
+                  )}
+                </>
+              );
+            })}
             <ImageInputsContainer>
+              {imageUrl !== "" && <Image src={imageUrl} />}
               <FileInputContainer>
                 <UploadText>
                   {imageUrl ? "File Selected" : "Upload Image"}
                 </UploadText>
-                <HiddenFileInput type="file" onChange={handleFileChange} />
+                <HiddenFileInput
+                  required
+                  type="file"
+                  onChange={handleFileChange}
+                />
               </FileInputContainer>
-              <FormControl style={{ width: "50%" }}>
+              <FormControl style={{ width: isSmallScreen ? "70%" : "50%" }}>
                 <InputLabel>Color</InputLabel>
-                <Select label="Color">
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                <Select
+                  label="Color"
+                  onChange={({ target: { value } }) => setColor(value)}
+                >
+                  <MenuItem value={"Red"}>Red</MenuItem>
+                  <MenuItem value={"Blue"}>Blue</MenuItem>
+                  <MenuItem value={"Green"}>Green</MenuItem>
                 </Select>
               </FormControl>
+
               <Button
+                type="submit"
                 variant="contained"
                 startIcon={<FaPlus />}
-                style={{ height: "55px" }}
+                style={{ height: "55px", width: isSmallScreen ? "70%" : "50%" }}
                 onClick={() => {
-                  setSizes([
-                    ...sizes,
-                    { name: "", description: "", price: "" },
-                  ]);
+                  imageUrl &&
+                    color &&
+                    setImages([
+                      ...images,
+                      { url: imageUrl, color, inStock: true },
+                    ]);
+                  setImageUrl("");
                 }}
               >
                 Add Image

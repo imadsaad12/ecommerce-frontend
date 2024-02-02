@@ -9,6 +9,7 @@ import {
   TableContainerStyle,
 } from "./styles";
 import { formatAsDDMMYYYY } from "../../utilities/dates";
+import { Button } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -27,6 +28,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 export default function CustomizedTables({
   tableData = [],
   tableHeaders = [],
+  addViewOrderButton,
+  handleOnClickView,
 }) {
   const isDateValue = (headerValue) =>
     headerValue === "created_at" || headerValue === "updated_at";
@@ -61,6 +64,13 @@ export default function CustomizedTables({
                 </StyledTableCell>
               );
             })}
+            {addViewOrderButton && (
+              <StyledTableCell
+                style={{ fontSize: "18px", backgroundColor: "white" }}
+                align="center"
+                key="view order"
+              ></StyledTableCell>
+            )}
           </TableRow>
         </StyledTableHead>
         <TableBody>
@@ -79,6 +89,17 @@ export default function CustomizedTables({
                   </StyledTableCell>
                 );
               })}
+              {addViewOrderButton && (
+                <StyledTableCell style={{ fontSize: "16px" }} align="center">
+                  <Button
+                    variant="contained"
+                    onClick={() => handleOnClickView(row.id)}
+                  >
+                    {" "}
+                    view order{" "}
+                  </Button>
+                </StyledTableCell>
+              )}
             </TableRow>
           ))}
         </TableBody>
