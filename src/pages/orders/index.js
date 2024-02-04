@@ -14,12 +14,26 @@ import {
 import CustomizedTables from "../../components/table";
 import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/breakingPoints";
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
-import x from "../products/addProductForm/x.png";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
+import { useGetOrdersQuery } from "../../apis/orders/getOrders";
+import { formatRecentOrders } from "../../utilities/formatOrders";
 
 export default function Orders() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedOrderId, setSelectedOrderId] = useState("");
+  const [dialogData, setDialogData] = useState({});
+  const [orders, setOrders] = useState({});
+  const [formattedOrders, setFormattedOrders] = useState([]);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
+
+  const { response, isLoading } = useGetOrdersQuery();
 
   useEffect(() => {
     const observeSizeChanges = () => {
@@ -43,10 +57,17 @@ export default function Orders() {
     observeSizeChanges();
   }, [setIsOpen]);
 
+  useEffect(() => {
+    if (!isLoading) {
+      setOrders(response.data);
+      setFormattedOrders(formatRecentOrders(response.data));
+    }
+  }, [isLoading]);
+
   return (
     <Container isOpen={isOpen}>
       <Dialog
-        open={true}
+        open={isPopupOpen}
         style={{
           maxHeight: "600px",
           overflowY: "scroll",
@@ -56,30 +77,30 @@ export default function Orders() {
           <DialogTitle style={{ fontWeight: "bold" }}>
             Order details
           </DialogTitle>
-          <Row>
-            <Image src={x} />
-            <Text>color</Text>
-            <Text>size</Text>
-            <Text>x2</Text>
-          </Row>
-          <Row>
-            <Image src={x} />
-            <Text>color</Text>
-            <Text>size</Text>
-            <Text>x2</Text>
-          </Row>
+          {dialogData?.products?.map(
+            ({ quantity, productImage, color, size }) => {
+              return (
+                <Row>
+                  <Image src={productImage} />
+                  <Text>{color}</Text>
+                  <Text>{size}</Text>
+                  <Text>x{quantity}</Text>
+                </Row>
+              );
+            }
+          )}
           <ClientInfo>
             <InfoRow>
               <InfoKey>Client name :</InfoKey>
-              <p>Imad saad</p>
+              <p>{dialogData.clientFullName}</p>
             </InfoRow>
             <InfoRow>
               <InfoKey>Email : </InfoKey>
-              <p>Imad.saad@gmail.com</p>
+              <p>{dialogData.email}</p>
             </InfoRow>
             <InfoRow>
               <InfoKey>Phone number : </InfoKey>
-              <p>+961 81113566</p>
+              <p>+961 {dialogData.phoneNumber}</p>
             </InfoRow>
             <InfoRow>
               <InfoKey>Address :</InfoKey>
@@ -92,12 +113,26 @@ export default function Orders() {
                   justifyContent: "flex-start",
                 }}
               >
-                <p>Region</p>
-                <p>Street</p>
-                <p>Region</p>
+                <p style={{ textTransform: "capitalize" }}>
+                  {dialogData?.address?.region} , {dialogData?.address?.street}
+                  -street
+                </p>
+                <p style={{ textTransform: "capitalize" }}>
+                  {dialogData?.address?.building}-building ,{" "}
+                  {dialogData?.address?.floor}-th floor
+                </p>
               </div>
             </InfoRow>
           </ClientInfo>
+          <DialogActions>
+            <Button
+              variant="contained"
+              style={{ marginTop: "15px" }}
+              onClick={() => setIsPopupOpen(false)}
+            >
+              close
+            </Button>
+          </DialogActions>
         </DialogContent>
       </Dialog>
       <TableContainer>
@@ -107,42 +142,16 @@ export default function Orders() {
         <CustomizedTables
           addViewOrderButton={true}
           handleOnClickView={(id) => {
-            console.log(id);
+            setIsPopupOpen(true);
+            setSelectedOrderId(id);
+            const order = orders.find(({ uuid }) => uuid === id) || {};
+            setDialogData(order);
           }}
-          tableData={[
-            {
-              id: 1,
-              name: "asas",
-              description: "asa",
-              price: "20.00 USD",
-              date: "20/1/2024",
-            },
-            {
-              id: 2,
-              name: "asas",
-              description: "asa",
-              price: "20.00 USD",
-              date: "20/1/2024",
-            },
-            {
-              id: 3,
-              name: "asas",
-              description: "asa",
-              price: "20.00 USD",
-              date: "20/1/2024",
-            },
-            {
-              id: 4,
-              name: "asas",
-              description: "asa",
-              price: "20.00 USD",
-              date: "20/1/2024",
-            },
-          ]}
+          tableData={formattedOrders}
           tableHeaders={[
-            { headerKey: "Name", headerValue: "name" },
-            { headerKey: "Description", headerValue: "description" },
-            { headerKey: "Price", headerValue: "price" },
+            { headerKey: "Client Name", headerValue: "clientFullName" },
+            { headerKey: "Number Of Items", headerValue: "numberOfItems" },
+            { headerKey: "Price", headerValue: "totalPrice" },
             { headerKey: "Date", headerValue: "date" },
           ]}
         />

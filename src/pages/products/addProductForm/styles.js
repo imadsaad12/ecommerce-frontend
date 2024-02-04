@@ -79,7 +79,7 @@ export const FileInputContainer = styled.div`
   position: relative;
   overflow: hidden;
   display: inline-block;
-  width: 120px;
+  width: 170px;
 `;
 
 export const UploadText = styled.div`
@@ -95,7 +95,7 @@ export const HiddenFileInput = styled.input`
   position: absolute;
   top: 0;
   left: 0;
-  font-size: 100px;
+  font-size: 120px;
   cursor: pointer;
   opacity: 0;
 `;

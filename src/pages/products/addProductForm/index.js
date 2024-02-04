@@ -16,7 +16,7 @@ import {
   Text,
   UploadText,
 } from "./styles";
-import { FaCheck, FaPlus, FaSave } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import {
   Checkbox,
   Collapse,
@@ -29,17 +29,20 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import { IoIosArrowDown, IoIosArrowForward, IoMdClose } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/breakingPoints";
-import { LoadingButton } from "@mui/lab";
+import axios from "axios";
+import { useAddProductQuery } from "../../../apis/products/addProduct";
 
 export default function AddProductForm() {
   const [isProductInfoOpen, setIsProductInfoOpen] = useState(false);
   const [isProductSizesOpen, setIsProductSizesOpen] = useState(false);
   const [isProductImagesOpen, setIsProductImagesOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
+  const [file, setFile] = useState({});
   const [color, setColor] = useState("");
+  const { handleApiCall } = useAddProductQuery({ onSuccess: () => {} });
 
   const [sizes, setSizes] = useState([
     { name: "", description: "", price: "" },
@@ -54,14 +57,18 @@ export default function AddProductForm() {
   ];
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    const url = URL.createObjectURL(file);
+    setFile(event.target.files[0]);
+    const url = URL.createObjectURL(event.target.files[0]);
     setImageUrl(url);
   };
 
   useEffect(() => {
     console.log(images);
   }, [images]);
+
+  const handleOnAddProduct = () => {
+    handleApiCall(images);
+  };
 
   return (
     <Container>
@@ -224,11 +231,11 @@ export default function AddProductForm() {
                             },
                             "& .MuiSvgIcon-root": { fontSize: 50 },
                           }}
+                          defaultChecked={elm.inStock}
                           value={elm.inStock}
-                          // sx={{ "& .MuiSvgIcon-root": { fontSize: 50 } }}
                           onChange={({ target: { checked } }) => {
                             const newImages = images.map((elm, i) => {
-                              if (i == index) {
+                              if (i === index) {
                                 elm.inStock = checked;
                               }
                               return elm;
@@ -270,13 +277,13 @@ export default function AddProductForm() {
                 type="submit"
                 variant="contained"
                 startIcon={<FaPlus />}
-                style={{ height: "55px", width: isSmallScreen ? "70%" : "50%" }}
+                style={{ height: "55px", width: isSmallScreen ? "70%" : "30%" }}
                 onClick={() => {
                   imageUrl &&
                     color &&
                     setImages([
                       ...images,
-                      { url: imageUrl, color, inStock: true },
+                      { url: imageUrl, file, color, inStock: true },
                     ]);
                   setImageUrl("");
                 }}
@@ -287,6 +294,9 @@ export default function AddProductForm() {
           </ImagesContainer>
         </Collapse>
       </List>
+      <Button variant="contained" onClick={handleOnAddProduct}>
+        Add product
+      </Button>
     </Container>
   );
 }

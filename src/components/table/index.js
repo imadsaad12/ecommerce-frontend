@@ -93,10 +93,9 @@ export default function CustomizedTables({
                 <StyledTableCell style={{ fontSize: "16px" }} align="center">
                   <Button
                     variant="contained"
-                    onClick={() => handleOnClickView(row.id)}
+                    onClick={() => handleOnClickView(row?.uuid)}
                   >
-                    {" "}
-                    view order{" "}
+                    view order
                   </Button>
                 </StyledTableCell>
               )}

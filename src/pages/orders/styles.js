@@ -77,7 +77,7 @@ export const ClientInfo = styled.div`
 `;
 
 export const InfoRow = styled.div`
-  width: 60%;
+  width: 100%;
   flex-direction: row;
   display: flex;
   justify-content: space-between;
