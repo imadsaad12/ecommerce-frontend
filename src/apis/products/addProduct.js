@@ -1,12 +1,21 @@
 import axios from "axios";
 import { ADD_PRODUCT_URL } from "../URLs";
 import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 const addProduct = async (payload) => {
   try {
     const url = ADD_PRODUCT_URL;
     const formData = new FormData();
-
+    if (
+      !payload.name ||
+      !payload.price ||
+      payload?.sizes?.length === 0 ||
+      payload?.images?.length === 0
+    ) {
+      toast.error("Please make sure all required fields are filled");
+      return;
+    }
     formData.append("name", "payload");
     formData.append("description", "Your Product Description");
 

@@ -32,7 +32,6 @@ import {
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/breakingPoints";
-import axios from "axios";
 import { useAddProductQuery } from "../../../apis/products/addProduct";
 
 export default function AddProductForm() {
@@ -62,12 +61,9 @@ export default function AddProductForm() {
     setImageUrl(url);
   };
 
-  useEffect(() => {
-    console.log(images);
-  }, [images]);
 
   const handleOnAddProduct = () => {
-    handleApiCall(images);
+    handleApiCall({images,sizes,});
   };
 
   return (
