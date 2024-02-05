@@ -8,7 +8,7 @@ import AddProductForm from "./addProductForm";
 
 export default function Products() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isFormOpen, setIsFormOpen] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
 
   useEffect(() => {
@@ -36,12 +36,16 @@ export default function Products() {
   return (
     <Container isOpen={isOpen}>
       {isFormOpen ? (
-        <AddProductForm />
+        <AddProductForm setIsFormOpen={setIsFormOpen} />
       ) : (
         <TableContainer>
           <TableHeader>
             <Title>Products</Title>
-            <Button variant="contained" style={{ backgroundColor: "#3F0097" }}>
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "#3F0097" }}
+              onClick={() => setIsFormOpen(true)}
+            >
               Add Products
             </Button>
           </TableHeader>

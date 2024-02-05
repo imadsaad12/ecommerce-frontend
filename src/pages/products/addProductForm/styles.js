@@ -136,3 +136,8 @@ export const ButtonsContainer = styled.div`
     width: 100%;
   }
 `;
+
+export const listButtonStyle = {
+  width: "100%",
+  borderBottom: "1px solid lightgray",
+};
