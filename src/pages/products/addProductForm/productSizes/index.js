@@ -20,9 +20,7 @@ import { listButtonStyle } from "../styles";
 
 export default function ProductSizes({ formUtils }) {
   const [isProductSizesOpen, setIsProductSizesOpen] = useState(false);
-  const [sizes, setSizes] = useState([
-    { name: "", description: "", price: "" },
-  ]);
+  const [sizes, setSizes] = useState([]);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
   const { register, setValue } = formUtils;
   const fields = [{ label: "Size", key: "size", type: "string" }];
@@ -86,8 +84,8 @@ export default function ProductSizes({ formUtils }) {
                     >
                       <InputLabel>Color</InputLabel>
                       <Select
-                        label="Color"
-                        onChange={(e) => handleOnChange(e, index, "inStock")}
+                        label="color"
+                        onChange={(e) => handleOnChange(e, index, "color")}
                       >
                         <MenuItem value={"Red"}>Red</MenuItem>
                         <MenuItem value={"Blue"}>Blue</MenuItem>
@@ -128,7 +126,7 @@ export default function ProductSizes({ formUtils }) {
             startIcon={<FaPlus />}
             style={{ marginBottom: "15px" }}
             onClick={() => {
-              setSizes([...sizes, { name: "", description: "", price: "" }]);
+              setSizes([...sizes, { size: "", color: "", inStock: "" }]);
             }}
           >
             Add size

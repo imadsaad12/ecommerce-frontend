@@ -19,7 +19,7 @@ export const FormContainer = styled.div`
 `;
 
 export const fieldStyle = (isSmallScreen) => ({
-  width: isSmallScreen ? "90%" : "30%",
+  width: isSmallScreen ? "90%" : "20%",
   marginBottom: isSmallScreen && "15px",
   marginTop: isSmallScreen && "5px",
 });

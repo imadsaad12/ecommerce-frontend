@@ -17,6 +17,7 @@ export default function ProductInformation({ formUtils }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
   const { register } = formUtils;
   const fields = [
+    { label: "Category", key: "category", type: "string" },
     { label: "Name", key: "name", type: "string" },
     { label: "Description", key: "description", type: "string" },
     { label: "Price", key: "price", type: "number" },

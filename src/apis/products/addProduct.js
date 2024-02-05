@@ -16,14 +16,26 @@ const addProduct = async (payload) => {
       toast.error("Please make sure all required fields are filled");
       return;
     }
-    formData.append("name", "payload");
-    formData.append("description", "Your Product Description");
+    formData.append("name", payload.name);
+    formData.append("category", payload.category);
+    formData.append("description", payload.description);
+    formData.append("price", payload.price);
 
-    payload.forEach((imageData, index) => {
-      formData.append(`images[${index}][url]`, imageData.url);
-      formData.append(`images[${index}][file]`, imageData.file);
-      formData.append(`images[${index}][color]`, imageData.color);
-      formData.append(`images[${index}][inStock]`, imageData.inStock);
+    payload.images.forEach((imageData, index) => {
+      if (imageData) {
+        console.log(imageData);
+        formData.append(`images[${index}][url]`, imageData.url);
+        formData.append(`images[${index}][file]`, imageData.file);
+        formData.append(`images[${index}][color]`, imageData.color);
+      }
+    });
+    payload.sizes.forEach((sizeData, index) => {
+      if (sizeData) {
+        console.log(sizeData);
+        formData.append(`sizes[${index}][size]`, sizeData.size);
+        formData.append(`sizes[${index}][color]`, sizeData.color);
+        formData.append(`sizes[${index}][inStock]`, sizeData.inStock);
+      }
     });
 
     const response = await axios.post(url, formData, {

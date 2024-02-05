@@ -7,14 +7,17 @@ import ProductSizes from "./productSizes";
 import ProductImages from "./productImages";
 import { useAddProductQuery } from "../../../apis/products/addProduct";
 import { useForm } from "react-hook-form";
+import { LoadingButton } from "@mui/lab";
+import { IoMdAdd } from "react-icons/io";
 
 export default function AddProductForm({ setIsFormOpen }) {
-  const { handleApiCall } = useAddProductQuery({ onSuccess: () => {} });
+  const { handleApiCall, isLoading } = useAddProductQuery({
+    onSuccess: () => setIsFormOpen(false),
+  });
   const formUtils = useForm();
 
   const handleOnAddProduct = () => {
-    console.log(formUtils.getValues());
-    handleApiCall({});
+    handleApiCall(formUtils.getValues());
   };
 
   return (
@@ -36,9 +39,15 @@ export default function AddProductForm({ setIsFormOpen }) {
           <ProductSizes formUtils={formUtils} />
           <ProductImages formUtils={formUtils} />
         </List>
-        <Button variant="contained" onClick={handleOnAddProduct}>
+        <LoadingButton
+          loading={isLoading}
+          loadingPosition="start"
+          startIcon={<IoMdAdd />}
+          variant="contained"
+          onClick={handleOnAddProduct}
+        >
           Add product
-        </Button>
+        </LoadingButton>
       </Container>
     </>
   );
