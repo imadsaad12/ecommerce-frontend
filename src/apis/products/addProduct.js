@@ -14,7 +14,7 @@ const addProduct = async (payload) => {
       payload?.images?.length === 0
     ) {
       toast.error("Please make sure all required fields are filled");
-      return;
+      throw new Error("Please make sure all required fields are filled");
     }
     formData.append("name", payload.name);
     formData.append("category", payload.category);
@@ -51,12 +51,12 @@ const addProduct = async (payload) => {
 };
 
 export const useAddProductQuery = ({ onSuccess }) => {
-  const { error, mutate, isLoading } = useMutation({
+  const { error, mutate, isPending } = useMutation({
     mutationFn: addProduct,
     onSuccess,
   });
 
   const handleApiCall = (data) => mutate(data);
 
-  return { isLoading, error, handleApiCall };
+  return { isPending, error, handleApiCall };
 };

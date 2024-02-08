@@ -10,6 +10,8 @@ import {
 } from "./styles";
 import { formatAsDDMMYYYY } from "../../utilities/dates";
 import { Button } from "@mui/material";
+import useBreakpoint from "../../utilities/mediaQuery";
+import { breakingPoints } from "../../global/breakingPoints";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -76,16 +78,29 @@ export default function CustomizedTables({
         <TableBody>
           {tableData.map((row, index) => (
             <TableRow key={index}>
-              {tableHeaders.map(({ headerValue }) => {
+              {tableHeaders.map(({ headerValue, headerKey }) => {
                 return (
                   <StyledTableCell
                     style={{ fontSize: "16px" }}
                     key={`${row[headerValue]}-index`}
-                    align="center"
+                    align={headerValue === "formattedSizes" ? "left" : "center"}
                   >
-                    {isDateValue(headerValue)
-                      ? formatAsDDMMYYYY(row[headerValue])
-                      : row[headerValue]}
+                    {isDateValue(headerValue) ? (
+                      formatAsDDMMYYYY(row[headerValue])
+                    ) : headerKey === "Image" ? (
+                      <img
+                        src={row[headerValue]}
+                        style={{ width: "30px", height: "30px" }}
+                      />
+                    ) : headerValue === "formattedSizes" ? (
+                      <>
+                        {row[headerValue].map((elm) => (
+                          <li style={{ alignSelf: "flex-start" }}>{elm}</li>
+                        ))}
+                      </>
+                    ) : (
+                      row[headerValue]
+                    )}
                   </StyledTableCell>
                 );
               })}

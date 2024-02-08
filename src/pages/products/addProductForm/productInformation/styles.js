@@ -23,3 +23,9 @@ export const fieldStyle = (isSmallScreen) => ({
   marginBottom: isSmallScreen && "15px",
   marginTop: isSmallScreen && "5px",
 });
+
+export const categoryButtonStyle = {
+  width: "10%",
+  textTransform: "capitalize",
+  height: "55px",
+};

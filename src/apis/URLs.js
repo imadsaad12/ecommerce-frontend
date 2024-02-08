@@ -10,3 +10,7 @@ export const GET_ORDERS_WITH_LIMITS_URL = (limit) =>
   `${REACT_APP_BASE_URL}/orders?limit=${limit}`;
 
 export const ADD_PRODUCT_URL = `${REACT_APP_BASE_URL}/products`;
+export const GET_PRODUCTS_URL = `${REACT_APP_BASE_URL}/products`;
+
+export const GET_CATEGORIES_URL = `${REACT_APP_BASE_URL}/categories`;
+export const ADD_CATEGORY_URL = `${REACT_APP_BASE_URL}/categories`;

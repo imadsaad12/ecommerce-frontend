@@ -5,11 +5,16 @@ import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/breakingPoints";
 import { Button } from "@mui/material";
 import AddProductForm from "./addProductForm";
+import { useGetProductsQuery } from "../../apis/products/getProducts";
+import { formattedProducts } from "../../utilities/formatProducts";
 
 export default function Products() {
   const [isOpen, setIsOpen] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
+  const [products, setProducts] = useState([]);
+
+  const { response, isLoading } = useGetProductsQuery();
 
   useEffect(() => {
     const observeSizeChanges = () => {
@@ -33,6 +38,12 @@ export default function Products() {
     observeSizeChanges();
   }, [setIsOpen]);
 
+  useEffect(() => {
+    if (!isLoading) {
+      setProducts(formattedProducts(response.data));
+    }
+  }, [isLoading]);
+
   return (
     <Container isOpen={isOpen}>
       {isFormOpen ? (
@@ -50,37 +61,15 @@ export default function Products() {
             </Button>
           </TableHeader>
           <CustomizedTables
-            tableData={[
-              {
-                name: "asas",
-                description: "asa",
-                price: "20.00 USD",
-                date: "20/1/2024",
-              },
-              {
-                name: "asas",
-                description: "asa",
-                price: "20.00 USD",
-                date: "20/1/2024",
-              },
-              {
-                name: "asas",
-                description: "asa",
-                price: "20.00 USD",
-                date: "20/1/2024",
-              },
-              {
-                name: "asas",
-                description: "asa",
-                price: "20.00 USD",
-                date: "20/1/2024",
-              },
-            ]}
+            tableData={products}
             tableHeaders={[
+              { headerKey: "Image", headerValue: "imageURL" },
               { headerKey: "Name", headerValue: "name" },
               { headerKey: "Description", headerValue: "description" },
+              { headerKey: "Category", headerValue: "category" },
+              { headerKey: "Items", headerValue: "formattedSizes" },
               { headerKey: "Price", headerValue: "price" },
-              { headerKey: "Date", headerValue: "date" },
+              { headerKey: "Date", headerValue: "createdAt" },
             ]}
           />
         </TableContainer>

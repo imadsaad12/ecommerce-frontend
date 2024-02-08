@@ -37,10 +37,7 @@ axios.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 498) {
-      localStorage.removeItem("isLoggedIn");
-      window.location.href = SIGN_IN;
-    } else if (
+    if (
       (error.response.status === 401 || error.response.status === 403) &&
       !originalRequest._retry &&
       window.location.pathname !== SIGN_IN

@@ -11,7 +11,7 @@ import { LoadingButton } from "@mui/lab";
 import { IoMdAdd } from "react-icons/io";
 
 export default function AddProductForm({ setIsFormOpen }) {
-  const { handleApiCall, isLoading } = useAddProductQuery({
+  const { handleApiCall, isPending } = useAddProductQuery({
     onSuccess: () => setIsFormOpen(false),
   });
   const formUtils = useForm();
@@ -40,7 +40,7 @@ export default function AddProductForm({ setIsFormOpen }) {
           <ProductImages formUtils={formUtils} />
         </List>
         <LoadingButton
-          loading={isLoading}
+          loading={isPending}
           loadingPosition="start"
           startIcon={<IoMdAdd />}
           variant="contained"
