@@ -32,13 +32,16 @@ export default function CustomizedTables({
   tableHeaders = [],
   addViewOrderButton,
   handleOnClickView,
+  addProductOperationsButtons,
+  handleOnClickDeleteProduct,
+  handleOnClickEditProduct,
 }) {
   const isDateValue = (headerValue) =>
     headerValue === "created_at" || headerValue === "updated_at";
 
   return (
     <StyledTableContainer style={TableContainerStyle}>
-      <Table stickyHeader>
+      <Table stickyHeader style={{ textTransform: "capitalize" }}>
         <style>
           {`
           ::-webkit-scrollbar {
@@ -72,6 +75,15 @@ export default function CustomizedTables({
                 align="center"
                 key="view order"
               ></StyledTableCell>
+            )}
+            {addProductOperationsButtons && (
+              <StyledTableCell
+                style={{ fontSize: "18px", backgroundColor: "white" }}
+                align="center"
+                key="view order"
+              >
+                operations
+              </StyledTableCell>
             )}
           </TableRow>
         </StyledTableHead>
@@ -112,6 +124,34 @@ export default function CustomizedTables({
                   >
                     view order
                   </Button>
+                </StyledTableCell>
+              )}
+              {addProductOperationsButtons && (
+                <StyledTableCell align="center">
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: "10px",
+                    }}
+                  >
+                    <Button
+                      variant="outlined"
+                      onClick={() => handleOnClickEditProduct(row._id)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      onClick={() => handleOnClickDeleteProduct(row._id)}
+                      color="error"
+                    >
+                      Delete
+                    </Button>
+                  </div>
                 </StyledTableCell>
               )}
             </TableRow>

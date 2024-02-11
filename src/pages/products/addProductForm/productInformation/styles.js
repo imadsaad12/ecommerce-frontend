@@ -20,12 +20,12 @@ export const FormContainer = styled.div`
 
 export const fieldStyle = (isSmallScreen) => ({
   width: isSmallScreen ? "90%" : "20%",
-  marginBottom: isSmallScreen && "15px",
-  marginTop: isSmallScreen && "5px",
+  marginBottom: isSmallScreen ? "15px" : "5px",
+  marginTop: isSmallScreen ? "5px" : "10px",
 });
 
 export const categoryButtonStyle = {
-  width: "10%",
+  width: "14%",
   textTransform: "capitalize",
   height: "55px",
 };

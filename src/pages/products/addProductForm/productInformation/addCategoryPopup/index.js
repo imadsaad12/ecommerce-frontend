@@ -7,36 +7,54 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useAddCategoryQuery } from "../../../../../apis/categories/addCategory";
 import { LoadingButton } from "@mui/lab";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 export default function AddCategoryPopup({
   isAddCategoryOpen,
   setIsAddCategoryOpen,
   formUtils,
+  refreshCategories,
 }) {
-  const { register, getValues } = formUtils;
+  const { register, getValues, setValue } = formUtils;
   const { handleApiCall, isPending } = useAddCategoryQuery({
-    onSuccess: () => setIsAddCategoryOpen(false),
+    onSuccess: () => {
+      refreshCategories();
+      setIsAddCategoryOpen(false);
+      setValue("categoryName", "");
+      setValue("categoryType", "");
+    },
   });
 
   const handleClose = () => {
     setIsAddCategoryOpen(false);
   };
 
-  const handleSubmit = () => handleApiCall({ category: getValues()?.category });
+  const handleSubmit = () =>
+    handleApiCall({
+      category: getValues()?.categoryName,
+      type: getValues()?.categoryType,
+    });
 
   return (
     <Dialog open={isAddCategoryOpen} onClose={handleClose} fullWidth>
       <DialogTitle>Add Category</DialogTitle>
       <DialogContent>
+        <FormControl style={{ width: "100%", marginTop: "15px" }}>
+          <InputLabel>Type</InputLabel>
+          <Select label="type" {...register("categoryType")}>
+            <MenuItem value={"men"}>Men</MenuItem>
+            <MenuItem value={"women"}>Women</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
-          autoFocus
           required
           name="email"
           label="Category name"
           type="email"
           fullWidth
           variant="standard"
-          {...register("category")}
+          {...register("categoryName")}
+          style={{ marginTop: "15px" }}
         />
       </DialogContent>
       <DialogActions>

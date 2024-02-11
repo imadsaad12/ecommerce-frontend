@@ -15,11 +15,11 @@ const getProducts = async () => {
 };
 
 export const useGetProductsQuery = () => {
-  const { error, isLoading, status, data } = useQuery({
+  const { error, isLoading, status, data, refetch } = useQuery({
     queryFn: getProducts,
     retry: false,
     queryKey: ["products"],
   });
 
-  return { isLoading, error, status, response: data };
+  return { isLoading, error, status, response: data, refetch };
 };

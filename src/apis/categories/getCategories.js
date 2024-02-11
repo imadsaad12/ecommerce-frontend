@@ -15,11 +15,11 @@ const getCategories = async () => {
 };
 
 export const useGetCategoriesQuery = () => {
-  const { error, isLoading, status, data } = useQuery({
+  const { error, isLoading, status, data, refetch } = useQuery({
     queryFn: getCategories,
     retry: false,
-    queryKey: ["orders"],
+    queryKey: ["categories"],
   });
 
-  return { isLoading, error, status, response: data };
+  return { isLoading, error, status, response: data, refetch };
 };

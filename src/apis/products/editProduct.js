@@ -1,11 +1,12 @@
 import axios from "axios";
-import { ADD_PRODUCT_URL } from "../URLs";
+import { EDIT_PRODUCT_URL } from "../URLs";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
-const addProduct = async (payload) => {
+const editProduct = async (id, payload) => {
   try {
-    const url = ADD_PRODUCT_URL;
+    const url = EDIT_PRODUCT_URL(id);
+
     const formData = new FormData();
     if (
       !payload.name ||
@@ -23,25 +24,24 @@ const addProduct = async (payload) => {
     formData.append("type", payload.type);
 
     payload.images.forEach((imageData, index) => {
-      if (imageData.file && imageData.color) {
+      if (imageData.color) {
+        if (!imageData?.isDeleted) imageData.isDeleted = false;
         formData.append(`images[${index}][url]`, imageData.url);
         formData.append(`images[${index}][file]`, imageData.file);
         formData.append(`images[${index}][color]`, imageData.color);
+        formData.append(`images[${index}][id]`, imageData.id);
+        formData.append(`images[${index}][isDeleted]`, imageData.isDeleted);
       }
     });
     payload.sizes.forEach((sizeData, index) => {
-      if (
-        sizeData !== null &&
-        sizeData?.size &&
-        sizeData.color &&
-        sizeData.inStock
-      ) {
+      if (sizeData !== null && sizeData?.size && sizeData?.color) {
         formData.append(`sizes[${index}][size]`, sizeData.size);
         formData.append(`sizes[${index}][color]`, sizeData.color);
         formData.append(`sizes[${index}][inStock]`, sizeData.inStock);
       }
     });
-    const response = await axios.post(url, formData, {
+
+    const response = await axios.put(url, formData, {
       withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -53,13 +53,13 @@ const addProduct = async (payload) => {
   }
 };
 
-export const useAddProductQuery = ({ onSuccess }) => {
+export const useEditProductQuery = ({ onSuccess }) => {
   const { error, mutate, isPending } = useMutation({
-    mutationFn: addProduct,
+    mutationFn: (params) => editProduct(params[0], params[1]),
     onSuccess,
   });
 
-  const handleApiCall = (data) => mutate(data);
+  const handleApiCall = (id, data) => mutate([id, data]);
 
   return { isPending, error, handleApiCall };
 };

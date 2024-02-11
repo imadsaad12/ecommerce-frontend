@@ -18,31 +18,72 @@ import { breakingPoints } from "../../../../global/breakingPoints";
 import { listButtonStyle } from "../styles";
 import AddCategoryPopup from "./addCategoryPopup";
 import { useGetCategoriesQuery } from "../../../../apis/categories/getCategories";
+import DeleteProductPopup from "./deleteCategoryPopup";
+import EditCategoryPopup from "./editCategory";
 
-export default function ProductInformation({ formUtils }) {
+export default function ProductInformation({
+  formUtils,
+  selectedProductToUpdate = {},
+  isEditingMode = false,
+}) {
   const [isProductInfoOpen, setIsProductInfoOpen] = useState(false);
   const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
-  const { isLoading, response } = useGetCategoriesQuery();
+  const [isDeleteCategoryPopupOpen, setIsDeleteCategoryPopupOpen] =
+    useState(false);
+  const [isEditCategoryPopupOpen, setIsEditCategoryPopupOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(
+    selectedProductToUpdate?.category || ""
+  );
+  const [selectedIdForAction, setSelectedIdFroAction] = useState("");
+  const [selectedType, setSelectedType] = useState(
+    selectedProductToUpdate?.type || ""
+  );
+  const [categories, setCategories] = useState([]);
+  const { isLoading, response, refetch } = useGetCategoriesQuery();
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
   const { register } = formUtils;
   const fields = [
     { label: "Name", key: "name", type: "string" },
-    { label: "Description", key: "description", type: "string" },
     { label: "Price", key: "price", type: "number" },
+    { label: "Description", key: "description", type: "string" },
   ];
 
-  // useEffect(() => {
-  //   if(!isLoading){
-  //     set
-  //   }
-  // }, [isLoading])
+  useEffect(() => {
+    if (!isLoading) {
+      setCategories(response.data);
+    }
+  }, [isLoading]);
+
+  const refreshCategories = () => {
+    refetch()
+      .then(({ data: { data } }) => {
+        setCategories(data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
+      <EditCategoryPopup
+        formUtils={formUtils}
+        setIsEditCategoryOpen={setIsEditCategoryPopupOpen}
+        isEditCategoryOpen={isEditCategoryPopupOpen}
+        refreshCategories={refreshCategories}
+        selectedIdForAction={selectedIdForAction}
+        setSelectedCategory={setSelectedCategory}
+      />
+
+      <DeleteProductPopup
+        setIsDeleteCategoryPopupOpen={setIsDeleteCategoryPopupOpen}
+        isDeleteCategoryPopupOpen={isDeleteCategoryPopupOpen}
+        refreshCategories={refreshCategories}
+        selectedIdForAction={selectedIdForAction}
+      />
       <AddCategoryPopup
         setIsAddCategoryOpen={setIsAddCategoryOpen}
         isAddCategoryOpen={isAddCategoryOpen}
         formUtils={formUtils}
+        refreshCategories={refreshCategories}
       />
       <ListItemButton
         style={listButtonStyle}
@@ -62,28 +103,68 @@ export default function ProductInformation({ formUtils }) {
           >
             Add Category
           </Button>
-          <FormControl style={{ width: isSmallScreen ? "70%" : "25%" }}>
-            <InputLabel>Category</InputLabel>
-            <Select label="color" {...register("category")}>
-              {response?.data?.map(({ category }) => {
-                return (
-                  <MenuItem value={"Red"}>
-                    <ListItemText>{category}</ListItemText>
-                    <Button>Edit</Button>
-                    <Button color="error">Delete</Button>
-                  </MenuItem>
-                );
-              })}
+          <FormControl style={{ width: isSmallScreen ? "70%" : "20%" }}>
+            <InputLabel>Type</InputLabel>
+            <Select
+              label="type"
+              {...register("type")}
+              onChange={({ target: { value } }) => setSelectedType(value)}
+              defaultValue={selectedProductToUpdate?.type}
+            >
+              <MenuItem value={"men"}>Men</MenuItem>
+              <MenuItem value={"women"}>Women</MenuItem>
             </Select>
           </FormControl>
+          <FormControl style={{ width: isSmallScreen ? "70%" : "20%" }}>
+            <InputLabel>Category</InputLabel>
+            <Select
+              label="category"
+              {...register("category")}
+              onChange={({ target: { value } }) => setSelectedCategory(value)}
+              defaultValue={selectedProductToUpdate?.category}
+            >
+              {categories
+                ?.filter(({ type }) => type === selectedType)
+                ?.map(({ category, _id }) => {
+                  return (
+                    <MenuItem value={category}>
+                      <ListItemText>{category}</ListItemText>
+                      {selectedCategory !== category && (
+                        <>
+                          <Button
+                            onClick={() => {
+                              setSelectedIdFroAction(_id);
+                              setIsEditCategoryPopupOpen(true);
+                            }}
+                          >
+                            Edit
+                          </Button>
+                          <Button
+                            color="error"
+                            onClick={() => {
+                              setSelectedIdFroAction(_id);
+                              setIsDeleteCategoryPopupOpen(true);
+                            }}
+                          >
+                            Delete
+                          </Button>
+                        </>
+                      )}
+                    </MenuItem>
+                  );
+                })}
+            </Select>
+          </FormControl>
+
           {fields.map(({ key, label, type }) => (
             <TextField
-              autoFocus
               required
               name={key}
               label={label}
               type={type}
               variant="outlined"
+              multiline={key === "description"}
+              defaultValue={selectedProductToUpdate?.[key]}
               style={fieldStyle(isSmallScreen)}
               {...register(key)}
             />
