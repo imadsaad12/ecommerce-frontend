@@ -96,6 +96,10 @@ export const Title = styled.p`
   color: #8133ce;
   font-weight: bold;
   margin-left: 20px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    margin-left: 10px;
+    font-size: 18px;
+  }
 `;
 
 export const IconContainer = styled.div`

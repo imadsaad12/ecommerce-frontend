@@ -3,11 +3,12 @@ import { useValidateTokenQueryQuery } from "../apis/auth/validateToken";
 
 const ProtectedRoute = ({ children }) => {
   const { status } = useValidateTokenQueryQuery();
-
-  if (status === "error") {
-    return <Navigate to="/" replace />;
+  if (status !== "pending") {
+    if (status === "error") {
+      return <Navigate to="/" replace />;
+    }
+    return children;
   }
-  return children;
 };
 
 export default ProtectedRoute;

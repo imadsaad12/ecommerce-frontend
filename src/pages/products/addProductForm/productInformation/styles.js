@@ -24,8 +24,10 @@ export const fieldStyle = (isSmallScreen) => ({
   marginTop: isSmallScreen ? "5px" : "10px",
 });
 
-export const categoryButtonStyle = {
-  width: "14%",
+export const categoryButtonStyle = (isSmallScreen) => ({
+  width: isSmallScreen ? "90%" : "14%",
   textTransform: "capitalize",
   height: "55px",
-};
+  marginTop: isSmallScreen ? "15px" : "5px",
+  marginBottom: isSmallScreen ? "5px" : "10px",
+});

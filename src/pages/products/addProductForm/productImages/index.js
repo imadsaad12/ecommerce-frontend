@@ -152,7 +152,7 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
                 onChange={handleFileChange}
               />
             </FileInputContainer>
-            <FormControl style={{ width: isSmallScreen ? "70%" : "50%" }}>
+            <FormControl style={{ width: isSmallScreen ? "90%" : "50%" }}>
               <InputLabel>Color</InputLabel>
               <Select
                 label="color"
@@ -179,7 +179,7 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
               startIcon={<FaPlus />}
               style={{
                 height: "55px",
-                width: isSmallScreen ? "70%" : "30%",
+                width: isSmallScreen ? "90%" : "30%",
               }}
               onClick={handleOnClick}
             >

@@ -36,6 +36,7 @@ export const buttonStyle = (isSmallScreen) => ({
   height: "55px",
   width: isSmallScreen ? "90%" : "10%",
   marginBottom: isSmallScreen && "15px",
+  marginTop: isSmallScreen && "15px",
 });
 
 export const ColorRow = styled.div`

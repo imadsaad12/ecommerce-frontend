@@ -3,6 +3,7 @@ const { REACT_APP_BASE_URL } = process.env;
 export const SIGNIN_URL = `${REACT_APP_BASE_URL}/auth/signin`;
 export const GENERATE_ACCESS_TOKEN_URL = `${REACT_APP_BASE_URL}/auth/refresh`;
 export const VALIDATE_TOKEN_URL = `${REACT_APP_BASE_URL}/auth/validate-token`;
+export const LOGOUT_URL = `${REACT_APP_BASE_URL}/auth/logout`;
 
 export const GET_ORDERS_URL = `${REACT_APP_BASE_URL}/orders`;
 export const GET_STATISTICS_URL = `${REACT_APP_BASE_URL}/orders/statistics`;

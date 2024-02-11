@@ -98,12 +98,17 @@ export default function ProductInformation({
         <FormContainer>
           <Button
             variant="contained"
-            style={categoryButtonStyle}
+            style={categoryButtonStyle(isSmallScreen)}
             onClick={() => setIsAddCategoryOpen(true)}
           >
             Add Category
           </Button>
-          <FormControl style={{ width: isSmallScreen ? "70%" : "20%" }}>
+          <FormControl
+            style={{
+              width: isSmallScreen ? "90%" : "20%",
+              marginTop: isSmallScreen && "15px",
+            }}
+          >
             <InputLabel>Type</InputLabel>
             <Select
               label="type"
@@ -115,7 +120,12 @@ export default function ProductInformation({
               <MenuItem value={"women"}>Women</MenuItem>
             </Select>
           </FormControl>
-          <FormControl style={{ width: isSmallScreen ? "70%" : "20%" }}>
+          <FormControl
+            style={{
+              width: isSmallScreen ? "90%" : "20%",
+              marginTop: isSmallScreen && "15px",
+            }}
+          >
             <InputLabel>Category</InputLabel>
             <Select
               label="category"

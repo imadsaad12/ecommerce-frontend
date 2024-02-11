@@ -87,7 +87,10 @@ export default function ProductSizes({ formUtils, selectedProductToUpdate }) {
                 {elm !== null && (
                   <SizesRow>
                     <FormControl
-                      style={{ width: isSmallScreen ? "70%" : "25%" }}
+                      style={{
+                        width: isSmallScreen ? "90%" : "25%",
+                        marginTop: isSmallScreen && "15px",
+                      }}
                     >
                       <InputLabel>Size</InputLabel>
                       <Select
@@ -102,7 +105,8 @@ export default function ProductSizes({ formUtils, selectedProductToUpdate }) {
                     </FormControl>
                     <FormControl
                       style={{
-                        width: isSmallScreen ? "70%" : "25%",
+                        width: isSmallScreen ? "90%" : "25%",
+                        marginTop: isSmallScreen && "15px",
                       }}
                     >
                       <InputLabel>Color</InputLabel>
@@ -126,7 +130,10 @@ export default function ProductSizes({ formUtils, selectedProductToUpdate }) {
                       </Select>
                     </FormControl>
                     <FormControl
-                      style={{ width: isSmallScreen ? "70%" : "25%" }}
+                      style={{
+                        width: isSmallScreen ? "90%" : "25%",
+                        marginTop: isSmallScreen && "15px",
+                      }}
                     >
                       <InputLabel>Availability</InputLabel>
                       <Select

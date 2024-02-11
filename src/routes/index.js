@@ -20,16 +20,16 @@ export default function Routes() {
   const queryClient = new QueryClient();
 
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
         <RoutesWrapper>
           <Route path={SIGN_IN} Component={withRedirection(SignIn)} />
           <Route path={ADMIN} Component={withLayout(Admin)} />
           <Route path={ORDERS} Component={withLayout(Orders)} />
           <Route path={PRODUCTS} Component={withLayout(Products)} />
         </RoutesWrapper>
-      </QueryClientProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
@@ -37,7 +37,10 @@ axios.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (
+    if (error.response.status === 498) {
+      window.location.href = SIGN_IN;
+      localStorage.removeItem("isLoggedIn");
+    } else if (
       (error.response.status === 401 || error.response.status === 403) &&
       !originalRequest._retry &&
       window.location.pathname !== SIGN_IN
@@ -46,8 +49,9 @@ axios.interceptors.response.use(
       try {
         await generateAccessToken();
 
-        return axios(originalRequest);
+        return axios(originalRequest, { withCredentials: true });
       } catch (err) {
+        console.log("hereee");
         toast.error(error?.response?.data?.message);
         await Promise.reject(error);
       }
