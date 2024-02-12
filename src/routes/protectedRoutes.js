@@ -5,7 +5,7 @@ const ProtectedRoute = ({ children }) => {
   const { status } = useValidateTokenQueryQuery();
 
   if (status === "error") {
-    // return <Navigate to="/" replace />;
+    return <Navigate to="/" replace />;
   }
   return children;
 };
