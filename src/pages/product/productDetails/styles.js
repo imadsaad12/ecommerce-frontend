@@ -1,0 +1,64 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap:20px
+`;
+
+export const Name = styled.span`
+font-size: 25px;
+font-weight: bold;
+
+`;
+export const Price = styled.span`
+font-size: 25px;
+font-weight: normal;
+`;
+
+export const Description = styled.span`
+font-size: 16px;
+font-weight:light;
+`;
+export const QuantityPurchase = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap:20px;
+  align-items: center;
+  margin-top:20px
+`;
+
+export const CounterContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+`;
+export const Quantity = styled.div`
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 30px;
+  border-radius: 20px;
+`;
+
+export const Buttons = styled.div`
+display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+`;
+export const AddtoCart = styled.button`
+width: 150px;
+border-radius: 20px;
+background-color: black;
+color: white;
+height: 40px;
+
+`;
+
