@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   BoxContent,
@@ -62,10 +62,10 @@ export default function Admin() {
 
   useEffect(() => {
     if (!isLoading) {
-      setOrders(formatRecentOrders(response.data));
+      setOrders(formatRecentOrders(response?.data));
     }
     if (!isFetchingStatistics) {
-      setStatistics(statisticsData.data);
+      setStatistics(statisticsData?.data);
     }
   }, [isLoading, isFetchingStatistics]);
 

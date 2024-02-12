@@ -12,12 +12,13 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { SlLogout } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
+import { useLogOutQuery } from "../../apis/auth/logOut";
 
 export default function SideBar() {
   const navigate = useNavigate();
   const isActive = (url) => url === window.location.pathname;
   const [isOpen, setIsOpen] = useState(false);
-
+  const { handleApiCall, isPending } = useLogOutQuery({ onSuccess });
   const menuItems = [
     {
       url: "/admin",
@@ -34,12 +35,14 @@ export default function SideBar() {
       text: "Orders",
       Icon: MdOutlineShoppingCart,
     },
-    {
-      url: "/",
-      text: "Log out",
-      Icon: SlLogout,
-    },
   ];
+
+  const handleLogout = () => handleApiCall();
+
+  function onSuccess() {
+    localStorage.setItem("isLoggedIn", "false");
+    navigate("/");
+  }
 
   return (
     <Container isOpen={isOpen} id="side-bar">
@@ -63,6 +66,10 @@ export default function SideBar() {
           </Row>
         );
       })}
+      <Row onClick={handleLogout}>
+        <SlLogout style={iconStyle} />
+        <Text isOpen={isOpen}>Log out</Text>
+      </Row>
     </Container>
   );
 }

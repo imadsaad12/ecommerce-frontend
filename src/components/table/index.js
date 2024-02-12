@@ -10,6 +10,8 @@ import {
 } from "./styles";
 import { formatAsDDMMYYYY } from "../../utilities/dates";
 import { Button } from "@mui/material";
+import useBreakpoint from "../../utilities/mediaQuery";
+import { breakingPoints } from "../../global/breakingPoints";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -30,13 +32,16 @@ export default function CustomizedTables({
   tableHeaders = [],
   addViewOrderButton,
   handleOnClickView,
+  addProductOperationsButtons,
+  handleOnClickDeleteProduct,
+  handleOnClickEditProduct,
 }) {
   const isDateValue = (headerValue) =>
     headerValue === "created_at" || headerValue === "updated_at";
 
   return (
     <StyledTableContainer style={TableContainerStyle}>
-      <Table stickyHeader>
+      <Table stickyHeader style={{ textTransform: "capitalize" }}>
         <style>
           {`
           ::-webkit-scrollbar {
@@ -71,21 +76,43 @@ export default function CustomizedTables({
                 key="view order"
               ></StyledTableCell>
             )}
+            {addProductOperationsButtons && (
+              <StyledTableCell
+                style={{ fontSize: "18px", backgroundColor: "white" }}
+                align="center"
+                key="view order"
+              >
+                operations
+              </StyledTableCell>
+            )}
           </TableRow>
         </StyledTableHead>
         <TableBody>
           {tableData.map((row, index) => (
             <TableRow key={index}>
-              {tableHeaders.map(({ headerValue }) => {
+              {tableHeaders.map(({ headerValue, headerKey }) => {
                 return (
                   <StyledTableCell
                     style={{ fontSize: "16px" }}
                     key={`${row[headerValue]}-index`}
-                    align="center"
+                    align={headerValue === "formattedSizes" ? "left" : "center"}
                   >
-                    {isDateValue(headerValue)
-                      ? formatAsDDMMYYYY(row[headerValue])
-                      : row[headerValue]}
+                    {isDateValue(headerValue) ? (
+                      formatAsDDMMYYYY(row[headerValue])
+                    ) : headerKey === "Image" ? (
+                      <img
+                        src={row[headerValue]}
+                        style={{ width: "30px", height: "30px" }}
+                      />
+                    ) : headerValue === "formattedSizes" ? (
+                      <>
+                        {row[headerValue].map((elm) => (
+                          <li style={{ alignSelf: "flex-start" }}>{elm}</li>
+                        ))}
+                      </>
+                    ) : (
+                      row[headerValue]
+                    )}
                   </StyledTableCell>
                 );
               })}
@@ -97,6 +124,34 @@ export default function CustomizedTables({
                   >
                     view order
                   </Button>
+                </StyledTableCell>
+              )}
+              {addProductOperationsButtons && (
+                <StyledTableCell align="center">
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: "10px",
+                    }}
+                  >
+                    <Button
+                      variant="outlined"
+                      onClick={() => handleOnClickEditProduct(row._id)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      variant="outlined"
+                      onClick={() => handleOnClickDeleteProduct(row._id)}
+                      color="error"
+                    >
+                      Delete
+                    </Button>
+                  </div>
                 </StyledTableCell>
               )}
             </TableRow>

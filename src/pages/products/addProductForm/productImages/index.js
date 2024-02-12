@@ -9,7 +9,7 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, listButtonStyle } from "../styles";
 import {
   AddedImagesContainer,
@@ -25,13 +25,17 @@ import useBreakpoint from "../../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../../global/breakingPoints";
 import { FaPlus } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
+import { colorsOptions } from "../../../../global";
+import { Color, ColorRow } from "../productSizes/styles";
 
-export default function ProductImages({ formUtils }) {
+export default function ProductImages({ formUtils, selectedProductToUpdate }) {
   const [isProductImagesOpen, setIsProductImagesOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const [file, setFile] = useState({});
   const [color, setColor] = useState("");
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(selectedProductToUpdate?.images || []);
   const { setValue } = formUtils;
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
 
@@ -41,18 +45,55 @@ export default function ProductImages({ formUtils }) {
     setImageUrl(url);
   };
 
+  useEffect(() => {
+    if (selectedProductToUpdate?.images) {
+      setValue("images", selectedProductToUpdate.images);
+    }
+  }, []);
+
   const handleOnClick = () => {
-    imageUrl && color && setImages([...images, { url: imageUrl, file, color }]);
-    imageUrl &&
-      color &&
-      setValue("images", [...images, { url: imageUrl, file, color }]);
+    const uniqueId = uuidv4();
+    const modifiedFileName = `${uniqueId}`;
+    const modifiedFile = new File([file], modifiedFileName, {
+      type: file.type,
+    });
+
+    if (!file || !color) {
+      toast.error("Please make sure you selected image and color");
+      return;
+    }
+    setImages([
+      ...images,
+      {
+        url: imageUrl,
+        file,
+        color,
+        isDeleted: false,
+        file: modifiedFile,
+        id: uniqueId,
+      },
+    ]);
+
+    setValue("images", [
+      ...images,
+      {
+        url: imageUrl,
+        file,
+        color,
+        isDeleted: false,
+        file: modifiedFile,
+        id: uniqueId,
+      },
+    ]);
     setImageUrl("");
   };
+  const startsWithBlob = /^blob/i;
+  const stringStartsWithBlob = (testString) => startsWithBlob.test(testString);
 
   const handleOnDelete = (index) => {
-    const newImages = images.map((elm, i) => {
+    const newImages = images?.map((elm, i) => {
       if (i === index) {
-        elm = null;
+        elm.isDeleted = true;
       }
       return elm;
     });
@@ -76,9 +117,15 @@ export default function ProductImages({ formUtils }) {
           {images?.map((elm, index) => {
             return (
               <>
-                {elm !== null && (
+                {!elm.isDeleted && (
                   <AddedImagesContainer>
-                    <Image src={elm.url} />
+                    <Image
+                      src={
+                        stringStartsWithBlob(elm.url)
+                          ? elm.url
+                          : `https://storage.googleapis.com/ecommerce-bucket-testing/${elm.url}`
+                      }
+                    />
                     <Text>{elm.color}</Text>
                     <Button
                       variant="outlined"
@@ -105,15 +152,24 @@ export default function ProductImages({ formUtils }) {
                 onChange={handleFileChange}
               />
             </FileInputContainer>
-            <FormControl style={{ width: isSmallScreen ? "70%" : "50%" }}>
+            <FormControl style={{ width: isSmallScreen ? "90%" : "50%" }}>
               <InputLabel>Color</InputLabel>
               <Select
-                label="Color"
+                label="color"
+                MenuProps={{ style: { height: "300px" } }}
                 onChange={({ target: { value } }) => setColor(value)}
+                style={{ maxHeight: "55px" }}
               >
-                <MenuItem value={"Red"}>Red</MenuItem>
-                <MenuItem value={"Blue"}>Blue</MenuItem>
-                <MenuItem value={"Green"}>Green</MenuItem>
+                {colorsOptions.map(({ text, color }) => {
+                  return (
+                    <MenuItem value={text}>
+                      <ColorRow>
+                        <Color color={color} />
+                        <p style={{ marginLeft: "10px" }}>{text}</p>
+                      </ColorRow>
+                    </MenuItem>
+                  );
+                })}
               </Select>
             </FormControl>
 
@@ -123,7 +179,7 @@ export default function ProductImages({ formUtils }) {
               startIcon={<FaPlus />}
               style={{
                 height: "55px",
-                width: isSmallScreen ? "70%" : "30%",
+                width: isSmallScreen ? "90%" : "30%",
               }}
               onClick={handleOnClick}
             >

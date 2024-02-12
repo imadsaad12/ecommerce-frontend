@@ -8,6 +8,8 @@ export const SizesRow = styled.div`
   width: 100%;
   background-color: whitesmoke;
   align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
   @media (max-width: ${breakingPoints.sm}px) {
     border: 1px solid lightgray;
     flex-direction: column;
@@ -34,4 +36,20 @@ export const buttonStyle = (isSmallScreen) => ({
   height: "55px",
   width: isSmallScreen ? "90%" : "10%",
   marginBottom: isSmallScreen && "15px",
+  marginTop: isSmallScreen && "15px",
 });
+
+export const ColorRow = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const Color = styled.div`
+  background-color: ${({ color }) => color};
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+`;
