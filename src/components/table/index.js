@@ -39,6 +39,18 @@ export default function CustomizedTables({
   const isDateValue = (headerValue) =>
     headerValue === "created_at" || headerValue === "updated_at";
 
+  function truncateText(text, limit) {
+    const words = text.split(" ");
+
+    if (words.length <= limit) {
+      return text;
+    }
+
+    const truncatedWords = words.slice(0, limit);
+    const truncatedText = truncatedWords.join(" ");
+
+    return `${truncatedText} ...`;
+  }
   return (
     <StyledTableContainer style={TableContainerStyle}>
       <Table stickyHeader style={{ textTransform: "capitalize" }}>
@@ -110,6 +122,8 @@ export default function CustomizedTables({
                           <li style={{ alignSelf: "flex-start" }}>{elm}</li>
                         ))}
                       </>
+                    ) : headerValue === "description" ? (
+                      <>{truncateText(row[headerValue], 10)}</>
                     ) : (
                       row[headerValue]
                     )}

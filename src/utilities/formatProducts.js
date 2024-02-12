@@ -21,3 +21,9 @@ export const formattedProducts = (products) => {
   );
   return newProductsFormat;
 };
+
+export const formatImages = (images) => {
+  const urlPrefix = "https://storage.googleapis.com/ecommerce-bucket-testing";
+  const formattedImages = images.map(({ url }) => `${urlPrefix}/${url}`);
+  return formattedImages;
+};

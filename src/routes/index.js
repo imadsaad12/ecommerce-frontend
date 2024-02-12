@@ -5,7 +5,7 @@ import {
   Routes as RoutesWrapper,
   Route,
 } from "react-router-dom";
-import { ADMIN, ORDERS, PRODUCTS, SIGN_IN } from "./URLs";
+import { ADMIN, ORDERS, PRODUCTS, SIGN_IN, VIEWPRODUCTS } from "./URLs";
 import withLayout from "../HOCs/withLayout";
 import Admin from "../pages/admin";
 import Products from "../pages/products";
@@ -15,6 +15,8 @@ import axios from "axios";
 import { generateAccessToken } from "../apis/auth/generateAccessToken";
 import { toast } from "react-toastify";
 import { withRedirection } from "../HOCs/sign-in";
+import Product from "../pages/product/index";
+import ViewProducts from "../pages/viewproducts/index";
 
 export default function Routes() {
   const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ export default function Routes() {
           <Route path={ADMIN} Component={withLayout(Admin)} />
           <Route path={ORDERS} Component={withLayout(Orders)} />
           <Route path={PRODUCTS} Component={withLayout(Products)} />
+          <Route path={"/product"} element={<Product />} />
+          <Route path={"/"} element={<ViewProducts />} />
         </RoutesWrapper>
       </BrowserRouter>
     </QueryClientProvider>
@@ -51,7 +55,6 @@ axios.interceptors.response.use(
 
         return axios(originalRequest, { withCredentials: true });
       } catch (err) {
-        console.log("hereee");
         toast.error(error?.response?.data?.message);
         await Promise.reject(error);
       }

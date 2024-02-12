@@ -11,7 +11,8 @@ export const GET_ORDERS_WITH_LIMITS_URL = (limit) =>
   `${REACT_APP_BASE_URL}/orders?limit=${limit}`;
 
 export const ADD_PRODUCT_URL = `${REACT_APP_BASE_URL}/products`;
-export const GET_PRODUCTS_URL = `${REACT_APP_BASE_URL}/products`;
+export const GET_PRODUCTS_URL = (category, type) =>
+  `${REACT_APP_BASE_URL}/products?category=${category}&type=${type}`;
 export const DELETE_PRODUCT_URL = (id) =>
   `${REACT_APP_BASE_URL}/products/${id}`;
 export const EDIT_PRODUCT_URL = (id) => `${REACT_APP_BASE_URL}/products/${id}`;

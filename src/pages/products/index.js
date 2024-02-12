@@ -20,7 +20,7 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [selectedProductToUpdate, setSelectedProductToUpdate] = useState([]);
 
-  const { response, isLoading, refetch } = useGetProductsQuery();
+  const { response, isLoading, refetch } = useGetProductsQuery({});
 
   useEffect(() => {
     const observeSizeChanges = () => {
