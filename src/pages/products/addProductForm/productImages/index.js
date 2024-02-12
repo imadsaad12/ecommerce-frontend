@@ -40,9 +40,11 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
 
   const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-    const url = URL.createObjectURL(event.target.files[0]);
-    setImageUrl(url);
+    if (event.target.files[0]) {
+      setFile(event.target.files[0]);
+      const url = URL.createObjectURL(event.target.files[0]);
+      setImageUrl(url);
+    }
   };
 
   useEffect(() => {
