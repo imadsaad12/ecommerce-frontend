@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import { withRedirection } from "../HOCs/sign-in";
 import Product from "../pages/product/index";
 import ViewProducts from "../pages/viewproducts/index";
+import Cart from "../pages/cart";
 
 export default function Routes() {
   const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ export default function Routes() {
           <Route path={PRODUCTS} Component={withLayout(Products)} />
           <Route path={"/product"} element={<Product />} />
           <Route path={"/"} element={<ViewProducts />} />
+          <Route path={"/cart"} element={<Cart />} />
         </RoutesWrapper>
       </BrowserRouter>
     </QueryClientProvider>

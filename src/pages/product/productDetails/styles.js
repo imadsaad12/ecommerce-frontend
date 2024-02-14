@@ -52,11 +52,15 @@ export const Buttons = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+  cursor: pointer;
 `;
 export const AddtoCart = styled.button`
   width: 150px;
   border-radius: 20px;
-  background-color: black;
+  background-color: ${({ isDisabled }) => (isDisabled ? "lightgray" : "black")};
   color: white;
   height: 40px;
+  outline: none;
+  border: none;
+  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
 `;

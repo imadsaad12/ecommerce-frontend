@@ -27,3 +27,19 @@ export const formatImages = (images) => {
   const formattedImages = images.map(({ url }) => `${urlPrefix}/${url}`);
   return formattedImages;
 };
+
+export const formatProduct = ({ pdata, selectedOptions, quantity }) => {
+  let product = {};
+  product.productId = pdata._id;
+  product.productImage =
+    pdata.images.find(({ color }) => color === selectedOptions.color.text)
+      ?.url || pdata.images[0];
+  product.color = selectedOptions.color.text;
+  product.size = selectedOptions.size;
+  product.quantity = quantity;
+  product.totalPrice = pdata.price * quantity;
+  product.productName = pdata.name;
+  product.productPrice = pdata.price;
+
+  return product;
+};
