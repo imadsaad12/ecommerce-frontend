@@ -23,7 +23,7 @@ export default function ViewProducts() {
   return (
     <Container>
       <Wrapper>
-        {!isLoading ? (
+        {isLoading ? (
           <>
             {Array.from({ length: isSmallScreen ? 5 : 10 }, () => {
               return <ProductSkeleton />;
