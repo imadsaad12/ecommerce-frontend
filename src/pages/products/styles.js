@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakingPoints } from "../../global/breakingPoints";
+import { breakingPoints } from "../../global/theme";
 
 export const Container = styled.div`
   width: 100%;

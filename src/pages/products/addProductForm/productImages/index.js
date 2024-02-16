@@ -22,7 +22,7 @@ import {
   buttonStyle,
 } from "./styles";
 import useBreakpoint from "../../../../utilities/mediaQuery";
-import { breakingPoints } from "../../../../global/breakingPoints";
+import { breakingPoints } from "../../../../global/theme";
 import { FaPlus } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { v4 as uuidv4 } from "uuid";

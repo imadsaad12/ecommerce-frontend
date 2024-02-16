@@ -13,7 +13,7 @@ import {
 } from "./styles";
 import CustomizedTables from "../../components/table";
 import useBreakpoint from "../../utilities/mediaQuery";
-import { breakingPoints } from "../../global/breakingPoints";
+import { breakingPoints } from "../../global/theme";
 import {
   Button,
   Dialog,

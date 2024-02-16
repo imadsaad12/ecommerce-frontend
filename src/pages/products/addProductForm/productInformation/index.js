@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { FormContainer, categoryButtonStyle, fieldStyle } from "./styles";
 import useBreakpoint from "../../../../utilities/mediaQuery";
-import { breakingPoints } from "../../../../global/breakingPoints";
+import { breakingPoints } from "../../../../global/theme";
 import { listButtonStyle } from "../styles";
 import AddCategoryPopup from "./addCategoryPopup";
 import { useGetCategoriesQuery } from "../../../../apis/categories/getCategories";

@@ -20,7 +20,7 @@ import {
   buttonStyle,
   fieldStyle,
 } from "./styles";
-import { breakingPoints } from "../../../../global/breakingPoints";
+import { breakingPoints } from "../../../../global/theme";
 import useBreakpoint from "../../../../utilities/mediaQuery";
 import { FaPlus } from "react-icons/fa";
 import { listButtonStyle } from "../styles";

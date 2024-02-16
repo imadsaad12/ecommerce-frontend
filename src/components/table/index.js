@@ -11,7 +11,7 @@ import {
 import { formatAsDDMMYYYY } from "../../utilities/dates";
 import { Button } from "@mui/material";
 import useBreakpoint from "../../utilities/mediaQuery";
-import { breakingPoints } from "../../global/breakingPoints";
+import { breakingPoints } from "../../global/theme";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {

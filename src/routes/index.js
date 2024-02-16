@@ -5,7 +5,7 @@ import {
   Routes as RoutesWrapper,
   Route,
 } from "react-router-dom";
-import { ADMIN, ORDERS, PRODUCTS, SIGN_IN, VIEWPRODUCTS } from "./URLs";
+import { ADMIN, ORDERS, PRODUCTS, SIGN_IN, VIEWPRODUCTS,ORDER } from "./URLs";
 import withLayout from "../HOCs/withLayout";
 import Admin from "../pages/admin";
 import Products from "../pages/products";
@@ -17,7 +17,8 @@ import { toast } from "react-toastify";
 import { withRedirection } from "../HOCs/sign-in";
 import Product from "../pages/product/index";
 import ViewProducts from "../pages/viewproducts/index";
-
+import Order from "../pages/order"
+import Layout from "../HOCs/mainlayout";
 export default function Routes() {
   const queryClient = new QueryClient();
 
@@ -31,6 +32,8 @@ export default function Routes() {
           <Route path={PRODUCTS} Component={withLayout(Products)} />
           <Route path={"/product"} element={<Product />} />
           <Route path={"/"} element={<ViewProducts />} />
+          <Route path={"/order"} element={Layout(Order)} />
+
         </RoutesWrapper>
       </BrowserRouter>
     </QueryClientProvider>

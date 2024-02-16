@@ -5,7 +5,6 @@ import SubGallery from "./SubGallery";
 // import { images } from "./data";
 
 export default function ProductGallery({ images }) {
-  console.log(images);
   const [currentIndex, setcurrentIndex] = useState(0);
   const handleleft = () =>
     currentIndex + 1 < images.length && setcurrentIndex(currentIndex + 1);

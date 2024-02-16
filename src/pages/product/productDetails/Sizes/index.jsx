@@ -7,7 +7,7 @@ export default function Sizes({ selectedOptions, pdata }) {
   const sizesWithChosenColor = pdata.sizes.filter(
     (size) => size.color === selectedOptions.color.text
   );
-  console.log(sizesWithChosenColor);
+
   const sizesAvailability = sizesWithChosenColor.map((size) => ({
     size: size.size,
     availability: size.inStock ? "In Stock" : "Out of Stock",

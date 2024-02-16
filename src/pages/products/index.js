@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, TableContainer, TableHeader, Title } from "./styles";
 import CustomizedTables from "../../components/table";
 import useBreakpoint from "../../utilities/mediaQuery";
-import { breakingPoints } from "../../global/breakingPoints";
+import { breakingPoints } from "../../global/theme";
 import { Button } from "@mui/material";
 import AddProductForm from "./addProductForm";
 import { useGetProductsQuery } from "../../apis/products/getProducts";

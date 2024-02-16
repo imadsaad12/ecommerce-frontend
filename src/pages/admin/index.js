@@ -16,7 +16,7 @@ import { FiShoppingBag } from "react-icons/fi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiTwoCoins } from "react-icons/gi";
 import useBreakpoint from "../../utilities/mediaQuery";
-import { breakingPoints } from "../../global/breakingPoints";
+import { breakingPoints } from "../../global/theme";
 import { useGetOrdersQuery } from "../../apis/orders/getOrders";
 import { formatRecentOrders } from "../../utilities/formatOrders";
 import { useGetStatisticsQuery } from "../../apis/orders/getStatistics";
