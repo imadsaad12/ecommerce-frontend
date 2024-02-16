@@ -1,8 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Container } from "./styles";
 import MainGallery from "./MainGallery";
 import SubGallery from "./SubGallery";
-// import { images } from "./data";
 
 export default function ProductGallery({ images }) {
   const [currentIndex, setcurrentIndex] = useState(0);

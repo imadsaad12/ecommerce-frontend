@@ -13,4 +13,3 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
   width: 85%;
 `;
-

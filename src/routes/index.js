@@ -19,6 +19,8 @@ import Product from "../pages/product/index";
 import ViewProducts from "../pages/viewproducts/index";
 import Order from "../pages/order"
 import Layout from "../HOCs/mainlayout";
+import Cart from "../pages/cart";
+
 export default function Routes() {
   const queryClient = new QueryClient();
 
@@ -34,6 +36,7 @@ export default function Routes() {
           <Route path={"/"} element={<ViewProducts />} />
           <Route path={"/order"} element={Layout(Order)} />
 
+          <Route path={"/cart"} element={<Cart />} />
         </RoutesWrapper>
       </BrowserRouter>
     </QueryClientProvider>

@@ -7,15 +7,17 @@ import { useLocation } from "react-router-dom";
 import { formatImages } from "../../utilities/formatProducts";
 
 export default function Product() {
-  const {
-    state: { product },
-  } = useLocation();
+  const { state = {} } = useLocation();
 
   return (
     <Container>
       <ProductContainer>
-        <ProductGallery images={formatImages(product.images)} />
-        <ProductDetails pdata={product} />
+        {state?.product && (
+          <>
+            <ProductGallery images={formatImages(state.product?.images)} />
+            <ProductDetails pdata={state?.product} />
+          </>
+        )}
       </ProductContainer>
       <Carousel />
     </Container>

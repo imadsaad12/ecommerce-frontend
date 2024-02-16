@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Container, SizeName, SizeContainer, Size, OutOfStock } from "./styles";
 
-export default function Sizes({ selectedOptions, pdata }) {
-  const [selectedSize, setselectedSize] = useState("small");
-  console.log(selectedOptions, pdata.sizes);
+export default function Sizes({ selectedOptions, pdata, setselectedOptions }) {
+  const [selectedSize, setselectedSize] = useState("");
+
   const sizesWithChosenColor = pdata.sizes.filter(
     (size) => size.color === selectedOptions.color.text
   );
 
   const sizesAvailability = sizesWithChosenColor.map((size) => ({
     size: size.size,
-    availability: size.inStock ? "In Stock" : "Out of Stock",
+    availability: size.inStock,
   }));
 
   return (
@@ -20,13 +20,16 @@ export default function Sizes({ selectedOptions, pdata }) {
         return (
           <SizeContainer
             onClick={() => {
-              setselectedSize(size);
+              if (availability) {
+                setselectedSize(size);
+                setselectedOptions({ ...selectedOptions, size });
+              }
             }}
             availability={availability}
             size={size}
             selectedSize={selectedSize}
           >
-            {availability == "Out of Stock" && <OutOfStock />}
+            {!availability && <OutOfStock />}
             <Size>{size}</Size>
           </SizeContainer>
         );
