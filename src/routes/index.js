@@ -32,8 +32,8 @@ export default function Routes() {
           <Route path={ADMIN} Component={withLayout(Admin)} />
           <Route path={ORDERS} Component={withLayout(Orders)} />
           <Route path={PRODUCTS} Component={withLayout(Products)} />
-          <Route path={"/product"} element={<Product />} />
-          <Route path={"/"} element={<ViewProducts />} />
+          <Route path={"/product"} element={Layout(Product)} />
+          <Route path={"/"} element={Layout(ViewProducts)} />
           <Route path={"/order"} element={Layout(Order)} />
 
           <Route path={"/cart"} element={<Cart />} />
