@@ -1,11 +1,13 @@
 import React from "react";
 import { Container, SubTitle, Title } from "./styles";
 
-export default function Header() {
+export default function Header({ isFormOpen }) {
   return (
     <Container>
-      <Title>Shopping Cart</Title>
-      <SubTitle>Home / Shopping Cart </SubTitle>
+      <Title>{isFormOpen ? "Address Information" : "Shopping Cart"}</Title>
+      <SubTitle>
+        {isFormOpen ? "Cart / Address Form" : "Home / Shopping Cart"}{" "}
+      </SubTitle>
     </Container>
   );
 }
