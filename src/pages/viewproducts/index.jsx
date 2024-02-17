@@ -4,7 +4,7 @@ import Product from "./product";
 import { useGetProductsQuery } from "../../apis/products/getProducts";
 import ProductSkeleton from "./skeleteon";
 import useBreakpoint from "../../utilities/mediaQuery";
-import { breakingPoints } from "../../global/breakingPoints";
+import { breakingPoints } from "../../global/theme";
 
 export default function ViewProducts() {
   const { response, isLoading } = useGetProductsQuery({

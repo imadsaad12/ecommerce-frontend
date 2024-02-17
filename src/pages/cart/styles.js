@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { breakingPoints } from "../../global/breakingPoints";
+import { breakingPoints } from "../../global/theme";
 
 export const Container = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   @media (max-width: ${breakingPoints.sm}px) {
-    flex-direction: column;
+    flex-direction:column;
   }
 `;
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Divider, Row, TotalPrice, buttonStyle } from "./styles";
 import { Button } from "@mui/material";
 import useBreakpoint from "../../../utilities/mediaQuery";
-import { breakingPoints } from "../../../global/breakingPoints";
+import { breakingPoints } from "../../../global/theme";
 
 export default function Costs({ data }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
