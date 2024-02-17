@@ -30,7 +30,7 @@ export default function Sizes({ selectedOptions, pdata, setselectedOptions }) {
             selectedSize={selectedSize}
           >
             {!availability && <OutOfStock />}
-            <Size>{size}</Size>
+            <Size>{size[0]}</Size>
           </SizeContainer>
         );
       })}

@@ -19,3 +19,28 @@ export const formatRecentOrders = (orders) => {
     }
   );
 };
+
+export const formatOrder = (data, finalPrice) => {
+  const products = data.map(({ totalPrice, productPrice, ...rest }) => ({
+    ...rest,
+  }));
+
+  const clientFullName = "imad mohammad saad";
+  const phoneNumber = "81360613";
+  const email = "imad.alhaj.saad@gmail.com";
+  const address = {
+    region: "chiyah",
+    street: "azzarye",
+    building: "nojom",
+    floor: 4,
+  };
+
+  return {
+    products,
+    clientFullName,
+    phoneNumber,
+    email,
+    address,
+    totalPrice: finalPrice,
+  };
+};

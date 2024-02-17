@@ -7,7 +7,6 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
 `;
 export const ProductContainer = styled.div`
   width: 80%;
@@ -15,11 +14,14 @@ export const ProductContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
+  min-height: 100vh;
+
   @media (max-width: ${breakingPoints.md}px) {
     flex-direction: column;
-    gap:40px
+    gap: 40px;
   }
-@media (max-width: ${breakingPoints.sm}px) {
-  flex-direction: column;
+  @media (max-width: ${breakingPoints.sm}px) {
+    flex-direction: column;
   }
 `;

@@ -1,25 +1,33 @@
-import React, { useState } from 'react'
-import { Wrapper,MenuBurger } from './styles'
-import Navbar from '../../components/Navbar';
-import useBreakpoint from '../../utilities/mediaQuery';
+import React, { useEffect, useState } from "react";
+import { Wrapper } from "./styles";
+import Navbar from "../../components/Navbar";
+import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
-import MainSidebar from '../../components/mainsidebar';
 
-export default function Layout (WrappedComponent){
+export default function Layout(WrappedComponent) {
+  const [isFadeIn, setIsFadeIn] = useState(true);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
-  const [sideOpen,setsideOpen]=useState(false)
-  const handleSidebar =()=>{
-    setsideOpen(!sideOpen)
-  }
 
-      return (
-          <Wrapper>
-          {isSmallScreen ? <MainSidebar handleSidebar={handleSidebar} sideOpen={sideOpen} /> : <Navbar />}
-          {isSmallScreen&&<MenuBurger onClick={handleSidebar}/>}
+  useEffect(() => {
+    let prevScrollPos = window.pageYOffset;
 
-          
-            <WrappedComponent />
-          </Wrapper>
-      );
-  };
-  
+    window.onscroll = () => {
+      const currentScrollPos = window.pageYOffset;
+
+      if (prevScrollPos > currentScrollPos) {
+        setIsFadeIn(true);
+      } else if (!isSmallScreen) {
+        setIsFadeIn(false);
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+  });
+
+  return (
+    <Wrapper>
+      <Navbar isFadeIn={isFadeIn} />
+      <WrappedComponent />
+    </Wrapper>
+  );
+}

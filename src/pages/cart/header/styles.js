@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   font-size: 33px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans;
   @media (max-width: ${breakingPoints.sm}px) {
     font-size: 25px;
   }

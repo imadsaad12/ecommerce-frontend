@@ -5,20 +5,31 @@ import { useGetProductsQuery } from "../../apis/products/getProducts";
 import ProductSkeleton from "./skeleteon";
 import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
+import { useParams, use, useLocation } from "react-router-dom";
 
 export default function ViewProducts() {
-  const { response, isLoading } = useGetProductsQuery({
-    category: "pants",
-    type: "men",
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const type = queryParams.get("type") || "women";
+  const category = queryParams.get("category") || "shirts";
+
+  const { response, isLoading, refetch } = useGetProductsQuery({
+    type,
+    category,
   });
+
   const [products, setProducts] = useState([]);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
 
   useEffect(() => {
     if (!isLoading) {
-      setProducts(response.data);
+      setProducts(response?.data);
     }
-  }, [isLoading]);
+    refetch()
+      .then(({ data: { data } }) => setProducts(data))
+      .catch((err) => console.log(err));
+  }, [isLoading, location.search]);
 
   return (
     <Container>

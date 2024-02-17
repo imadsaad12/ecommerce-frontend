@@ -5,15 +5,13 @@ export const Container = styled.div`
   width: 55%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   border-top: 1px solid lightgray;
   overflow-y: scroll;
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: transparent transparent; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  -ms-overflow-style: none;
 
-  /* Hide the scrollbar for WebKit browsers (Chrome, Safari) */
   &::-webkit-scrollbar {
     width: 0.5em;
   }
@@ -24,6 +22,7 @@ export const Container = styled.div`
   @media (max-width: ${breakingPoints.sm}px) {
     width: 100%;
   }
+  min-height: 150px;
 `;
 
 export const Row = styled.div`
@@ -136,4 +135,5 @@ export const QuantitySmallContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  flex-direction: column;
 `;

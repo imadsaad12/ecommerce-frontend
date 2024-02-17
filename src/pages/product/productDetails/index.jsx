@@ -9,6 +9,7 @@ import {
   Quantity,
   Buttons,
   AddtoCart,
+  addToCartStyle,
 } from "./styles";
 import Colors from "./Colors";
 import Sizes from "./Sizes";
@@ -18,12 +19,19 @@ import { colorsOptions } from "../../../global";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, updateCart } from "../../../redux/cart/cartActions";
 import { formatProduct } from "../../../utilities/formatProducts";
+import { LoadingButton } from "@mui/lab";
+import { toast } from "react-toastify";
 
 export default function ProductDetails({ pdata }) {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const { products } = useSelector((state) => state?.cart);
-  const colors = pdata.sizes.map(({ color }) =>
-    colorsOptions.find(({ text }) => text === color)
+  const uniqueColors = Array.from(
+    new Set(pdata.sizes.map(({ color }) => color))
+  );
+
+  const colors = uniqueColors.map((uniqueColor) =>
+    colorsOptions.find(({ text }) => text === uniqueColor)
   );
 
   const [selectedOptions, setselectedOptions] = useState({
@@ -41,6 +49,7 @@ export default function ProductDetails({ pdata }) {
   };
 
   const handleOnAddToCart = () => {
+    setIsLoading(true);
     let newProducts = products;
 
     const formattedProduct = formatProduct({
@@ -90,6 +99,12 @@ export default function ProductDetails({ pdata }) {
     } else {
       dispatch(addToCart(formattedProduct));
     }
+
+    setTimeout(() => {
+      setIsLoading(false);
+      setquantity(0);
+      toast.success("Product added to cart", { style: { marginTop: "60px" } });
+    }, 500);
   };
 
   return (
@@ -117,13 +132,16 @@ export default function ProductDetails({ pdata }) {
             />
           </Buttons>
         </CounterContainer>
-        <AddtoCart
+        <LoadingButton
+          variant="contained"
           disabled={isAddToCartDisabled()}
           onClick={handleOnAddToCart}
-          isDisabled={isAddToCartDisabled()}
+          loading={isLoading}
+          loadingPosition="start"
+          style={addToCartStyle(isAddToCartDisabled())}
         >
           Add To Cart
-        </AddtoCart>
+        </LoadingButton>
       </QuantityPurchase>
     </Container>
   );
