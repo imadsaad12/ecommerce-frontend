@@ -2,45 +2,39 @@ import styled, { keyframes } from "styled-components";
 
 const fadeIn = keyframes`
 0% {
- height: 0;
-}
-50% {
- height: 5vh;
+ height: 0vh;
 }
 100% {
- height: 10vh;
+ height: 14vh;
 }
 `;
 
 const fadeOut = keyframes`
 0% {
- height: 10vh;
-}
-50% {
- height: 5vh;
+ height: 14vh;
 }
 100% {
  height: 0vh;
- margin-top: -5vh;
 }
 `;
 
 export const Container = styled.div`
   width: 100%;
-  position: fixed;
-  top: 0;
-  height: 10vh;
+  position:fixed ;
+  top: ${props=>props.isFadeIn?"0":"-100px"};; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  animation-duration: 0.2s;
+  animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
-  animation-name: ${(props) => (props.isFadeIn ? fadeIn : fadeOut)};
+  /* animation-name: ${(props) => (props.isFadeIn ? fadeIn : fadeOut)}; */
   background-color: white;
   z-index: 10000;
+  transition: all 1s ease-in-out;
+  height: 14vh;
 `;
 export const Header = styled.div`
   width: 100%;
@@ -48,7 +42,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5vh;
+   flex: 0.6;
   color: white;
 `;
 export const NavMain = styled.div`
@@ -56,7 +50,7 @@ export const NavMain = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 8vh;
+  flex:1;
 `;
 export const CategoriesList = styled.div`
   display: flex;
@@ -93,6 +87,8 @@ export const DropDown = styled.div`
   flex-direction: column;
   gap: 10px;
   padding: 20px;
+  z-index: 10000;
+
 `;
 export const CategoryName = styled.span`
   cursor: pointer;

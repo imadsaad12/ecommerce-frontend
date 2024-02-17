@@ -14,7 +14,7 @@ export default function Layout(WrappedComponent) {
     window.onscroll = () => {
       const currentScrollPos = window.pageYOffset;
 
-      if (prevScrollPos > currentScrollPos) {
+      if (prevScrollPos > currentScrollPos ) {
         setIsFadeIn(true);
       } else if (!isSmallScreen) {
         setIsFadeIn(false);

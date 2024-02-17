@@ -11,8 +11,8 @@ export default function ViewProducts() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
-  const type = queryParams.get("type") || "women";
-  const category = queryParams.get("category") || "shirts";
+  const type = queryParams.get("type") || "men";
+  const category = queryParams.get("category") || "Shirts";
 
   const { response, isLoading, refetch } = useGetProductsQuery({
     type,

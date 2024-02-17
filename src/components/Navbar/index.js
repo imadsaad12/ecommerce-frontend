@@ -32,8 +32,9 @@ export default function Navbar({ isFadeIn }) {
   }, [isLoading]);
 
   return (
-    <Container isFadeIn={isFadeIn}>
-      <Header>Delivery All Over Lebanon</Header>
+    <Container  isFadeIn={isFadeIn}>
+      {console.log(isFadeIn)}
+      <Header >Delivery All Over Lebanon</Header>
       <NavMain>
         <CategoriesList>
           {["men", "women"].map((type) => {
