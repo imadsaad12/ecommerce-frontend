@@ -2,13 +2,18 @@ import React from "react";
 import { Container, Divider, Row, TotalPrice, buttonStyle } from "./styles";
 import { Button } from "@mui/material";
 import useBreakpoint from "../../../utilities/mediaQuery";
-import { breakingPoints } from "../../../global/breakingPoints";
+import { breakingPoints } from "../../../global/theme";
+import { formatOrder } from "../../../utilities/formatOrders";
+import { useAddOrderQuery } from "../../../apis/orders/addOrder";
 
 export default function Costs({ data }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
   const totalPrice = data.reduce((acc, curr) => {
     return acc + curr.totalPrice;
   }, 0);
+  const { handleApiCall, isPending } = useAddOrderQuery({
+    onSuccess: () => {},
+  });
 
   return (
     <Container>
@@ -25,7 +30,11 @@ export default function Costs({ data }) {
         <TotalPrice>Total</TotalPrice>
         <TotalPrice>{totalPrice + 3}$</TotalPrice>
       </Row>
-      <Button variant="contained" style={buttonStyle(isSmallScreen)}>
+      <Button
+        variant="contained"
+        style={buttonStyle(isSmallScreen)}
+        onClick={() => handleApiCall(formatOrder(data, totalPrice))}
+      >
         Purchase
       </Button>
     </Container>

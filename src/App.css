@@ -1,3 +1,16 @@
+@font-face {
+  font-family: 'PublicSans';
+  src: url('./global/fonts/Public_Sans/PublicSans-VariableFont_wght.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public sans bold';
+  src: url('./global/fonts//Public_Sans//static//PublicSans-Bold.ttf') format('ttf');
+  font-style: normal;
+}
+
 .App {
   text-align: center;
 }
@@ -36,3 +49,5 @@
     transform: rotate(360deg);
   }
 }
+
+

@@ -6,6 +6,7 @@ export const VALIDATE_TOKEN_URL = `${REACT_APP_BASE_URL}/auth/validate-token`;
 export const LOGOUT_URL = `${REACT_APP_BASE_URL}/auth/logout`;
 
 export const GET_ORDERS_URL = `${REACT_APP_BASE_URL}/orders`;
+export const ADD_ORDER_URL = `${REACT_APP_BASE_URL}/orders`;
 export const GET_STATISTICS_URL = `${REACT_APP_BASE_URL}/orders/statistics`;
 export const GET_ORDERS_WITH_LIMITS_URL = (limit) =>
   `${REACT_APP_BASE_URL}/orders?limit=${limit}`;

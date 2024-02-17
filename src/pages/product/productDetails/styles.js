@@ -9,7 +9,8 @@ export const Container = styled.div`
 `;
 
 export const Name = styled.span`
-  font-size: 25px;
+  font-size: 30px;
+  /* font-size: 25px; */
   font-weight: bold;
   text-transform: capitalize;
 `;
@@ -19,7 +20,8 @@ export const Price = styled.span`
 `;
 
 export const Description = styled.span`
-  font-size: 16px;
+  font-size: 18px;
+  /* font-size: 16px; */
   font-weight: light;
 `;
 export const QuantityPurchase = styled.div`
@@ -64,3 +66,14 @@ export const AddtoCart = styled.button`
   border: none;
   cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "pointer")};
 `;
+
+export const addToCartStyle = (isDisabled) => ({
+  textTransform: "capitalize",
+  backgroundColor: "black",
+  color: "white",
+  borderRadius: "10px",
+  width: "140px",
+  height: "40px",
+  backgroundColor: isDisabled ? "lightgray" : "black",
+  cursor: isDisabled ? "not-allowed" : "pointer",
+});

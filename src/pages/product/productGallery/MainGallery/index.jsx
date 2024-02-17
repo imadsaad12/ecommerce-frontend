@@ -1,4 +1,4 @@
-import React, { useState, useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Container, Image, Carousel } from "./styles";
 
 export default function MainGallery({
@@ -18,10 +18,10 @@ export default function MainGallery({
       const deltaX = currentX - startX;
 
       if (deltaX > 5) {
-        console.log("righttt")
+        console.log("righttt");
         handleright();
       } else if (deltaX < -5) {
-        console.log("lefttttt")
+        console.log("lefttttt");
         handleleft();
       }
 
@@ -31,21 +31,20 @@ export default function MainGallery({
 
   useEffect(() => {
     const handleScroll = (event) => {
-      const scrollDirection = event.deltaX > 0 ? 'right' : 'left';
-      if (scrollDirection === 'right' && currentIndex < images.length - 1) {
+      const scrollDirection = event.deltaX > 0 ? "right" : "left";
+      if (scrollDirection === "right" && currentIndex < images.length - 1) {
         handleright();
-      } else if (scrollDirection === 'left' && currentIndex > 0) {
+      } else if (scrollDirection === "left" && currentIndex > 0) {
         handleleft();
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [currentIndex]);
-
 
   return (
     <Container>

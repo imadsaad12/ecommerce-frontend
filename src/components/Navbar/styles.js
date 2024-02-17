@@ -1,43 +1,76 @@
-import styled from "styled-components";
-import { keyframes } from 'styled-components';
-export const Container = styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+import styled, { keyframes } from "styled-components";
 
+const fadeIn = keyframes`
+0% {
+ height: 0;
+}
+50% {
+ height: 5vh;
+}
+100% {
+ height: 10vh;
+}
+`;
+
+const fadeOut = keyframes`
+0% {
+ height: 10vh;
+}
+50% {
+ height: 5vh;
+}
+100% {
+ height: 0vh;
+ margin-top: -5vh;
+}
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-name: ${(props) => (props.isFadeIn ? fadeIn : fadeOut)};
+  background-color: white;
+  z-index: 10000;
 `;
 export const Header = styled.div`
-width: 100%;
-background-color: black;
-display: flex;
-align-items: center;
-justify-content: center;
-height: 5vh;
-color: white;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  color: white;
 `;
 export const NavMain = styled.div`
-width: 95%;
-display: flex;
-align-items: center;
-justify-content: space-between;
-height: 8vh;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
 `;
 export const CategoriesList = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap:15px;
+  gap: 15px;
   height: 100%;
 `;
 export const CategoryUnderLine = styled.div`
-width: 0%;
-height: 2px;
-background-color: black;
-transition: all 0.4s ease-in-out;
+  width: 0%;
+  height: 2px;
+  background-color: black;
+  transition: all 0.4s ease-in-out;
 `;
 const DropDownAnimation = keyframes`
   from {
@@ -46,7 +79,7 @@ const DropDownAnimation = keyframes`
   to {
     height:200px
   }
-`
+`;
 export const DropDown = styled.div`
   position: absolute;
   top: 100%;
@@ -58,13 +91,13 @@ export const DropDown = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   animation: ${DropDownAnimation} 0.5s ease-in-out;
   flex-direction: column;
-  gap:10px;
-  padding:20px
+  gap: 10px;
+  padding: 20px;
 `;
 export const CategoryName = styled.span`
-cursor: pointer;
-font-size:13px;
-
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: capitalize;
 `;
 
 export const CategoryContainer = styled.div`
@@ -73,10 +106,10 @@ export const CategoryContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  &:hover  ${CategoryUnderLine} {
-    width: 100%; 
+  &:hover ${CategoryUnderLine} {
+    width: 100%;
   }
-  &:hover  ${DropDown} {
+  &:hover ${DropDown} {
     display: flex;
   }
 `;
@@ -86,14 +119,35 @@ export const Category = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
+  text-transform: capitalize;
 `;
 
 export const Logo = styled.div`
-color: black;
-font-size: 20px;
+  color: black;
+  font-size: 20px;
 `;
 
 export const NavBtns = styled.div`
-background-color: black;
+  background-color: black;
+`;
+
+export const CartIconContainer = styled.div`
+  width: 40px;
+  position: relative;
+`;
+
+export const NumberOfItems = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
 `;

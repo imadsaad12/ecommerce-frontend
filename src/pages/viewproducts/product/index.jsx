@@ -8,9 +8,15 @@ export default function Product({ product }) {
   const navigate = useNavigate();
   const { images, name, price, sizes } = product;
 
-  const colors = sizes.map(
-    ({ color }) => colorsOptions.find(({ text }) => text === color).color
-  );
+  const uniqueColors = Array.from(new Set(sizes.map(({ color }) => color)));
+
+  const colors = uniqueColors.map((uniqueColor) => {
+    const matchingOption = colorsOptions.find(
+      ({ text }) => text === uniqueColor
+    );
+    return matchingOption ? matchingOption.color : null;
+  });
+
   const [selectedColor, setselectedColor] = useState(colors[0]);
 
   const findImage = () => {

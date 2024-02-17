@@ -26,6 +26,7 @@ export const Wrapper = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: 50vh;
+  cursor: pointer;
 `;
 export const Name = styled.span`
   font-size: 15px;

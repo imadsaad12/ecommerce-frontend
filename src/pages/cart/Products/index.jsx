@@ -15,7 +15,7 @@ import {
 } from "./styles";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useBreakpoint from "../../../utilities/mediaQuery";
-import { breakingPoints } from "../../../global/breakingPoints";
+import { breakingPoints } from "../../../global/theme";
 import { updateCart } from "../../../redux/cart/cartActions";
 import { useDispatch } from "react-redux";
 

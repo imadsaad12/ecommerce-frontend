@@ -5,7 +5,7 @@ import {
   Routes as RoutesWrapper,
   Route,
 } from "react-router-dom";
-import { ADMIN, ORDERS, PRODUCTS, SIGN_IN, VIEWPRODUCTS,ORDER } from "./URLs";
+import { ADMIN, ORDERS, PRODUCTS, SIGN_IN, VIEWPRODUCTS, ORDER } from "./URLs";
 import withLayout from "../HOCs/withLayout";
 import Admin from "../pages/admin";
 import Products from "../pages/products";
@@ -17,7 +17,7 @@ import { toast } from "react-toastify";
 import { withRedirection } from "../HOCs/sign-in";
 import Product from "../pages/product/index";
 import ViewProducts from "../pages/viewproducts/index";
-import Order from "../pages/order"
+import Order from "../pages/order";
 import Layout from "../HOCs/mainlayout";
 import Cart from "../pages/cart";
 
@@ -35,8 +35,7 @@ export default function Routes() {
           <Route path={"/product"} element={Layout(Product)} />
           <Route path={"/"} element={Layout(ViewProducts)} />
           <Route path={"/order"} element={Layout(Order)} />
-
-          <Route path={"/cart"} element={<Cart />} />
+          <Route path={"/cart"} element={Layout(Cart)} />
         </RoutesWrapper>
       </BrowserRouter>
     </QueryClientProvider>
@@ -46,25 +45,33 @@ export default function Routes() {
 axios.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalRequest = error.config;
-    if (error.response.status === 498) {
+    // const originalRequest = error.config;
+    if (
+      error.response.status === 498 ||
+      error.response.status === 401 ||
+      error.response.status === 403
+    ) {
       window.location.href = SIGN_IN;
       localStorage.removeItem("isLoggedIn");
-    } else if (
-      (error.response.status === 401 || error.response.status === 403) &&
-      !originalRequest._retry &&
-      window.location.pathname !== SIGN_IN
-    ) {
-      originalRequest._retry = true;
-      try {
-        await generateAccessToken();
-
-        return axios(originalRequest, { withCredentials: true });
-      } catch (err) {
-        toast.error(error?.response?.data?.message);
-        await Promise.reject(error);
-      }
     }
+    // } else if (
+    //   (error.response.status === 401 || error.response.status === 403) &&
+    //   !originalRequest._retry &&
+    //   window.location.pathname !== SIGN_IN &&
+    //   [(PRODUCTS, ORDERS, ADMIN)].some(
+    //     (elm) => elm === window.location.pathname
+    //   )
+    // ) {
+    //   originalRequest._retry = true;
+    //   try {
+    //     await generateAccessToken();
+
+    //     return axios(originalRequest, { withCredentials: true });
+    //   } catch (err) {
+    //     toast.error(error?.response?.data?.message);
+    //     await Promise.reject(error);
+    //   }
+    // }
     toast.error(error?.response?.data?.message);
     await Promise.reject(error);
   }
