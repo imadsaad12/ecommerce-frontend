@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   @media (max-width: ${breakingPoints.sm}px) {
-    flex-direction: column;
+    flex-direction:column;
   }
 `;
 
