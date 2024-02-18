@@ -81,7 +81,9 @@ export default function Orders() {
             ({ quantity, productImage, color, size }) => {
               return (
                 <Row>
-                  <Image src={productImage} />
+                  <Image
+                    src={`https://storage.googleapis.com/ecommerce-bucket-testing/${productImage}`}
+                  />
                   <Text>{color}</Text>
                   <Text>{size}</Text>
                   <Text>x{quantity}</Text>
@@ -151,7 +153,7 @@ export default function Orders() {
           tableHeaders={[
             { headerKey: "Client Name", headerValue: "clientFullName" },
             { headerKey: "Number Of Items", headerValue: "numberOfItems" },
-            { headerKey: "Price", headerValue: "totalPrice" },
+            { headerKey: "Price ($)", headerValue: "totalPrice" },
             { headerKey: "Date", headerValue: "date" },
           ]}
         />
