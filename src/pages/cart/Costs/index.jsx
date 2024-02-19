@@ -6,11 +6,9 @@ import { breakingPoints } from "../../../global/theme";
 import { formatOrder } from "../../../utilities/formatOrders";
 import { useAddOrderQuery } from "../../../apis/orders/addOrder";
 
-export default function Costs({ data }) {
+export default function Costs({ setIsFormOpen, totalPrice }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
-  const totalPrice = data.reduce((acc, curr) => {
-    return acc + curr.totalPrice;
-  }, 0);
+
   const { handleApiCall, isPending } = useAddOrderQuery({
     onSuccess: () => {},
   });
@@ -33,7 +31,7 @@ export default function Costs({ data }) {
       <Button
         variant="contained"
         style={buttonStyle(isSmallScreen)}
-        onClick={() => handleApiCall(formatOrder(data, totalPrice))}
+        onClick={() => setIsFormOpen(true)}
       >
         Purchase
       </Button>
