@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Container, Wrapper } from "./styles";
+import { Container, Wrapper,HeaderContainer,Background,CategoryTitle } from "./styles";
 import Product from "./product";
 import { useGetProductsQuery } from "../../apis/products/getProducts";
 import ProductSkeleton from "./skeleteon";
 import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
 import { useParams, use, useLocation } from "react-router-dom";
-
+import image1 from "./image1.jpg"
 export default function ViewProducts() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
-  const type = queryParams.get("type") || "women";
-  const category = queryParams.get("category") || "shirts";
+  const type = queryParams.get("type") || "men";
+  const category = queryParams.get("category") || "Shirts";
 
   const { response, isLoading, refetch } = useGetProductsQuery({
     type,
@@ -33,6 +33,10 @@ export default function ViewProducts() {
 
   return (
     <Container>
+      <HeaderContainer>
+        <Background src={image1}/>
+        <CategoryTitle>{category}</CategoryTitle>
+      </HeaderContainer>
       <Wrapper>
         {isLoading ? (
           <>

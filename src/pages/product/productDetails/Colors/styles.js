@@ -29,6 +29,7 @@ export const ColorCircle = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  transition: all 0.4s ease-in-out ;
   background-color: ${(props) => props.color};
   border: ${({ color, selectedColor }) =>
     selectedColor === color && "1px solid black"};

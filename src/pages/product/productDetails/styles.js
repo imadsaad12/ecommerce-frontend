@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakingPoints } from "../../../global/theme";
 
 export const Container = styled.div`
   flex: 1;
@@ -23,6 +24,9 @@ export const Description = styled.span`
   font-size: 18px;
   /* font-size: 16px; */
   font-weight: light;
+  @media (max-width: ${breakingPoints.sm}px) {
+    font-size: 15px;
+  }
 `;
 export const QuantityPurchase = styled.div`
   display: flex;

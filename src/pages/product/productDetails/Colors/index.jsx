@@ -11,7 +11,10 @@ export default function Colors({ colors, selectedColor, setselectedOptions }) {
       <div style={{ display: "flex", flexDirection: "row", gap: "5px" }}>
         {colors.map(({ color, text }, index) => {
           return (
-            <SelectedContainer color={color} selectedColor={selectedColor}>
+            // <SelectedContainer
+            //   color={color}
+            //   selectedColor={selectedColor.color}
+            // >
               <ColorCircle
                 onClick={() => {
                   changeColor({ color, text });
@@ -19,7 +22,7 @@ export default function Colors({ colors, selectedColor, setselectedOptions }) {
                 color={color}
                 selectedColor={selectedColor.color}
               />
-            </SelectedContainer>
+            // </SelectedContainer>
           );
         })}
       </div>

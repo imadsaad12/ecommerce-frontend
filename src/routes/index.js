@@ -32,10 +32,13 @@ export default function Routes() {
           <Route path={ADMIN} Component={withLayout(Admin)} />
           <Route path={ORDERS} Component={withLayout(Orders)} />
           <Route path={PRODUCTS} Component={withLayout(Products)} />
-          <Route path={"/product"} element={Layout(Product)} />
-          <Route path={"/"} element={Layout(ViewProducts)} />
-          <Route path={"/order"} element={Layout(Order)} />
-          <Route path={"/cart"} element={Layout(Cart)} />
+          <Route
+            path={"/product"}
+            element={Layout(Product, "nontransparent")}
+          />
+          <Route path={"/"} element={Layout(ViewProducts, "transparent")} />
+          <Route path={"/order"} element={Layout(Order, "nontransparent")} />
+          <Route path={"/cart"} element={Layout(Cart, "nontransparent")} />
         </RoutesWrapper>
       </BrowserRouter>
     </QueryClientProvider>
@@ -72,9 +75,7 @@ axios.interceptors.response.use(
     //     await Promise.reject(error);
     //   }
     // }
-    toast.error(error?.response?.data?.message, {
-      style: { marginTop: "60px" },
-    });
+    toast.error(error?.response?.data?.message);
     await Promise.reject(error);
   }
 );

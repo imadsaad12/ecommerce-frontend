@@ -22,17 +22,27 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 3px;
 `;
-
+export const ImageContainer = styled.div`
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+`;
 export const Image = styled.img`
   width: 100%;
-  height: 50vh;
+  height: 100%;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  &:hover{
+    transform: scale(1.3);
+  }
+  object-fit: cover;
 `;
 export const Name = styled.span`
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
+  margin-top:4px;
 `;
 export const Price = styled.span`
-  font-size: 15px;
+  font-size: 18px;
   font-weight: normal;
 `;

@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import { Container,ColorName,SelectedContainer,ColorCircle } from "./styles";
+import { Container, ColorName, SelectedContainer, ColorCircle ,ColorContainer} from "./styles";
 
-export default function Colors({ colors,setselectedColor,selectedColor }) {
-
+export default function Colors({ colors, setselectedColor, selectedColor }) {
   return (
     <Container>
-      {colors.map((color,index) => {
+      {colors.map((color, index) => {
         return (
-          <SelectedContainer color={color} selectedColor={selectedColor}>
-            <ColorCircle onClick={()=>{setselectedColor(color)}}color={color}/>
-          </SelectedContainer>
+          <ColorContainer>
+            <SelectedContainer color={color} selectedColor={selectedColor} />
+            <ColorCircle
+              onClick={() => {
+                setselectedColor(color);
+              }}
+              color={color}
+            />
+          </ColorContainer>
         );
       })}
     </Container>

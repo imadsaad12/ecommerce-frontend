@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   LogoContainer,
@@ -12,10 +12,26 @@ import {
   CloseIcon,
 } from "./styles";
 
-import { categories } from "./data";
+// import { categories } from "./data";
+import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { CartIconContainer, NumberOfItems } from "../Navbar/styles";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
+
 export default function MainSidebar({ sideOpen, handleSidebar }) {
-  const uniqueTypes = Array.from(new Set(categories.map((item) => item.type)));
   const [activeTypes, setactiveTypes] = useState([]);
+  const { isLoading, response } = useGetCategoriesQuery();
+  const [categories, setCategories] = useState([]);
+  const { products = [] } = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoading) {
+      setCategories(response?.data);
+    }
+  }, [isLoading]);
+
   const handleType = (type) => {
     if (activeTypes.includes(type)) {
       let filteredArray = activeTypes.filter((item) => item !== type);
@@ -29,32 +45,56 @@ export default function MainSidebar({ sideOpen, handleSidebar }) {
     handleSidebar();
   };
   return (
-    <Container sideOpen={sideOpen}>
-      <CloseIcon onClick={closeHandle} />
-      <LogoContainer>POINT NUL</LogoContainer>
-      {uniqueTypes.map((type) => {
-        return (
-          <Tab>
-            <TypeContainer
-              onClick={() => {
-                handleType(type);
-              }}
-            >
-              <TypeWrapper>
-                <Type>{type}</Type>
-                <StyledArrow activeTypes={activeTypes} type={type} />
-              </TypeWrapper>
-            </TypeContainer>
-            <SubCategories activeTypes={activeTypes} type={type}>
-              {categories
-                .filter((category) => category.type === type)
-                .map((category) => {
-                  return <CategoryName>{category.category}</CategoryName>;
-                })}
-            </SubCategories>
-          </Tab>
-        );
-      })}
-    </Container>
+    <>
+      <CartIconContainer>
+        {products?.length > 0 && (
+          <NumberOfItems>{products.length}</NumberOfItems>
+        )}
+        <HiOutlineShoppingBag
+          style={{
+            fontSize: "30px",
+            cursor: "pointer",
+            color: "white",
+          }}
+          onClick={() => navigate("/cart")}
+        />
+      </CartIconContainer>
+      <Container sideOpen={sideOpen}>
+        <CloseIcon onClick={closeHandle} />
+        <LogoContainer>POINT NUL</LogoContainer>
+        {["men", "women"].map((type) => {
+          return (
+            <Tab>
+              <TypeContainer
+                onClick={() => {
+                  handleType(type);
+                }}
+              >
+                <TypeWrapper>
+                  <Type>{type}</Type>
+                  <StyledArrow activeTypes={activeTypes} type={type} />
+                </TypeWrapper>
+              </TypeContainer>
+              <SubCategories activeTypes={activeTypes} type={type}>
+                {categories
+                  ?.filter((category) => category.type === type)
+                  ?.map(({ category }) => {
+                    return (
+                      <CategoryName
+                        onClick={() => {
+                          navigate(`/?type=${type}&category=${category} `);
+                          closeHandle();
+                        }}
+                      >
+                        {category}
+                      </CategoryName>
+                    );
+                  })}
+              </SubCategories>
+            </Tab>
+          );
+        })}
+      </Container>
+    </>
   );
 }

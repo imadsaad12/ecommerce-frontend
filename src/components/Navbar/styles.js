@@ -1,62 +1,63 @@
 import styled, { keyframes } from "styled-components";
+import { breakingPoints } from "../../global/theme";
 
 const fadeIn = keyframes`
 0% {
- height: 0;
-}
-50% {
- height: 5vh;
+ height: 0vh;
 }
 100% {
- height: 10vh;
+ height: 14vh;
 }
 `;
 
 const fadeOut = keyframes`
 0% {
- height: 10vh;
-}
-50% {
- height: 5vh;
+ height: 14vh;
 }
 100% {
  height: 0vh;
- margin-top: -5vh;
 }
 `;
 
 export const Container = styled.div`
   width: 100%;
   position: fixed;
-  top: 0;
-  height: 10vh;
+  top: ${(props) => (props.isFadeIn ? "0" : "-100px")};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  animation-duration: 0.2s;
+  background-color: ${(props) =>
+    props.navBackground == "transparent" ? "transparent" : "white"};
+  box-shadow: ${(props) =>
+    props.navBackground == "transparent"
+      ? "null"
+      : "0 2px 4px rgba(0, 0, 0, 0.1)"};
+  animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
-  animation-name: ${(props) => (props.isFadeIn ? fadeIn : fadeOut)};
-  background-color: white;
+  /* animation-name: ${(props) => (props.isFadeIn ? fadeIn : fadeOut)}; */
   z-index: 10000;
+  transition: top 1s ease-in-out;
+  height: 14vh;
 `;
 export const Header = styled.div`
   width: 100%;
-  background-color: black;
+  background-color: ${(props) =>
+    props.navBackground == "transparent" ? "white" : "black"};
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5vh;
-  color: white;
+  flex: 0.6;
+  color: ${(props) =>
+    props.navBackground == "transparent" ? "black" : "white"};
 `;
 export const NavMain = styled.div`
   width: 95%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 8vh;
+  flex: 1;
 `;
 export const CategoriesList = styled.div`
   display: flex;
@@ -69,8 +70,9 @@ export const CategoriesList = styled.div`
 export const CategoryUnderLine = styled.div`
   width: 0%;
   height: 2px;
-  background-color: black;
   transition: all 0.4s ease-in-out;
+  background-color: ${(props) =>
+    props.navBackground == "transparent" ? "white" : "black"};
 `;
 const DropDownAnimation = keyframes`
   from {
@@ -93,6 +95,7 @@ export const DropDown = styled.div`
   flex-direction: column;
   gap: 10px;
   padding: 20px;
+  z-index: 10000;
 `;
 export const CategoryName = styled.span`
   cursor: pointer;
@@ -120,6 +123,8 @@ export const Category = styled.div`
   align-items: center;
   cursor: pointer;
   text-transform: capitalize;
+  color: ${(props) =>
+    props.navBackground == "transparent" ? "white" : "black"};
 `;
 
 export const Logo = styled.div`
@@ -134,6 +139,19 @@ export const NavBtns = styled.div`
 export const CartIconContainer = styled.div`
   width: 40px;
   position: relative;
+  @media (max-width: ${breakingPoints.sm}px) {
+    width: 55px;
+    height: 55px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background-color: black;
+    border-radius: 50%;
+    bottom: 40px;
+    right: 20px;
+  }
 `;
 
 export const NumberOfItems = styled.div`

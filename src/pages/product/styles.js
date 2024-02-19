@@ -7,6 +7,10 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 10vh;
+  @media (max-width: ${breakingPoints.md}px) {
+    margin-top: 0;
+  }
 `;
 export const ProductContainer = styled.div`
   width: 80%;

@@ -21,11 +21,15 @@ import { addToCart, updateCart } from "../../../redux/cart/cartActions";
 import { formatProduct } from "../../../utilities/formatProducts";
 import { LoadingButton } from "@mui/lab";
 import { toast } from "react-toastify";
+import useBreakpoint from "../../../utilities/mediaQuery";
+import { breakingPoints } from "../../../global/theme";
 
 export default function ProductDetails({ pdata }) {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const { products } = useSelector((state) => state?.cart);
+  const isSmallScreen = useBreakpoint(breakingPoints.sm);
+
   const uniqueColors = Array.from(
     new Set(pdata.sizes.map(({ color }) => color))
   );
@@ -41,7 +45,7 @@ export default function ProductDetails({ pdata }) {
   const [quantity, setquantity] = useState(1);
 
   const isAddToCartDisabled = () => {
-    const isItemAvailable = pdata.sizes.some(
+    const isItemAvailable = pdata?.sizes?.some(
       ({ color, size }) =>
         color === selectedOptions?.color?.text && size === selectedOptions.size
     );
@@ -58,7 +62,7 @@ export default function ProductDetails({ pdata }) {
       quantity,
     });
 
-    const productAlreadyAdded = products.some(
+    const productAlreadyAdded = products?.some(
       ({ productName, size, color }) =>
         productName === formattedProduct.productName &&
         size === formattedProduct.size &&
@@ -66,7 +70,7 @@ export default function ProductDetails({ pdata }) {
     );
 
     if (productAlreadyAdded) {
-      newProducts = products.map(
+      newProducts = products?.map(
         ({
           productName,
           size,
@@ -102,8 +106,14 @@ export default function ProductDetails({ pdata }) {
 
     setTimeout(() => {
       setIsLoading(false);
-      setquantity(0);
-      toast.success("Product added to cart", { style: { marginTop: "60px" } });
+      setquantity(1);
+
+      toast.success("Product added to cart", {
+        position: isSmallScreen ? "top-left" : "top-right",
+        style: {
+          width: isSmallScreen && "60%",
+        },
+      });
     }, 500);
   };
 
@@ -126,9 +136,17 @@ export default function ProductDetails({ pdata }) {
         <CounterContainer>
           <Quantity>{quantity}</Quantity>
           <Buttons>
-            <IoIosArrowUp onClick={() => setquantity(quantity + 1)} />
+            <IoIosArrowUp
+              onClick={() =>
+                !isAddToCartDisabled() && setquantity(quantity + 1)
+              }
+            />
             <IoIosArrowDown
-              onClick={() => quantity > 0 && setquantity(quantity - 1)}
+              onClick={() =>
+                !isAddToCartDisabled() &&
+                quantity > 2 &&
+                setquantity(quantity - 1)
+              }
             />
           </Buttons>
         </CounterContainer>
