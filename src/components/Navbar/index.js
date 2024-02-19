@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { useSelector } from "react-redux";
 
-export default function Navbar({ isFadeIn }) {
+export default function Navbar({ isFadeIn ,navBackground}) {
   const { isLoading, response } = useGetCategoriesQuery();
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
@@ -32,16 +32,15 @@ export default function Navbar({ isFadeIn }) {
   }, [isLoading]);
 
   return (
-    <Container  isFadeIn={isFadeIn}>
-      {console.log(isFadeIn)}
-      <Header >Delivery All Over Lebanon</Header>
+    <Container  navBackground={navBackground} isFadeIn={isFadeIn}>
+      <Header  navBackground={navBackground}>Delivery All Over Lebanon</Header>
       <NavMain>
         <CategoriesList>
           {["men", "women"].map((type) => {
             return (
               <CategoryContainer>
-                <Category>{type}</Category>
-                <CategoryUnderLine />
+                <Category navBackground={navBackground}>{type}</Category>
+                <CategoryUnderLine navBackground={navBackground}/>
                 <DropDown>
                   {categories
                     ?.filter((category) => category.type === type)
@@ -62,12 +61,12 @@ export default function Navbar({ isFadeIn }) {
           })}
         </CategoriesList>
         <Logo>POINT NUL</Logo>
-        <CartIconContainer>
+        <CartIconContainer >
           {products?.length > 0 && (
             <NumberOfItems>{products.length}</NumberOfItems>
           )}
           <HiOutlineShoppingBag
-            style={{ fontSize: "30px", cursor: "pointer" }}
+            style={{ fontSize: "30px", cursor: "pointer",color:navBackground=="transparent"?"white":"black" }}
             onClick={() => navigate("/cart")}
           />
         </CartIconContainer>

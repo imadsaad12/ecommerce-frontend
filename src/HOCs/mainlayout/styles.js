@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { CiMenuBurger } from "react-icons/ci";
 
 export const Wrapper = styled.div`
-  padding-top: 14vh;
 `;
 export const MenuBurger = styled(CiMenuBurger)`
 position: fixed;
@@ -11,3 +10,5 @@ right: 20px;
 top:40px;
 font-size: 20px;
 `;
+
+

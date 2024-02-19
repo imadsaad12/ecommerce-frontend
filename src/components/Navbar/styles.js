@@ -26,24 +26,25 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color:${props=>props.navBackground=="transparent"?"transparent":"white"};
+  box-shadow:${props=>props.navBackground=="transparent"?"null":"0 2px 4px rgba(0, 0, 0, 0.1)"};
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
   /* animation-name: ${(props) => (props.isFadeIn ? fadeIn : fadeOut)}; */
-  background-color: white;
   z-index: 10000;
-  transition: all 1s ease-in-out;
+  transition: top 1s ease-in-out;
   height: 14vh;
 `;
 export const Header = styled.div`
   width: 100%;
-  background-color: black;
+  background-color:${props=>props.navBackground=="transparent"?"white":"black"};
   display: flex;
   align-items: center;
   justify-content: center;
    flex: 0.6;
-  color: white;
+  color:${props=>props.navBackground=="transparent"?"black":"white"};
+
 `;
 export const NavMain = styled.div`
   width: 95%;
@@ -51,6 +52,7 @@ export const NavMain = styled.div`
   align-items: center;
   justify-content: space-between;
   flex:1;
+
 `;
 export const CategoriesList = styled.div`
   display: flex;
@@ -63,8 +65,9 @@ export const CategoriesList = styled.div`
 export const CategoryUnderLine = styled.div`
   width: 0%;
   height: 2px;
-  background-color: black;
   transition: all 0.4s ease-in-out;
+  background-color:${props=>props.navBackground=="transparent"?"white":"black"}
+
 `;
 const DropDownAnimation = keyframes`
   from {
@@ -116,6 +119,7 @@ export const Category = styled.div`
   align-items: center;
   cursor: pointer;
   text-transform: capitalize;
+  color:${props=>props.navBackground=="transparent"?"white":"black"}
 `;
 
 export const Logo = styled.div`

@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Wrapper } from "./styles";
+import { Wrapper,MenuBurger } from "./styles";
 import Navbar from "../../components/Navbar";
 import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
+import MainSidebar from '../../components/mainsidebar';
 
-export default function Layout(WrappedComponent) {
+export default function Layout(WrappedComponent,navBackground) {
   const [isFadeIn, setIsFadeIn] = useState(true);
-  const isSmallScreen = useBreakpoint(breakingPoints.sm);
+  const [sideOpen,setsideOpen]=useState(false)
 
+  const isSmallScreen = useBreakpoint(breakingPoints.sm);
+  const handleSidebar =()=>{
+    setsideOpen(!sideOpen)
+  }
   useEffect(() => {
     let prevScrollPos = window.pageYOffset;
 
     window.onscroll = () => {
       const currentScrollPos = window.pageYOffset;
 
-      if (prevScrollPos > currentScrollPos ) {
+      if (prevScrollPos > currentScrollPos) {
         setIsFadeIn(true);
       } else if (!isSmallScreen) {
         setIsFadeIn(false);
@@ -26,7 +31,9 @@ export default function Layout(WrappedComponent) {
 
   return (
     <Wrapper>
-      <Navbar isFadeIn={isFadeIn} />
+     
+      {isSmallScreen ? <MainSidebar handleSidebar={handleSidebar} sideOpen={sideOpen} /> :  <Navbar isFadeIn={isFadeIn} navBackground={navBackground}/>}
+          {isSmallScreen&&<MenuBurger onClick={handleSidebar}/>}
       <WrappedComponent />
     </Wrapper>
   );

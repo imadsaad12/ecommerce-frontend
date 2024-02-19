@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Wrapper, Image, Name, Price } from "./styles";
+import { Container, Wrapper, Image, Name, Price ,ImageContainer} from "./styles";
 import Colors from "./Colors";
 import { colorsOptions } from "../../../global";
 import { useNavigate } from "react-router-dom";
@@ -34,10 +34,12 @@ export default function Product({ product }) {
   return (
     <Container>
       <Wrapper>
+        <ImageContainer>
         <Image
           src={findImage(selectedColor)}
           onClick={() => navigate("/product", { state: { product } })}
         />
+        </ImageContainer>
         <Name>{name}</Name>
         <Price>{price}$</Price>
         <Colors
