@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   @media (max-width: ${breakingPoints.sm}px) {
-    flex-direction:column;
+    flex-direction: column;
   }
 `;
 
@@ -20,5 +20,15 @@ export const BodyContainer = styled.div`
   gap: 10%;
   @media (max-width: ${breakingPoints.sm}px) {
     flex-direction: column;
+  }
+`;
+
+export const Message = styled.p`
+  font-size: 30px;
+  color: gray;
+  margin-top: 10%;
+  font-weight: bold;
+  @media (max-width: ${breakingPoints.sm}px) {
+    font-size: 18px;
   }
 `;

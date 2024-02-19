@@ -72,7 +72,9 @@ axios.interceptors.response.use(
     //     await Promise.reject(error);
     //   }
     // }
-    toast.error(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message, {
+      style: { marginTop: "60px" },
+    });
     await Promise.reject(error);
   }
 );

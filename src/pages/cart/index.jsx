@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BodyContainer, Container } from "./styles";
+import { BodyContainer, Container, Message } from "./styles";
 import Header from "./header";
 import Products from "./Products";
 import Costs from "./Costs";
@@ -16,17 +16,25 @@ export default function Cart() {
   return (
     <Container>
       <Header isFormOpen={isFormOpen} />
-      {isFormOpen ? (
-        <AddressInformation
-          data={products}
-          totalPrice={totalPrice}
-          setIsFormOpen={setIsFormOpen}
-        />
+      {products.length === 0 ? (
+        <>
+          <Message>Your shopping cart is currently empty !!</Message>
+        </>
       ) : (
-        <BodyContainer>
-          <Products data={products} />
-          <Costs totalPrice={totalPrice} setIsFormOpen={setIsFormOpen} />
-        </BodyContainer>
+        <>
+          {isFormOpen ? (
+            <AddressInformation
+              data={products}
+              totalPrice={totalPrice}
+              setIsFormOpen={setIsFormOpen}
+            />
+          ) : (
+            <BodyContainer>
+              <Products data={products} />
+              <Costs totalPrice={totalPrice} setIsFormOpen={setIsFormOpen} />
+            </BodyContainer>
+          )}
+        </>
       )}
     </Container>
   );
