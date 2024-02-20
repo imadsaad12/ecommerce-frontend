@@ -36,7 +36,7 @@ export const Size = styled.span`
 export const OutOfStock = styled.div`
   position: absolute;
   width: 1px;
-  background-color: #d9d9d9;
+  background-color: black;
   rotate: 45deg;
   height: 140%;
 `;

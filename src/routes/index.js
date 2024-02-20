@@ -5,14 +5,13 @@ import {
   Routes as RoutesWrapper,
   Route,
 } from "react-router-dom";
-import { ADMIN, ORDERS, PRODUCTS, SIGN_IN, VIEWPRODUCTS, ORDER } from "./URLs";
+import { ADMIN, ORDERS, PRODUCTS, SIGN_IN } from "./URLs";
 import withLayout from "../HOCs/withLayout";
 import Admin from "../pages/admin";
 import Products from "../pages/products";
 import SignIn from "../pages/signIn";
 import Orders from "../pages/orders";
 import axios from "axios";
-import { generateAccessToken } from "../apis/auth/generateAccessToken";
 import { toast } from "react-toastify";
 import { withRedirection } from "../HOCs/sign-in";
 import Product from "../pages/product/index";
@@ -33,10 +32,13 @@ export default function Routes() {
           <Route path={ADMIN} Component={withLayout(Admin)} />
           <Route path={ORDERS} Component={withLayout(Orders)} />
           <Route path={PRODUCTS} Component={withLayout(Products)} />
-          <Route path={"/product"} element={Layout(Product,"nontransparent")} />
-          <Route path={"/"} element={Layout(ViewProducts,"transparent")} />
-          <Route path={"/order"} element={Layout(Order,"nontransparent")} />
-          <Route path={"/cart"} element={Layout(Cart,"nontransparent")} />
+          <Route
+            path={"/product"}
+            Component={Layout(Product, "nontransparent")}
+          />
+          <Route path={"/"} Component={Layout(ViewProducts, "transparent")} />
+          <Route path={"/order"} Component={Layout(Order, "nontransparent")} />
+          <Route path={"/cart"} Component={Layout(Cart, "nontransparent")} />
           <Route path={"/home"} element={Layout(Home,"transparent")} />
 
         </RoutesWrapper>

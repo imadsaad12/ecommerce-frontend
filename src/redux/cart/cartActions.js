@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DELETE_FROM_CART, UPDATE_CART } from "../actions";
+import { ADD_TO_CART, RESET_CART, UPDATE_CART } from "../actions";
 
 export const addToCart = (payload) => ({
   type: ADD_TO_CART,
@@ -10,7 +10,7 @@ export const updateCart = (payload) => ({
   payload,
 });
 
-export const deleteFromCart = (error) => ({
-  type: DELETE_FROM_CART,
-  payload: error,
+export const resetCart = () => ({
+  type: RESET_CART,
+  payload: {},
 });

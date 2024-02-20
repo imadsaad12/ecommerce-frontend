@@ -44,6 +44,7 @@ export const ImageContainer = styled.div`
   height: 100%;
   display: inline-block; /* Display the containers inline */
   vertical-align: top; /* Align the containers at the top */
+
   @media (max-width: ${breakingPoints.md}px) {
     width: 25%;
   }

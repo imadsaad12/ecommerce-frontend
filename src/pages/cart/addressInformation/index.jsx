@@ -8,6 +8,11 @@ import { useAddOrderQuery } from "../../../apis/orders/addOrder";
 import { formatOrder } from "../../../utilities/formatOrders";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { orderSchema } from "./yup-shape";
+import { isEmpty } from "lodash";
+import { useDispatch } from "react-redux";
+import { resetCart } from "../../../redux/cart/cartActions";
 
 export default function AddressInformation({
   data,
@@ -15,7 +20,11 @@ export default function AddressInformation({
   setIsFormOpen,
 }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(orderSchema),
+  });
+  const dispatch = useDispatch();
+
   const fields = [
     {
       name: "email",
@@ -50,13 +59,14 @@ export default function AddressInformation({
     {
       name: "floor",
       label: "Floor",
-      type: "number",
+      type: "string",
       required: true,
     },
   ];
 
   const { handleApiCall, isPending } = useAddOrderQuery({
     onSuccess: () => {
+      dispatch(resetCart());
       setIsFormOpen(false);
       toast.success("You order is on its way!!", {
         style: { marginTop: "60px" },
@@ -77,6 +87,11 @@ export default function AddressInformation({
         name="clientFullName"
         label="Full name"
         {...register("clientFullName")}
+        error={!isEmpty(formState?.errors?.clientFullName)}
+        helperText={
+          !isEmpty(formState?.errors?.clientFullName) &&
+          formState.errors?.clientFullName.message
+        }
       />
 
       {fields.map(({ name, label, type }) => (
@@ -86,6 +101,11 @@ export default function AddressInformation({
           label={label}
           type={type}
           {...register(name)}
+          error={!isEmpty(formState?.errors?.[name])}
+          helperText={
+            !isEmpty(formState?.errors?.[name]) &&
+            formState.errors?.[name].message
+          }
         />
       ))}
       <LoadingButton
