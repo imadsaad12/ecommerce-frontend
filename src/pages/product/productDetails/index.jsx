@@ -46,8 +46,10 @@ export default function ProductDetails({ pdata }) {
 
   const isAddToCartDisabled = () => {
     const isItemAvailable = pdata?.sizes?.some(
-      ({ color, size }) =>
-        color === selectedOptions?.color?.text && size === selectedOptions.size
+      ({ color, size, inStock }) =>
+        color === selectedOptions?.color?.text &&
+        size === selectedOptions.size &&
+        inStock
     );
     return !isItemAvailable;
   };

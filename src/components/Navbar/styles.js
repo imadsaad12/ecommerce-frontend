@@ -1,24 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { breakingPoints } from "../../global/theme";
 
-const fadeIn = keyframes`
-0% {
- height: 0vh;
-}
-100% {
- height: 14vh;
-}
-`;
-
-const fadeOut = keyframes`
-0% {
- height: 14vh;
-}
-100% {
- height: 0vh;
-}
-`;
-
 export const Container = styled.div`
   width: 100%;
   position: fixed;
@@ -36,7 +18,6 @@ export const Container = styled.div`
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
-  /* animation-name: ${(props) => (props.isFadeIn ? fadeIn : fadeOut)}; */
   z-index: 10000;
   transition: top 1s ease-in-out;
   height: 14vh;

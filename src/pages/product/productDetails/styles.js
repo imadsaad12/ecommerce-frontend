@@ -73,7 +73,6 @@ export const AddtoCart = styled.button`
 
 export const addToCartStyle = (isDisabled) => ({
   textTransform: "capitalize",
-  backgroundColor: "black",
   color: "white",
   borderRadius: "10px",
   width: "140px",
