@@ -18,6 +18,7 @@ import { FaFacebookF, FaInstagram, FaRegCopyright } from "react-icons/fa";
 import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
 import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
+import MobileFooter from "./mobile";
 
 export default function Footer() {
   const { isLoading, response } = useGetCategoriesQuery();
@@ -31,50 +32,56 @@ export default function Footer() {
   }, [isLoading]);
 
   return (
-    <Root>
-      <Container>
-        <Wrapper>
-          <SiNike style={{ fontSize: isSmallScreen ? "50px" : "200px" }} />
-          <Text>POINT NULL</Text>
-        </Wrapper>
-        <Wrapper style={{ width: "10%" }}>
-          <Title>All Categories</Title>
-          <CategoriesContainer>
-            {categories.map(({ category }) => (
-              <Category>{category}</Category>
-            ))}
-          </CategoriesContainer>
-        </Wrapper>
-        <Wrapper style={{ width: isSmallScreen ? "20%" : "10%" }}>
-          <Title>Genders</Title>
-          <CategoriesContainer>
-            <Gender>Men</Gender>
-            <Gender>Women</Gender>
-          </CategoriesContainer>
-        </Wrapper>
-        <Wrapper style={{ width: isSmallScreen ? "20%" : "10%" }}>
-          <Title>Social Media</Title>
-          <SocialMediaContainer>
-            <Circle>
-              <FaFacebookF style={{ fontSize: "20px" }} />
-            </Circle>
-            <Circle>
-              <FaInstagram style={{ fontSize: "20px" }} />
-            </Circle>
-          </SocialMediaContainer>
-        </Wrapper>
-      </Container>
-      <PoweredBy>
-        Copyright
-        <FaRegCopyright
-          style={{
-            fontSize: "15px",
-            paddingLeft: "10px",
-            paddingRight: "10px",
-          }}
-        />
-        2024 <Link href="https://cedars-js.com">cedars-js.com</Link>
-      </PoweredBy>
-    </Root>
+    <>
+      {isSmallScreen ? (
+        <MobileFooter />
+      ) : (
+        <Root>
+          <Container>
+            <Wrapper>
+              <SiNike style={{ fontSize: isSmallScreen ? "50px" : "200px" }} />
+              <Text>POINT NULL</Text>
+            </Wrapper>
+            <Wrapper style={{ width: "10%" }}>
+              <Title>All Categories</Title>
+              <CategoriesContainer>
+                {categories.map(({ category }) => (
+                  <Category>{category}</Category>
+                ))}
+              </CategoriesContainer>
+            </Wrapper>
+            <Wrapper style={{ width: isSmallScreen ? "20%" : "10%" }}>
+              <Title>Genders</Title>
+              <CategoriesContainer>
+                <Gender>Men</Gender>
+                <Gender>Women</Gender>
+              </CategoriesContainer>
+            </Wrapper>
+            <Wrapper style={{ width: isSmallScreen ? "20%" : "10%" }}>
+              <Title>Social Media</Title>
+              <SocialMediaContainer>
+                <Circle>
+                  <FaFacebookF style={{ fontSize: "20px" }} />
+                </Circle>
+                <Circle>
+                  <FaInstagram style={{ fontSize: "20px" }} />
+                </Circle>
+              </SocialMediaContainer>
+            </Wrapper>
+          </Container>
+          <PoweredBy>
+            Copyright
+            <FaRegCopyright
+              style={{
+                fontSize: "15px",
+                paddingLeft: "10px",
+                paddingRight: "10px",
+              }}
+            />
+            2024 <Link href="https://cedars-js.com">cedars-js.com</Link>
+          </PoweredBy>
+        </Root>
+      )}
+    </>
   );
 }

@@ -23,6 +23,7 @@ import { LoadingButton } from "@mui/lab";
 import { toast } from "react-toastify";
 import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/theme";
+import { formatPrice } from "../../../utilities/formatPrice";
 
 export default function ProductDetails({ pdata }) {
   const dispatch = useDispatch();
@@ -122,7 +123,7 @@ export default function ProductDetails({ pdata }) {
   return (
     <Container>
       <Name>{pdata.name}</Name>
-      <Price>{pdata.price}$</Price>
+      <Price>{formatPrice(pdata.price)}$</Price>
       <Description>{pdata.description}</Description>
       <Colors
         colors={colors}

@@ -10,6 +10,7 @@ import {
 import Colors from "./Colors";
 import { colorsOptions } from "../../../global";
 import { useNavigate } from "react-router-dom";
+import { formatPrice } from "../../../utilities/formatPrice";
 
 export default function Product({ product }) {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ export default function Product({ product }) {
           />
         </ImageContainer>
         <Name>{name}</Name>
-        <Price>{price}$</Price>
+        <Price>{formatPrice(price)}$</Price>
         <Colors
           setselectedColor={setselectedColor}
           colors={colors}

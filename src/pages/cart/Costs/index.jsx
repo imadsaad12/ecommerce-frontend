@@ -3,21 +3,16 @@ import { Container, Divider, Row, TotalPrice, buttonStyle } from "./styles";
 import { Button } from "@mui/material";
 import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/theme";
-import { formatOrder } from "../../../utilities/formatOrders";
-import { useAddOrderQuery } from "../../../apis/orders/addOrder";
+import { formatPrice } from "../../../utilities/formatPrice";
 
 export default function Costs({ setIsFormOpen, totalPrice }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
-
-  const { handleApiCall, isPending } = useAddOrderQuery({
-    onSuccess: () => {},
-  });
 
   return (
     <Container>
       <Row>
         <p>Sub total</p>
-        <p>{totalPrice}$</p>
+        <p>{formatPrice(totalPrice)}$</p>
       </Row>
       <Row>
         <p>Delivery</p>
@@ -26,7 +21,7 @@ export default function Costs({ setIsFormOpen, totalPrice }) {
       <Divider />
       <Row>
         <TotalPrice>Total</TotalPrice>
-        <TotalPrice>{totalPrice + 3}$</TotalPrice>
+        <TotalPrice>{formatPrice(totalPrice + 3)}$</TotalPrice>
       </Row>
       <Button
         variant="contained"

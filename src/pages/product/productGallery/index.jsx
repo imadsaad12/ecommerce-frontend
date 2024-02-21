@@ -25,6 +25,8 @@ export default function ProductGallery({ images }) {
         setcurrentIndex={setcurrentIndex}
         images={images}
         currentIndex={currentIndex}
+        handleleft={handleleft}
+        handleright={handleright}
       />
     </Container>
   );

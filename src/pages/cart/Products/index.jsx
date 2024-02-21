@@ -18,6 +18,7 @@ import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/theme";
 import { updateCart } from "../../../redux/cart/cartActions";
 import { useDispatch } from "react-redux";
+import { formatPrice } from "../../../utilities/formatPrice";
 
 export default function Product({ data }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
@@ -66,7 +67,7 @@ export default function Product({ data }) {
                 <ContentContainer>
                   <ProductName>{productName}</ProductName>
                   <DescriptionContainer>
-                    <p>{productPrice} $</p>
+                    <p>{formatPrice(productPrice)} $</p>
                     <p>Color : {color}</p>
                     <p>Size : {size}</p>
                   </DescriptionContainer>
@@ -97,7 +98,7 @@ export default function Product({ data }) {
                   </>
                 )}
               </QuantityContainer>
-              <TotalPrice>Total price : {totalPrice} $</TotalPrice>
+              <TotalPrice>Total price : {formatPrice(totalPrice)} $</TotalPrice>
             </Row>
           );
         }

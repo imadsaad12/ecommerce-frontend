@@ -16,7 +16,7 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <Routes />
         <ToastContainer
-          style={{ marginTop: isSmallScreen ? "50px" : "100px" }}
+          style={{ marginTop: isSmallScreen ? "50px" : "130px" }}
         />
       </PersistGate>
     </Provider>

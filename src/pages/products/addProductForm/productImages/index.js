@@ -68,7 +68,6 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
       ...images,
       {
         url: imageUrl,
-        file,
         color,
         isDeleted: false,
         file: modifiedFile,
@@ -80,7 +79,6 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
       ...images,
       {
         url: imageUrl,
-        file,
         color,
         isDeleted: false,
         file: modifiedFile,
