@@ -60,7 +60,7 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
       type: file.type,
     });
 
-    if (!file || !color) {
+    if (!file || !color || !imageUrl) {
       toast.error("Please make sure you selected image and color");
       return;
     }
