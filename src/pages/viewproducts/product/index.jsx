@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Container, Wrapper, Image, Name, Price ,ImageContainer} from "./styles";
+import {
+  Container,
+  Wrapper,
+  Image,
+  Name,
+  Price,
+  ImageContainer,
+} from "./styles";
 import Colors from "./Colors";
 import { colorsOptions } from "../../../global";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +14,7 @@ import { useNavigate } from "react-router-dom";
 export default function Product({ product }) {
   const navigate = useNavigate();
   const { images, name, price, sizes } = product;
-
-  const uniqueColors = Array.from(new Set(sizes.map(({ color }) => color)));
+  const uniqueColors = Array.from(new Set(sizes?.map(({ color }) => color)));
 
   const colors = uniqueColors.map((uniqueColor) => {
     const matchingOption = colorsOptions.find(
@@ -35,10 +41,10 @@ export default function Product({ product }) {
     <Container>
       <Wrapper>
         <ImageContainer>
-        <Image
-          src={findImage(selectedColor)}
-          onClick={() => navigate("/product", { state: { product } })}
-        />
+          <Image
+            src={findImage(selectedColor)}
+            onClick={() => navigate("/product", { state: { product } })}
+          />
         </ImageContainer>
         <Name>{name}</Name>
         <Price>{price}$</Price>

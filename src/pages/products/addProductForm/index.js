@@ -10,7 +10,6 @@ import { useEditProductQuery } from "../../../apis/products/editProduct";
 import { useForm } from "react-hook-form";
 import { LoadingButton } from "@mui/lab";
 import { IoMdAdd } from "react-icons/io";
-import { useEffect } from "react";
 
 export default function AddProductForm({
   setIsFormOpen,

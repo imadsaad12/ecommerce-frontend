@@ -8,7 +8,8 @@ const addProduct = async (payload) => {
     const url = ADD_PRODUCT_URL;
     const formData = new FormData();
     const atLeastOneValidSize = payload?.sizes?.some(
-      (sizeData) => sizeData?.size && sizeData?.color && sizeData?.inStock
+      (sizeData) =>
+        sizeData?.size && sizeData?.color && sizeData?.inStock !== undefined
     );
 
     if (
@@ -46,7 +47,7 @@ const addProduct = async (payload) => {
         sizeData !== null &&
         sizeData?.size &&
         sizeData.color &&
-        sizeData.inStock
+        sizeData.inStock !== undefined
       ) {
         formData.append(`sizes[${index}][size]`, sizeData.size);
         formData.append(`sizes[${index}][color]`, sizeData.color);

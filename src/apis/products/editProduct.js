@@ -8,15 +8,27 @@ const editProduct = async (id, payload) => {
     const url = EDIT_PRODUCT_URL(id);
 
     const formData = new FormData();
+    const atLeastOneValidSize = payload?.sizes?.some(
+      (sizeData) =>
+        sizeData?.size && sizeData?.color && sizeData?.inStock !== undefined
+    );
+
     if (
       !payload.name ||
+      !payload.description ||
       !payload.price ||
       payload?.sizes?.length === 0 ||
-      payload?.images?.length === 0
+      payload?.images?.length === 0 ||
+      payload?.images?.every(({ isDeleted = false }) => isDeleted === true)
     ) {
       toast.error("Please make sure all required fields are filled");
       throw new Error("Please make sure all required fields are filled");
     }
+    if (!atLeastOneValidSize) {
+      toast.error("Please make sure you at least one size");
+      throw new Error("Please make sure you at least one size");
+    }
+
     formData.append("name", payload.name);
     formData.append("category", payload.category);
     formData.append("description", payload.description);
@@ -34,7 +46,12 @@ const editProduct = async (id, payload) => {
       }
     });
     payload.sizes.forEach((sizeData, index) => {
-      if (sizeData !== null && sizeData?.size && sizeData?.color) {
+      if (
+        sizeData !== null &&
+        sizeData?.size &&
+        sizeData?.color &&
+        sizeData?.inStock !== undefined
+      ) {
         formData.append(`sizes[${index}][size]`, sizeData.size);
         formData.append(`sizes[${index}][color]`, sizeData.color);
         formData.append(`sizes[${index}][inStock]`, sizeData.inStock);
