@@ -29,6 +29,15 @@ const editProduct = async (id, payload) => {
       throw new Error("Please make sure you at least one size");
     }
 
+    const atLeastOneImageForEachColor = payload?.sizes?.every(({ color }) =>
+      payload?.images?.some(({ color: imageColor }) => imageColor === color)
+    );
+
+    if (!atLeastOneImageForEachColor) {
+      toast.error("Please make sure you at least one image for each color");
+      throw new Error("Please make sure you at least one image for each color");
+    }
+
     formData.append("name", payload.name);
     formData.append("category", payload.category);
     formData.append("description", payload.description);

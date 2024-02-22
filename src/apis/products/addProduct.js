@@ -11,7 +11,6 @@ const addProduct = async (payload) => {
       (sizeData) =>
         sizeData?.size && sizeData?.color && sizeData?.inStock !== undefined
     );
-
     if (
       !payload.name ||
       !payload.description ||
@@ -27,6 +26,14 @@ const addProduct = async (payload) => {
     if (!atLeastOneValidSize) {
       toast.error("Please make sure you at least one size");
       throw new Error("Please make sure you at least one size");
+    }
+    const atLeastOneImageForEachColor = payload?.sizes?.every(({ color }) =>
+      payload?.images?.some(({ color: imageColor }) => imageColor === color)
+    );
+
+    if (!atLeastOneImageForEachColor) {
+      toast.error("Please make sure you at least one image for each color");
+      throw new Error("Please make sure you at least one image for each color");
     }
 
     formData.append("name", payload.name);
@@ -54,7 +61,7 @@ const addProduct = async (payload) => {
         formData.append(`sizes[${index}][inStock]`, sizeData.inStock);
       }
     });
-    console.log(payload);
+
     const response = await axios.post(url, formData, {
       withCredentials: true,
       headers: {

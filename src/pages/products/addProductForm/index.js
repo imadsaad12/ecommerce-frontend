@@ -33,6 +33,7 @@ export default function AddProductForm({
         refetchProducts();
         setIsFormOpen(false);
         formUtils.reset();
+        window.location.reload();
       },
     });
 

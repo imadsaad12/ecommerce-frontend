@@ -31,7 +31,7 @@ export default function AddCategoryPopup({
 
   const handleSubmit = () =>
     handleApiCall({
-      category: getValues()?.categoryName,
+      category: getValues()?.categoryName.toLowerCase(),
       type: getValues()?.categoryType,
     });
 

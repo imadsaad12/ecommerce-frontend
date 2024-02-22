@@ -66,10 +66,12 @@ export default function ProductDetails({ pdata }) {
     });
 
     const productAlreadyAdded = products?.some(
-      ({ productName, size, color }) =>
+      ({ productName, size, color, category, type }) =>
         productName === formattedProduct.productName &&
         size === formattedProduct.size &&
-        color === formattedProduct.color
+        color === formattedProduct.color &&
+        pdata.category === category &&
+        pdata.type === type
     );
 
     if (productAlreadyAdded) {
@@ -81,12 +83,16 @@ export default function ProductDetails({ pdata }) {
           quantity: oldQuantity,
           totalPrice,
           productPrice,
+          category,
+          type,
           ...rest
         }) => {
           if (
             productName === formattedProduct.productName &&
             size === formattedProduct.size &&
-            color === formattedProduct.color
+            color === formattedProduct.color &&
+            pdata.category === category &&
+            pdata.type === type
           ) {
             oldQuantity += quantity;
             totalPrice = oldQuantity * productPrice;
@@ -98,6 +104,8 @@ export default function ProductDetails({ pdata }) {
             quantity: oldQuantity,
             totalPrice,
             productPrice,
+            category,
+            type,
             ...rest,
           };
         }

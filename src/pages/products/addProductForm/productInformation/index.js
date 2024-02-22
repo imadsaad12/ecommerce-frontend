@@ -122,7 +122,7 @@ export default function ProductInformation({
           </FormControl>
           <FormControl
             style={{
-              width: isSmallScreen ? "90%" : "20%",
+              width: isSmallScreen ? "90%" : "23%",
               marginTop: isSmallScreen && "15px",
             }}
           >
@@ -132,14 +132,23 @@ export default function ProductInformation({
               {...register("category")}
               onChange={({ target: { value } }) => setSelectedCategory(value)}
               defaultValue={selectedProductToUpdate?.category}
+              style={{ height: "55px" }}
             >
               {categories
                 ?.filter(({ type }) => type === selectedType)
                 ?.map(({ category, _id }) => {
                   return (
                     <MenuItem value={category}>
-                      <ListItemText>{category}</ListItemText>
-                      {selectedCategory !== category && (
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <ListItemText style={{ overflow: "hidden" }}>
+                          {category}
+                        </ListItemText>
                         <>
                           <Button
                             onClick={() => {
@@ -159,7 +168,7 @@ export default function ProductInformation({
                             Delete
                           </Button>
                         </>
-                      )}
+                      </div>
                     </MenuItem>
                   );
                 })}

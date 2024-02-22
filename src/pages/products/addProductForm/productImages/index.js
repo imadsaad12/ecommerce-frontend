@@ -45,6 +45,7 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
       const url = URL.createObjectURL(event.target.files[0]);
       setImageUrl(url);
     }
+    event.target.value = null;
   };
 
   useEffect(() => {
@@ -59,7 +60,6 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
     const modifiedFile = new File([file], modifiedFileName, {
       type: file.type,
     });
-
     if (!file || !color || !imageUrl) {
       toast.error("Please make sure you selected image and color");
       return;

@@ -6,9 +6,9 @@ import { toast } from "react-toastify";
 const addCategory = async (payload) => {
   try {
     const url = ADD_CATEGORY_URL;
-    if (!payload.category) {
-      toast.error("Category fields cannot be empty");
-      throw new Error("Category fields cannot be empty");
+    if (!payload.category || !payload.type) {
+      toast.error("Category and type fields cannot be empty");
+      throw new Error("Category and type fields cannot be empty");
     }
     const response = await axios.post(url, payload, {
       withCredentials: true,

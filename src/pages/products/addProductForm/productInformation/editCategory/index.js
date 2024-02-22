@@ -20,7 +20,7 @@ export default function EditCategoryPopup({
     onSuccess: () => {
       refreshCategories();
       setIsEditCategoryOpen(false);
-      setValue("category", "");
+      setValue("category", undefined);
     },
   });
 
