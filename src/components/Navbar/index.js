@@ -6,7 +6,6 @@ import {
   CategoriesList,
   Category,
   Logo,
-  NavBtns,
   CategoryContainer,
   CategoryUnderLine,
   DropDown,
@@ -30,10 +29,6 @@ export default function Navbar({ isFadeIn, navBackground }) {
       setCategories(response?.data);
     }
   }, [isLoading]);
-
-  useEffect(() => {
-    console.log(isFadeIn);
-  }, [isFadeIn]);
 
   return (
     <Container navBackground={navBackground} isFadeIn={isFadeIn}>

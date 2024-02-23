@@ -51,6 +51,28 @@ export default function CustomizedTables({
 
     return `${truncatedText} ...`;
   }
+
+  const renderListWithEllipsis = (array) => {
+    if (!array || array.length === 0) {
+      return null;
+    }
+
+    const renderedItems = array.slice(0, 1).map((item, index) => (
+      <li key={index} style={{ alignSelf: "flex-start" }}>
+        {item}
+      </li>
+    ));
+
+    const ellipsis = array.length > 1 ? <li>...</li> : null;
+
+    return (
+      <ul>
+        {renderedItems}
+        {ellipsis}
+      </ul>
+    );
+  };
+
   return (
     <StyledTableContainer style={TableContainerStyle}>
       <Table stickyHeader style={{ textTransform: "capitalize" }}>
@@ -114,14 +136,10 @@ export default function CustomizedTables({
                     ) : headerKey === "Image" ? (
                       <img
                         src={row[headerValue]}
-                        style={{ width: "30px", height: "30px" }}
+                        style={{ width: "50px", height: "50px" }}
                       />
                     ) : headerValue === "formattedSizes" ? (
-                      <>
-                        {row[headerValue].map((elm) => (
-                          <li style={{ alignSelf: "flex-start" }}>{elm}</li>
-                        ))}
-                      </>
+                      <>{renderListWithEllipsis(row[headerValue])}</>
                     ) : headerValue === "description" ? (
                       <>{truncateText(row[headerValue], 10)}</>
                     ) : (

@@ -22,7 +22,7 @@ export default function ViewProducts() {
   const dispatch = useDispatch();
 
   const type = queryParams.get("type") || "men";
-  const category = queryParams.get("category") || "Shirts";
+  const category = queryParams.get("category") || "pants";
 
   const { response, isLoading, refetch } = useGetProductsQuery({
     type,

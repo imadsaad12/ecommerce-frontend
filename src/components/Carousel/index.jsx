@@ -12,16 +12,14 @@ import {
   Price,
   ArrowContainer,
 } from "./styles";
-import image4 from "./image4.jpg";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { formatPrice } from "../../utilities/formatPrice";
 
 export default function Carousel({ selectedProduct, setSelectedProduct }) {
   const [carouselIndex, setcarouselIndex] = useState(0);
   const cachedProducts = useSelector((state) => state?.products || []);
-  const navigate = useNavigate();
 
   const [products, setProducts] = useState(
     cachedProducts.filter(({ _id }) => _id !== selectedProduct._id)
@@ -54,15 +52,12 @@ export default function Carousel({ selectedProduct, setSelectedProduct }) {
                   <ImageWrapper>
                     <Image
                       src={`https://storage.googleapis.com/ecommerce-bucket-testing/${product?.images[0].url}`}
-                      onClick={() =>
-                        // navigate("/product", { state: { product } })
-                        setSelectedProduct(product)
-                      }
+                      onClick={() => setSelectedProduct(product)}
                     />
                   </ImageWrapper>
                   <Details>
                     <Name>{product.name}</Name>
-                    <Price>{product.price}$</Price>
+                    <Price>{formatPrice(product.price)}$</Price>
                   </Details>
                 </Product>
               </ProductWrapper>

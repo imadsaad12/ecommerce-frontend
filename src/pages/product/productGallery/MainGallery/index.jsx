@@ -9,9 +9,11 @@ export default function MainGallery({
 }) {
   const divRef = useRef(null);
   const [startX, setStartX] = useState(null);
+
   const handleTouchStart = (event) => {
     setStartX(event.touches[0].clientX);
   };
+
   const handleTouchMove = (event) => {
     if (startX) {
       const currentX = event.touches[0].clientX;
@@ -50,9 +52,9 @@ export default function MainGallery({
     <Container>
       <Carousel
         currentIndex={currentIndex}
-        // ref={divRef}
-        // onTouchStart={handleTouchStart}
-        // onTouchMove={handleTouchMove}
+        ref={divRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
       >
         {images.map((image) => {
           return <Image src={image} />;

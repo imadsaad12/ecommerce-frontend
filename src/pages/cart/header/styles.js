@@ -25,3 +25,10 @@ export const SubTitle = styled.p`
     font-size: 10px;
   }
 `;
+
+export const buttonStyle = {
+  position: "absolute",
+  top: "13px",
+  left: "10px",
+  color: "black",
+};

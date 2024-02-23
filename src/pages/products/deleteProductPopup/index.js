@@ -17,6 +17,7 @@ export default function DeleteProductPopup({
     onSuccess: () => {
       refetchProducts();
       setIsDeleteProductPopupOpen(false);
+      window.location.reload();
     },
   });
 

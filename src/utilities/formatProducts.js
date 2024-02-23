@@ -33,7 +33,7 @@ export const formatProduct = ({ pdata, selectedOptions, quantity }) => {
   product.productId = pdata._id;
   product.productImage =
     pdata?.images?.find(({ color }) => color === selectedOptions?.color?.text)
-      ?.url || pdata.images[0];
+      ?.url || pdata.images[0].url;
   product.color = selectedOptions?.color?.text;
   product.size = selectedOptions?.size;
   product.quantity = quantity;

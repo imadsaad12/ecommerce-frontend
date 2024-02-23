@@ -15,7 +15,7 @@ export default function Cart() {
 
   return (
     <Container>
-      <Header isFormOpen={isFormOpen} />
+      <Header isFormOpen={isFormOpen} setIsFormOpen={setIsFormOpen} />
       {products.length === 0 ? (
         <>
           <Message>Your shopping cart is currently empty !!</Message>
