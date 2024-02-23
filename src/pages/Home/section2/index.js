@@ -1,12 +1,20 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Container } from './styles'
-import { Image } from './styles'
-import header from "../static/header.jpg"
-import Carousel from '../../../components/Carousel'
-export default function Section2({scrolled}) {
+import HomeCarousel from "./HomeCarousel"
+import { useGetProductsQuery } from '../../../apis/products/getProducts'
+export default function Section2() {
+  const { response, isLoading } = useGetProductsQuery([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setProducts(response?.data);
+    }
+  }, [isLoading]);
+
   return (
     <Container>
-      <Carousel/>
+      <HomeCarousel data={products}/>
     </Container>
   )
 }

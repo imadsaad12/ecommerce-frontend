@@ -41,7 +41,7 @@ const withLayout = (WrappedComponent, navBackground) => {
           <Navbar isFadeIn={isFadeIn} navBackground={navBackground} />
         )}
         {isSmallScreen && <MenuBurger onClick={handleSidebar} />}
-        <WrappedComponent />
+        <WrappedComponent isFadeIn={isFadeIn} />
         <Footer />
       </Wrapper>
     );

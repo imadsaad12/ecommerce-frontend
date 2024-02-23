@@ -10,11 +10,11 @@ justify-content: center;
 position: relative;
 `;
 export const Image = styled.img`
-height: ${props=>props.scrolled?"80%":"100%"};
-width: ${props=>props.scrolled?"90%":"100%"};
+height: ${props=>props.isFadeIn?"100%":"80%"};
+width: ${props=>props.isFadeIn?"100%":"90%"};
 object-fit: cover;
 transition: all 0.4s ease-in-out;
-border-radius: ${props=>props.scrolled?"40px":"0px"};
+border-radius: ${props=>props.isFadeIn?"0px":"40px"};
 `;
 
 export const TitleContainer = styled.div`

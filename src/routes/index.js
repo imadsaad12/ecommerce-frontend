@@ -19,7 +19,7 @@ import ViewProducts from "../pages/viewproducts/index";
 import Order from "../pages/order";
 import Layout from "../HOCs/mainlayout";
 import Cart from "../pages/cart";
-import Home from "../pages/Home";
+import Home from "../pages/home";
 
 export default function Routes() {
   const queryClient = new QueryClient();
@@ -36,11 +36,10 @@ export default function Routes() {
             path={"/product"}
             Component={Layout(Product, "nontransparent")}
           />
+          <Route path={"/home"} Component={Layout(Home, "nontransparent")} />
           <Route path={"/"} Component={Layout(ViewProducts, "transparent")} />
           <Route path={"/order"} Component={Layout(Order, "nontransparent")} />
           <Route path={"/cart"} Component={Layout(Cart, "nontransparent")} />
-          <Route path={"/home"} element={Layout(Home,"transparent")} />
-
         </RoutesWrapper>
       </BrowserRouter>
     </QueryClientProvider>
