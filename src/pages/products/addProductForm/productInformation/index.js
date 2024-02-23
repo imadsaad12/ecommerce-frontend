@@ -31,9 +31,7 @@ export default function ProductInformation({
   const [isDeleteCategoryPopupOpen, setIsDeleteCategoryPopupOpen] =
     useState(false);
   const [isEditCategoryPopupOpen, setIsEditCategoryPopupOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(
-    selectedProductToUpdate?.category || ""
-  );
+
   const [selectedIdForAction, setSelectedIdFroAction] = useState("");
   const [selectedType, setSelectedType] = useState(
     selectedProductToUpdate?.type || ""
@@ -70,7 +68,6 @@ export default function ProductInformation({
         isEditCategoryOpen={isEditCategoryPopupOpen}
         refreshCategories={refreshCategories}
         selectedIdForAction={selectedIdForAction}
-        setSelectedCategory={setSelectedCategory}
       />
 
       <DeleteProductPopup
@@ -130,7 +127,6 @@ export default function ProductInformation({
             <Select
               label="category"
               {...register("category")}
-              onChange={({ target: { value } }) => setSelectedCategory(value)}
               defaultValue={selectedProductToUpdate?.category || ""}
               style={{ height: "55px" }}
             >
@@ -188,6 +184,22 @@ export default function ProductInformation({
               {...register(key)}
             />
           ))}
+          <FormControl
+            style={{
+              width: isSmallScreen ? "90%" : "20%",
+              marginTop: isSmallScreen && "15px",
+            }}
+          >
+            <InputLabel>Priority</InputLabel>
+            <Select
+              label="isHighPriority"
+              {...register("isHighPriority")}
+              defaultValue={selectedProductToUpdate?.isHighPriority}
+            >
+              <MenuItem value={false}>Low</MenuItem>
+              <MenuItem value={true}>High</MenuItem>
+            </Select>
+          </FormControl>
         </FormContainer>
       </Collapse>
     </>

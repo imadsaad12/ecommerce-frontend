@@ -47,7 +47,9 @@ export default function Navbar({ isFadeIn, navBackground }) {
                       return (
                         <CategoryName
                           onClick={() =>
-                            navigate(`/?type=${type}&category=${category} `)
+                            navigate(
+                              `/products?type=${type}&category=${category} `
+                            )
                           }
                         >
                           {category}

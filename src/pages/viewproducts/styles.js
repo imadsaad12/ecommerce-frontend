@@ -16,24 +16,23 @@ export const Wrapper = styled.div`
 `;
 
 export const HeaderContainer = styled.div`
-height: 70vh;
-width: 100%;
-position: relative;
-display: flex;
-align-items: center;
-justify-content: center;
+  height: 70vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 export const Background = styled.img`
-height: 100%;
-width: 100%;
-object-fit: cover;
-filter: brightness(0.5);
-
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
 `;
 export const CategoryTitle = styled.span`
-position: absolute;
-font-size:30px;
-font-weight:bold;
-color: white;
+  position: absolute;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-transform: capitalize;
 `;
-

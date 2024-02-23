@@ -4,10 +4,11 @@ import { breakingPoints } from "../../../../global/theme";
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 150px;
+  column-gap: 30px;
   flex-wrap: wrap;
   border-radius: 10px;
   background-color: whitesmoke;
@@ -25,7 +26,8 @@ export const fieldStyle = (isSmallScreen) => ({
 });
 
 export const categoryButtonStyle = (isSmallScreen) => ({
-  width: isSmallScreen ? "90%" : "14%",
+  // width: isSmallScreen ? "90%" : "14%",
+  width: isSmallScreen ? "90%" : "20%",
   textTransform: "capitalize",
   height: "55px",
   marginTop: isSmallScreen ? "15px" : "5px",

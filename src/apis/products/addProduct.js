@@ -11,7 +11,7 @@ const addProduct = async (payload) => {
       (sizeData) =>
         sizeData?.size && sizeData?.color && sizeData?.inStock !== undefined
     );
-    
+
     if (
       !payload.name ||
       !payload.description ||
@@ -28,6 +28,7 @@ const addProduct = async (payload) => {
       toast.error("Please make sure you at least one size");
       throw new Error("Please make sure you at least one size");
     }
+
     const atLeastOneImageForEachColor = payload?.sizes?.every(({ color }) =>
       payload?.images?.some(({ color: imageColor }) => imageColor === color)
     );
@@ -42,6 +43,7 @@ const addProduct = async (payload) => {
     formData.append("description", payload.description);
     formData.append("price", payload.price);
     formData.append("type", payload.type);
+    formData.append("isHighPriority", payload.isHighPriority);
 
     payload.images.forEach((imageData, index) => {
       if (imageData.file && imageData.color) {

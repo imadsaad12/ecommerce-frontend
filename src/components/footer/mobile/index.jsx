@@ -16,8 +16,6 @@ import {
 import { SiNike } from "react-icons/si";
 import { FaFacebookF, FaInstagram, FaRegCopyright } from "react-icons/fa";
 import { useGetCategoriesQuery } from "../../../apis/categories/getCategories";
-import { breakingPoints } from "../../../global/theme";
-import useBreakpoint from "../../../utilities/mediaQuery";
 
 export default function MobileFooter() {
   const { isLoading, response } = useGetCategoriesQuery();
@@ -35,9 +33,12 @@ export default function MobileFooter() {
         <Wrapper style={{ width: "40%" }}>
           <Title>All Categories</Title>
           <CategoriesContainer>
-            {categories.map(({ category }) => (
+            {categories.slice(0, 4).map(({ category }) => (
               <Category>{category}</Category>
             ))}
+            {categories?.length > 4 && (
+              <Category key="more">... and more</Category>
+            )}
           </CategoriesContainer>
         </Wrapper>
         <Wrapper style={{ width: "20%" }}>
