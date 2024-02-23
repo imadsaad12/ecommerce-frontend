@@ -114,7 +114,7 @@ export default function ProductInformation({
               label="type"
               {...register("type")}
               onChange={({ target: { value } }) => setSelectedType(value)}
-              defaultValue={selectedProductToUpdate?.type}
+              defaultValue={selectedProductToUpdate?.type || ""}
             >
               <MenuItem value={"men"}>Men</MenuItem>
               <MenuItem value={"women"}>Women</MenuItem>
@@ -131,7 +131,7 @@ export default function ProductInformation({
               label="category"
               {...register("category")}
               onChange={({ target: { value } }) => setSelectedCategory(value)}
-              defaultValue={selectedProductToUpdate?.category}
+              defaultValue={selectedProductToUpdate?.category || ""}
               style={{ height: "55px" }}
             >
               {categories

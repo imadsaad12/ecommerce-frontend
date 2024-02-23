@@ -12,13 +12,11 @@ import {
   Price,
   ArrowContainer,
 } from "./styles";
-import image4 from "./image4.jpg";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-export default function HomeCarousel({data}) {
+export default function HomeCarousel({ data }) {
   const [carouselIndex, setcarouselIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -28,7 +26,6 @@ export default function HomeCarousel({data}) {
   const handleleft = () => {
     setcarouselIndex(carouselIndex - 1);
   };
-
 
   return (
     <Container>

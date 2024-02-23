@@ -96,7 +96,7 @@ export default function ProductSizes({ formUtils, selectedProductToUpdate }) {
                       <Select
                         label="size"
                         onChange={(e) => handleOnChange(e, index, "size")}
-                        defaultValue={elm.size}
+                        value={elm?.size || ""}
                       >
                         <MenuItem value={"large"}>Large</MenuItem>
                         <MenuItem value={"medium"}>Medium</MenuItem>
@@ -113,7 +113,7 @@ export default function ProductSizes({ formUtils, selectedProductToUpdate }) {
                       <Select
                         label="color"
                         onChange={(e) => handleOnChange(e, index, "color")}
-                        defaultValue={elm.color}
+                        value={elm?.color || ""}
                         MenuProps={{ style: { height: "300px" } }}
                         style={{ maxHeight: "55px" }}
                       >
@@ -139,7 +139,7 @@ export default function ProductSizes({ formUtils, selectedProductToUpdate }) {
                       <Select
                         label="Availability"
                         onChange={(e) => handleOnChange(e, index, "inStock")}
-                        defaultValue={elm.inStock}
+                        value={elm?.inStock || false}
                       >
                         <MenuItem value={true} defaultChecked>
                           In stock

@@ -19,7 +19,7 @@ import ViewProducts from "../pages/viewproducts/index";
 import Order from "../pages/order";
 import Layout from "../HOCs/mainlayout";
 import Cart from "../pages/cart";
-import Home from "../pages/home";
+import Home from "../pages/Home/index";
 
 export default function Routes() {
   const queryClient = new QueryClient();

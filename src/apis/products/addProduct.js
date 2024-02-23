@@ -11,6 +11,7 @@ const addProduct = async (payload) => {
       (sizeData) =>
         sizeData?.size && sizeData?.color && sizeData?.inStock !== undefined
     );
+    
     if (
       !payload.name ||
       !payload.description ||
