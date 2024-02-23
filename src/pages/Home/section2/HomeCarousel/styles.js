@@ -2,10 +2,16 @@ import styled from "styled-components";
 import { breakingPoints } from "../../../../global/theme";
 
 export const Container = styled.div`
-  width: 80%;
+  width: 100%;
   position: relative;
   overflow: hidden;
-  margin-top: 100px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
 `;
 export const CarouselContainer = styled.div`
   display: block;
@@ -54,10 +60,18 @@ export const Product = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  @media (max-width: ${breakingPoints.sm}px) {
+    width: 80%;
+  }
 `;
 
 export const ImageWrapper = styled.div`
   overflow: hidden;
+  height: 60vh;
+  border-radius: 40px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    height: 38vh;
+  }
 `;
 export const Image = styled.img`
   height: 100%;

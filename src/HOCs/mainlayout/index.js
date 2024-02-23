@@ -25,7 +25,7 @@ const withLayout = (WrappedComponent, navBackground) => {
 
         if (prevScrollPos > currentScrollPos) {
           setIsFadeIn(true);
-        } else if (!isSmallScreen) {
+        } else {
           setIsFadeIn(false);
         }
 
