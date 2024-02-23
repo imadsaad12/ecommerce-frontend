@@ -8,6 +8,9 @@ display: flex;
 align-items: center;
 justify-content: center;
 position: relative;
+@media (max-width: ${breakingPoints.sm}px) {
+    height: 30vh;
+  }
 `;
 export const Image = styled.img`
 height: ${props=>props.isFadeIn?"100%":"80%"};
@@ -30,11 +33,15 @@ export const TitleTop = styled.span`
 font-size:80px;
 font-weight: bolder;
 
-
+@media (max-width: ${breakingPoints.sm}px) {
+    font-size:40px;
+  }
 `;
 export const TitleBottom = styled.span`
 font-size: 80px;
 font-weight: bolder;
-
+@media (max-width: ${breakingPoints.sm}px) {
+    font-size:40px;
+  }
 
 `;

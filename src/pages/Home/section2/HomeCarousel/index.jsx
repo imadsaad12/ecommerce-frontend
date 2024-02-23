@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   CarouselContainer,
   Container,
@@ -12,13 +12,15 @@ import {
   Price,
   ArrowContainer,
 } from "./styles";
-import image4 from "./image4.jpg";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-export default function HomeCarousel({data}) {
+import useBreakpoint from "../../../../utilities/mediaQuery";
+import { breakingPoints } from "../../../../global/theme";
+export default function HomeCarousel({ data }) {
+  const isSmallScreen=useBreakpoint(breakingPoints.sm)
+  const nbOfVisibleProducts=isSmallScreen?1:4
   const [carouselIndex, setcarouselIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -29,13 +31,44 @@ export default function HomeCarousel({data}) {
     setcarouselIndex(carouselIndex - 1);
   };
 
+  const divRef = useRef(null);
+  const [startX, setStartX] = useState(null);
+
+  const handleTouchStart = (event) => {
+    setStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchMove = (event) => {
+    if (startX) {
+      const currentX = event.touches[0].clientX;
+      const deltaX = currentX - startX;
+
+      if (deltaX > 5) {
+        if (carouselIndex !== 0) handleleft();
+      } else if (deltaX < -5) {
+        if (data.length > carouselIndex + nbOfVisibleProducts) handleright();
+      }
+
+      setStartX(null);
+    }
+  };
 
   return (
     <Container>
-      <ArrowContainer style={{ left: "10px" }} onClick={handleright}>
+      {console.log(carouselIndex)}
+      <ArrowContainer
+        style={{ left: "10px" }}
+        onClick={() => carouselIndex !== 0 && handleleft()}
+
+      >
         <IoIosArrowBack />
       </ArrowContainer>
-      <CarouselContainer carouselIndex={carouselIndex}>
+      <CarouselContainer
+        carouselIndex={carouselIndex}
+        ref={divRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
         {data.map((product) => {
           return (
             <ProductContainer>
@@ -56,7 +89,11 @@ export default function HomeCarousel({data}) {
           );
         })}
       </CarouselContainer>
-      <ArrowContainer onClick={handleleft} style={{ right: "10px" }}>
+      <ArrowContainer
+        style={{ right: "10px" }}
+        onClick={() => data.length > carouselIndex + nbOfVisibleProducts && handleright()}
+
+      >
         <IoIosArrowForward />
       </ArrowContainer>
     </Container>
