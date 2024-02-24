@@ -45,7 +45,7 @@ export default function Footer() {
             <Wrapper style={{ width: "10%" }}>
               <Title>All Categories</Title>
               <CategoriesContainer>
-                {categories.slice(0, 4).map(({ category }) => (
+                {categories?.slice(0, 4)?.map(({ category }) => (
                   <Category>{category}</Category>
                 ))}
                 {categories?.length > 4 && (

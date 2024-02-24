@@ -16,17 +16,20 @@ import {
 import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addCategories } from "../../redux/categories/categoriesActions";
 
 export default function Navbar({ isFadeIn, navBackground }) {
   const { isLoading, response } = useGetCategoriesQuery();
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const { products = [] } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isLoading) {
       setCategories(response?.data);
+      dispatch(addCategories(response?.data));
     }
   }, [isLoading]);
 

@@ -46,7 +46,7 @@ export default function CustomizedTables({
       return text;
     }
 
-    const truncatedWords = words.slice(0, limit);
+    const truncatedWords = words?.slice(0, limit);
     const truncatedText = truncatedWords.join(" ");
 
     return `${truncatedText} ...`;
@@ -57,7 +57,7 @@ export default function CustomizedTables({
       return null;
     }
 
-    const renderedItems = array.slice(0, 1).map((item, index) => (
+    const renderedItems = array?.slice(0, 1)?.map((item, index) => (
       <li key={index} style={{ alignSelf: "flex-start" }}>
         {item}
       </li>

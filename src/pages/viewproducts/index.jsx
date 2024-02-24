@@ -13,13 +13,14 @@ import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
 import { useLocation } from "react-router-dom";
 import image1 from "./image1.jpg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProducts } from "../../redux/products/productsActions";
 
 export default function ViewProducts() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const dispatch = useDispatch();
+  const categories = useSelector((state) => state?.categories) || [];
 
   const type = queryParams.get("type") || "men";
   const category = queryParams.get("category") || "pants";
@@ -28,6 +29,9 @@ export default function ViewProducts() {
     type,
     category,
   });
+  const categoryImage = categories.find(
+    (elm) => elm.category === category && elm.type === type
+  ).imageUrl;
 
   const [products, setProducts] = useState([]);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
@@ -48,7 +52,9 @@ export default function ViewProducts() {
   return (
     <Container>
       <HeaderContainer>
-        <Background src={image1} />
+        <Background
+          src={`https://storage.googleapis.com/ecommerce-bucket-testing/${categoryImage}`}
+        />
         <CategoryTitle>{category}</CategoryTitle>
       </HeaderContainer>
       <Wrapper>

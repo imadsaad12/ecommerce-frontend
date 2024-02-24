@@ -68,6 +68,7 @@ export default function ProductInformation({
         isEditCategoryOpen={isEditCategoryPopupOpen}
         refreshCategories={refreshCategories}
         selectedIdForAction={selectedIdForAction}
+        categories={categories}
       />
 
       <DeleteProductPopup

@@ -4,11 +4,13 @@ import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 import { cartReducer } from "./reducers/cartReducer";
 import { productsReducer } from "./reducers/productsReducer";
+import { categoryReducer } from "./reducers/categoriesReducer";
 import { thunk } from "redux-thunk";
 
 const rootReducer = combineReducers({
   cart: cartReducer,
   products: productsReducer,
+  categories: categoryReducer,
 });
 
 const persistConfig = {
