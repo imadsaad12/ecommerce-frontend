@@ -1,9 +1,10 @@
 import React from "react";
 import { Container, Gradient, Image, SubTitle, Title, TitleContainer } from "./styles";
 import back from "./back.jpg";
-export default function Section5() {
+export default function Section5({inView}) {
   return (
     <Container>
+      {console.log(inView)}
       <Image src={back} />
       <TitleContainer>
         <Title>MORE THAN FASHION</Title>
