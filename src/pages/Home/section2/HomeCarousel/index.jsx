@@ -14,13 +14,12 @@ import {
 } from "./styles";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useBreakpoint from "../../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../../global/theme";
 export default function HomeCarousel({ data }) {
-  const isSmallScreen=useBreakpoint(breakingPoints.sm)
-  const nbOfVisibleProducts=isSmallScreen?1:4
+  const isSmallScreen = useBreakpoint(breakingPoints.sm);
+  const nbOfVisibleProducts = isSmallScreen ? 1 : 4;
   const [carouselIndex, setcarouselIndex] = useState(0);
   const navigate = useNavigate();
 
@@ -59,7 +58,6 @@ export default function HomeCarousel({ data }) {
       <ArrowContainer
         style={{ left: "10px" }}
         onClick={() => carouselIndex !== 0 && handleleft()}
-
       >
         <IoIosArrowBack />
       </ArrowContainer>
@@ -91,8 +89,9 @@ export default function HomeCarousel({ data }) {
       </CarouselContainer>
       <ArrowContainer
         style={{ right: "10px" }}
-        onClick={() => data.length > carouselIndex + nbOfVisibleProducts && handleright()}
-
+        onClick={() =>
+          data.length > carouselIndex + nbOfVisibleProducts && handleright()
+        }
       >
         <IoIosArrowForward />
       </ArrowContainer>

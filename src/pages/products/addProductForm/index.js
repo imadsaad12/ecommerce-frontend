@@ -38,6 +38,11 @@ export default function AddProductForm({
     });
 
   const handleOnAddProduct = () => {
+    const updatedSizes = formUtils
+      ?.getValues()
+      ?.sizes.filter((elm) => elm !== null);
+    formUtils.setValue("sizes", updatedSizes);
+
     if (isEditingMode) {
       editProductApi(selectedProductToUpdate._id, formUtils.getValues());
     } else {

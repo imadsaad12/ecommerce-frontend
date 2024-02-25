@@ -6,13 +6,23 @@ import { toast } from "react-toastify";
 const addCategory = async (payload) => {
   try {
     const url = ADD_CATEGORY_URL;
-    if (!payload.category || !payload.type) {
-      toast.error("Category and type fields cannot be empty");
-      throw new Error("Category and type fields cannot be empty");
+    if (!payload.category || !payload.type || !payload?.file) {
+      toast.error("Category , type and image fields cannot be empty");
+      throw new Error("Category , type and image fields cannot be empty");
     }
-    const response = await axios.post(url, payload, {
+
+    const formData = new FormData();
+    formData.append("category", payload.category);
+    formData.append("type", payload.type);
+    formData.append("file", payload.file);
+
+    const response = await axios.post(url, formData, {
       withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
+
     return response;
   } catch (error) {
     throw error;

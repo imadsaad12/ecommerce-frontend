@@ -107,7 +107,9 @@ export default function MainSidebar({ sideOpen, handleSidebar }) {
                     return (
                       <CategoryName
                         onClick={() => {
-                          navigate(`/?type=${type}&category=${category} `);
+                          navigate(
+                            `/products?type=${type}&category=${category} `
+                          );
                           closeHandle();
                         }}
                       >

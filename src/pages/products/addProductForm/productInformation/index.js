@@ -31,9 +31,7 @@ export default function ProductInformation({
   const [isDeleteCategoryPopupOpen, setIsDeleteCategoryPopupOpen] =
     useState(false);
   const [isEditCategoryPopupOpen, setIsEditCategoryPopupOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(
-    selectedProductToUpdate?.category || ""
-  );
+
   const [selectedIdForAction, setSelectedIdFroAction] = useState("");
   const [selectedType, setSelectedType] = useState(
     selectedProductToUpdate?.type || ""
@@ -70,7 +68,7 @@ export default function ProductInformation({
         isEditCategoryOpen={isEditCategoryPopupOpen}
         refreshCategories={refreshCategories}
         selectedIdForAction={selectedIdForAction}
-        setSelectedCategory={setSelectedCategory}
+        categories={categories}
       />
 
       <DeleteProductPopup
@@ -114,7 +112,7 @@ export default function ProductInformation({
               label="type"
               {...register("type")}
               onChange={({ target: { value } }) => setSelectedType(value)}
-              defaultValue={selectedProductToUpdate?.type}
+              defaultValue={selectedProductToUpdate?.type || ""}
             >
               <MenuItem value={"men"}>Men</MenuItem>
               <MenuItem value={"women"}>Women</MenuItem>
@@ -130,8 +128,7 @@ export default function ProductInformation({
             <Select
               label="category"
               {...register("category")}
-              onChange={({ target: { value } }) => setSelectedCategory(value)}
-              defaultValue={selectedProductToUpdate?.category}
+              defaultValue={selectedProductToUpdate?.category || ""}
               style={{ height: "55px" }}
             >
               {categories
@@ -188,6 +185,22 @@ export default function ProductInformation({
               {...register(key)}
             />
           ))}
+          <FormControl
+            style={{
+              width: isSmallScreen ? "90%" : "20%",
+              marginTop: isSmallScreen && "15px",
+            }}
+          >
+            <InputLabel>Priority</InputLabel>
+            <Select
+              label="isHighPriority"
+              {...register("isHighPriority")}
+              defaultValue={selectedProductToUpdate?.isHighPriority}
+            >
+              <MenuItem value={false}>Low</MenuItem>
+              <MenuItem value={true}>High</MenuItem>
+            </Select>
+          </FormControl>
         </FormContainer>
       </Collapse>
     </>

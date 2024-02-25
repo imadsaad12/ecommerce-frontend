@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useRef, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -8,6 +8,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useAddCategoryQuery } from "../../../../../apis/categories/addCategory";
 import { LoadingButton } from "@mui/lab";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FileInput, Image, ImageContainer, UploadContainer } from "./styles";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AddCategoryPopup({
   isAddCategoryOpen,
@@ -15,6 +17,8 @@ export default function AddCategoryPopup({
   formUtils,
   refreshCategories,
 }) {
+  const [file, setFile] = useState({});
+  const [imageUrl, setImageUrl] = useState("");
   const { register, getValues, setValue } = formUtils;
   const { handleApiCall, isPending } = useAddCategoryQuery({
     onSuccess: () => {
@@ -33,12 +37,41 @@ export default function AddCategoryPopup({
     handleApiCall({
       category: getValues()?.categoryName.toLowerCase(),
       type: getValues()?.categoryType,
+      file,
     });
+
+  const fileInputRef = useRef(null);
+
+  const openFileInput = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files[0];
+    const uniqueId = uuidv4();
+    const modifiedFileName = `${uniqueId}`;
+    const modifiedFile = new File([selectedFile], modifiedFileName, {
+      type: selectedFile.type,
+    });
+    const url = URL.createObjectURL(selectedFile);
+    setImageUrl(url);
+
+    if (modifiedFile) {
+      setFile(modifiedFile);
+    }
+  };
 
   return (
     <Dialog open={isAddCategoryOpen} onClose={handleClose} fullWidth>
       <DialogTitle>Add Category</DialogTitle>
-      <DialogContent>
+      <DialogContent
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <FormControl style={{ width: "100%", marginTop: "15px" }}>
           <InputLabel>Type</InputLabel>
           <Select label="type" {...register("categoryType")}>
@@ -56,6 +89,35 @@ export default function AddCategoryPopup({
           {...register("categoryName")}
           style={{ marginTop: "15px" }}
         />
+        {imageUrl !== "" ? (
+          <ImageContainer>
+            <Image src={imageUrl} />
+            <Button
+              variant="outlined"
+              color="error"
+              style={{
+                width: "100px",
+                height: "50px",
+              }}
+              onClick={() => {
+                setImageUrl("");
+                setFile(null);
+              }}
+            >
+              Delete
+            </Button>
+          </ImageContainer>
+        ) : (
+          <UploadContainer onClick={openFileInput}>
+            Click to image for category
+            <FileInput
+              type="file"
+              ref={fileInputRef}
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+          </UploadContainer>
+        )}
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>

@@ -159,6 +159,7 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
                 MenuProps={{ style: { height: "300px" } }}
                 onChange={({ target: { value } }) => setColor(value)}
                 style={{ maxHeight: "55px" }}
+                defaultValue={"#000000"}
               >
                 {colorsOptions.map(({ text, color }) => {
                   return (

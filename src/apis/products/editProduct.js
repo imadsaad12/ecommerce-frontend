@@ -43,6 +43,7 @@ const editProduct = async (id, payload) => {
     formData.append("description", payload.description);
     formData.append("price", payload.price);
     formData.append("type", payload.type);
+    formData.append("isHighPriority", payload.isHighPriority);
 
     payload.images.forEach((imageData, index) => {
       if (imageData.color) {
