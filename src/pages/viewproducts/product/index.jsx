@@ -45,7 +45,7 @@ export default function Product({ product }) {
         <ImageContainer>
           <Image
             src={findImage(selectedColor)}
-            onClick={() => navigate("/product", { state: { product } })}
+            onClick={() => navigate(`/products/${product._id}`)}
           />
         </ImageContainer>
         <Name>{name}</Name>

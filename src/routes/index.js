@@ -33,7 +33,7 @@ export default function Routes() {
           <Route path={ORDERS} Component={withLayout(Orders)} />
           <Route path={PRODUCTS} Component={withLayout(Products)} />
           <Route
-            path={"/product"}
+            path={"/products/:id"}
             Component={Layout(Product, "nontransparent")}
           />
           <Route path={"/"} Component={Layout(Home, "nontransparent")} />
