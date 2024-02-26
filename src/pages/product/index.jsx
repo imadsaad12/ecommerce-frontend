@@ -3,27 +3,27 @@ import { Container, ProductContainer } from "./styles";
 import ProductGallery from "./productGallery";
 import ProductDetails from "./productDetails";
 import Carousel from "../../components/Carousel";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { formatImages } from "../../utilities/formatProducts";
 import { useGetProductByIdQuery } from "../../apis/products/getProductById";
 
 export default function Product() {
   const { id } = useParams();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
   const { response, isLoading } = useGetProductByIdQuery(id);
 
   useEffect(() => {
     if (!isLoading) {
       setProduct(response.data);
     }
-  }, [isLoading]);
+  }, [isLoading, response]);
 
   return (
     <Container>
-      {!isLoading && (
+      {product && (
         <>
           <ProductContainer>
-            <ProductGallery images={formatImages(product)} />
+            <ProductGallery images={formatImages(product?.images)} />
             <ProductDetails pdata={product} />
           </ProductContainer>
           <Carousel selectedProduct={product} setSelectedProduct={setProduct} />
