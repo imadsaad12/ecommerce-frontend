@@ -17,9 +17,17 @@ export default function Cart() {
     <Container>
       <Header isFormOpen={isFormOpen} setIsFormOpen={setIsFormOpen} />
       {products.length === 0 ? (
-        <>
+        <div
+          style={{
+            height: "20vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "50px",
+          }}
+        >
           <Message>Your shopping cart is currently empty !!</Message>
-        </>
+        </div>
       ) : (
         <>
           {isFormOpen ? (

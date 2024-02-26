@@ -6,6 +6,7 @@ import Carousel from "../../components/Carousel";
 import { useParams } from "react-router-dom";
 import { formatImages } from "../../utilities/formatProducts";
 import { useGetProductByIdQuery } from "../../apis/products/getProductById";
+import ProductDetailsSkeleton from "./Skeleteon/index";
 
 export default function Product() {
   const { id } = useParams();
@@ -20,7 +21,7 @@ export default function Product() {
 
   return (
     <Container>
-      {product && (
+      {product ? (
         <>
           <ProductContainer>
             <ProductGallery images={formatImages(product?.images)} />
@@ -28,6 +29,8 @@ export default function Product() {
           </ProductContainer>
           <Carousel selectedProduct={product} setSelectedProduct={setProduct} />
         </>
+      ) : (
+        <ProductDetailsSkeleton />
       )}
     </Container>
   );
