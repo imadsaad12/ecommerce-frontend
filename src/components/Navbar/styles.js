@@ -19,8 +19,9 @@ export const Container = styled.div`
   animation-timing-function: linear;
   animation-fill-mode: forwards;
   z-index: 10000;
-  transition: top 1s ease-in-out;
+  /* transition: top 1s ease-in-out; */
   height: 14vh;
+  transition: all 0.5s ease-in-out;
 `;
 export const Header = styled.div`
   width: 100%;

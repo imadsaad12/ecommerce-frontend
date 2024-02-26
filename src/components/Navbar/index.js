@@ -46,7 +46,7 @@ export default function Navbar({ isFadeIn, navBackground }) {
                 <DropDown>
                   {categories
                     ?.filter((category) => category.type === type)
-                    .map(({ category }) => {
+                    ?.map(({ category }) => {
                       return (
                         <CategoryName
                           onClick={() =>

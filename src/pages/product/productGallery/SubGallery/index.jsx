@@ -9,6 +9,8 @@ import {
   ArrowContainer,
 } from "./styles";
 import { IoIosArrowBack } from "react-icons/io";
+import useBreakpoint from "../../../../utilities/mediaQuery";
+import { breakingPoints } from "../../../../global/theme";
 
 export default function SubGallery({
   images,
@@ -17,10 +19,12 @@ export default function SubGallery({
   handleleft,
   handleright,
 }) {
+  const isSmallScreen = useBreakpoint(breakingPoints.sm);
+  const nbimages = isSmallScreen ? 4 : 5;
   const [carouselIndex, setcarouselIndex] = useState(0);
 
   const carouselleft = () => {
-    if (images.length > currentIndex + 1) {
+    if (images.length > carouselIndex + nbimages) {
       setcarouselIndex(carouselIndex + 1);
       setcurrentIndex(currentIndex + 1);
     }

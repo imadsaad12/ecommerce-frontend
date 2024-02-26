@@ -1,6 +1,10 @@
 import React from "react";
-import { Container, inputStyle, nameInputStyle } from "./styles";
-import { TextField } from "@mui/material";
+import {
+  Container,
+  WhiteBorderTextField,
+  inputStyle,
+  nameInputStyle,
+} from "./styles";
 import { LoadingButton } from "@mui/lab";
 import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/theme";
@@ -82,7 +86,7 @@ export default function AddressInformation({
 
   return (
     <Container>
-      <TextField
+      <WhiteBorderTextField
         style={nameInputStyle(isSmallScreen)}
         name="clientFullName"
         label="Full name"
@@ -95,7 +99,7 @@ export default function AddressInformation({
       />
 
       {fields.map(({ name, label, type }) => (
-        <TextField
+        <WhiteBorderTextField
           style={inputStyle(isSmallScreen)}
           name={name}
           label={label}

@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { TextField } from "@mui/material";
 
 export const Container = styled.div`
   display: flex;
@@ -17,3 +18,14 @@ export const inputStyle = (isSmallScreen) => ({
 export const nameInputStyle = (isSmallScreen) => ({
   width: isSmallScreen ? "90%" : "calc(80% + 20px)",
 });
+
+export const WhiteBorderTextField = styled(TextField)`
+  & label.Mui-focused {
+    color: gray;
+  }
+  & .MuiOutlinedInput-root {
+    &.Mui-focused fieldset {
+      border-color: gray;
+    }
+  }
+`;

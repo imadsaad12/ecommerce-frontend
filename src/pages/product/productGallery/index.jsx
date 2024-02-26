@@ -11,6 +11,7 @@ export default function ProductGallery({ images }) {
   const handleright = () => {
     if (currentIndex - 1 >= 0) {
       setcurrentIndex(currentIndex - 1);
+
     }
   };
   return (

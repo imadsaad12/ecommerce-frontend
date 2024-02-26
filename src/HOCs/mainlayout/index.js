@@ -8,6 +8,7 @@ import Footer from "../../components/footer";
 
 const withLayout = (WrappedComponent, navBackground) => {
   return function Layout() {
+    const [currentNav, setCurrentNav] = useState(navBackground);
     const [isFadeIn, setIsFadeIn] = useState(true);
     const [sideOpen, setsideOpen] = useState(false);
 
@@ -24,6 +25,13 @@ const withLayout = (WrappedComponent, navBackground) => {
         const currentScrollPos = window.pageYOffset;
 
         if (prevScrollPos > currentScrollPos) {
+          if (window.location.pathname === "/products") {
+            if (currentScrollPos > 450) {
+              setCurrentNav("non-transparent");
+            } else {
+              setCurrentNav("transparent");
+            }
+          }
           setIsFadeIn(true);
         } else {
           setIsFadeIn(false);
@@ -38,7 +46,7 @@ const withLayout = (WrappedComponent, navBackground) => {
         {isSmallScreen ? (
           <MainSidebar handleSidebar={handleSidebar} sideOpen={sideOpen} />
         ) : (
-          <Navbar isFadeIn={isFadeIn} navBackground={navBackground} />
+          <Navbar isFadeIn={isFadeIn} navBackground={currentNav} />
         )}
         {isSmallScreen && <MenuBurger onClick={handleSidebar} />}
         <WrappedComponent isFadeIn={isFadeIn} />
