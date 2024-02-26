@@ -11,7 +11,7 @@ export const Container = styled.div`
   align-items: center;
   line-height: 1px;
   @media (max-width: ${breakingPoints.sm}px) {
-    width: 50%;
+    width: 70%;
     height: 30%;
     margin-bottom: 10px;
     margin-top: -10px;
@@ -25,8 +25,9 @@ export const Row = styled.div`
   align-items: center;
   width: 65%;
   color: gray;
-  font-size: 18px;
+  font-size: 15px;
   @media (max-width: ${breakingPoints.sm}px) {
+    width: 80%;
     font-size: 10px;
   }
 `;
@@ -36,6 +37,9 @@ export const Divider = styled.div`
   width: 65%;
   height: 1px;
   background-color: lightgray;
+  @media (max-width: ${breakingPoints.sm}px) {
+    width: 80%;
+  }
 `;
 
 export const TotalPrice = styled.p`
@@ -49,3 +53,17 @@ export const buttonStyle = (isSmallScreen) => ({
   backgroundColor: "green",
   fontSize: isSmallScreen ? "8px" : "15px",
 });
+
+export const DeliveryDetailsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: row;
+  font-size: 12px;
+  gap: 2px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    width: 60%;
+    gap: 4px;
+    font-size: 8px;
+  }
+`;

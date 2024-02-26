@@ -20,10 +20,8 @@ export default function MainGallery({
       const deltaX = currentX - startX;
 
       if (deltaX > 5) {
-        console.log("righttt");
         handleright();
       } else if (deltaX < -5) {
-        console.log("lefttttt");
         handleleft();
       }
 

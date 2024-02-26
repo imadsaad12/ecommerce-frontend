@@ -30,9 +30,10 @@ export default function Product({ product }) {
     const urlPrefix = "https://storage.googleapis.com/ecommerce-bucket-testing";
     const selectedColorName = colorsOptions.find(
       ({ color }) => color === selectedColor
-    ).text;
+    )?.text;
 
     const image = images.find((img) => img.color === selectedColorName);
+
     if (image) {
       return `${urlPrefix}/${image.url}`;
     }

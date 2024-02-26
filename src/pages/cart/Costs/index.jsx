@@ -1,5 +1,12 @@
 import React from "react";
-import { Container, Divider, Row, TotalPrice, buttonStyle } from "./styles";
+import {
+  Container,
+  DeliveryDetailsContainer,
+  Divider,
+  Row,
+  TotalPrice,
+  buttonStyle,
+} from "./styles";
 import { Button } from "@mui/material";
 import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/theme";
@@ -12,16 +19,20 @@ export default function Costs({ setIsFormOpen, totalPrice }) {
     <Container>
       <Row>
         <p>Sub total</p>
-        <p>{formatPrice(totalPrice)}$</p>
+        <p>{formatPrice(totalPrice)}</p>
       </Row>
       <Row>
         <p>Delivery</p>
-        <p>3$</p>
+        <DeliveryDetailsContainer>
+          <p>$3 in beirut </p>
+          <p>/</p>
+          <p>$6 out of beirut</p>
+        </DeliveryDetailsContainer>
       </Row>
       <Divider />
       <Row>
         <TotalPrice>Total</TotalPrice>
-        <TotalPrice>{formatPrice(totalPrice + 3)}$</TotalPrice>
+        <TotalPrice>{formatPrice(totalPrice)}$ + delivery</TotalPrice>
       </Row>
       <Button
         variant="contained"

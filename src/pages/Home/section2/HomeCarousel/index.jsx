@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   CarouselContainer,
   Container,
@@ -14,14 +14,13 @@ import {
 } from "./styles";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
 import useBreakpoint from "../../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../../global/theme";
+
 export default function HomeCarousel({ data }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
   const nbOfVisibleProducts = isSmallScreen ? 1 : 4;
   const [carouselIndex, setcarouselIndex] = useState(0);
-  const navigate = useNavigate();
 
   const handleright = () => {
     setcarouselIndex(carouselIndex + 1);
@@ -54,7 +53,6 @@ export default function HomeCarousel({ data }) {
 
   return (
     <Container>
-      {console.log(carouselIndex)}
       <ArrowContainer
         style={{ left: "10px" }}
         onClick={() => carouselIndex !== 0 && handleleft()}
