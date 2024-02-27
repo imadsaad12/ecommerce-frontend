@@ -8,9 +8,13 @@ display: flex;
 align-items: center;
 justify-content: center;
 position: relative;
+margin-top: 10vh;
 @media (max-width: ${breakingPoints.sm}px) {
     height: 30vh;
+    margin-top: 10vh;
+
   }
+
 `;
 export const Image = styled.img`
 height: ${props=>props.isFadeIn?"100%":"80%"};

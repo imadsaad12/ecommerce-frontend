@@ -8,6 +8,7 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  position: relative;
   @media (max-width: ${breakingPoints.sm}px) {
     height: 40vh;
   }
@@ -18,6 +19,13 @@ export const LeftContainer = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 20px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    z-index: 3;
+
+  }
 
 `;
 export const Image = styled.img`
@@ -51,6 +59,12 @@ export const RightContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    z-index: 2;
+  }
 `;
 const TraitAnimation1 = keyframes`
   from {

@@ -4,7 +4,7 @@ import { breakingPoints, themecolors } from "../../global/theme";
 export const Container = styled.div`
   width: 100%;
   position: fixed;
-  top: ${(props) => (props.isFadeIn ? "0" : "-100px")};
+  top: ${(props) => (props.isFadeIn ? "0" : "-14vh")};
   display: flex;
   flex-direction: column;
   align-items: center;

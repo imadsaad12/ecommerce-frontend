@@ -5,9 +5,7 @@ import SubGallery from "./SubGallery";
 import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/theme";
 
-export default function ProductGallery({ images }) {
-  const [MainGalleryIndex, setMainGalleryIndex] = useState(0);
-  const [SubGalleryIndex, setSubGalleryIndex] = useState(0);
+export default function ProductGallery({ images,MainGalleryIndex,setMainGalleryIndex,SubGalleryIndex,setSubGalleryIndex }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
   const subgallerynbimages = isSmallScreen ? 4 : 5;
 
