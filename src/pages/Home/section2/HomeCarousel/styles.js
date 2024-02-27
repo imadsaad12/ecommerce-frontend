@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { breakingPoints } from "../../../../global/theme";
-
+import { themecolors } from "../../../../global/theme";
 export const Container = styled.div`
   width: 100%;
   position: relative;
@@ -29,13 +29,14 @@ export const ArrowContainer = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: white;
+  background-color: ${themecolors.white};
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
   top: 35%;
   z-index: 1;
+  color:${themecolors.black}
 `;
 
 export const ProductContainer = styled.div`
@@ -96,7 +97,10 @@ export const Details = styled.div`
 export const Name = styled.span`
   font-size: 15px;
   font-weight: bold;
+  color:${themecolors.black}
 `;
 export const Price = styled.span`
   font-size: 15px;
+  color:${themecolors.black}
+
 `;

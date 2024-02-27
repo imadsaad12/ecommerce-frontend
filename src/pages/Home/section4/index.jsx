@@ -16,9 +16,7 @@ export default function Section4() {
       <LeftContainer>
         <Line />
         <TitleContainer>
-          <Title>WE</Title>
-          <Title>SPARK</Title>
-          <Title>PASSION</Title>
+          <Title>WE <br /> SPARK <br /> PASSION</Title>
         </TitleContainer>
       </LeftContainer>
       <RightContainer>

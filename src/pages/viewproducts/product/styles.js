@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakingPoints } from "../../../global/theme";
+import { breakingPoints, themecolors } from "../../../global/theme";
 
 export const Container = styled.div`
   width: 25%;
@@ -26,6 +26,7 @@ export const ImageContainer = styled.div`
   width: 100%;
   height: 60vh;
   overflow: hidden;
+  border-radius:20px;
 `;
 export const Image = styled.img`
   width: 100%;
@@ -41,8 +42,11 @@ export const Name = styled.span`
   font-size: 18px;
   font-weight: bold;
   margin-top:4px;
+  color :${themecolors.black}
 `;
 export const Price = styled.span`
   font-size: 18px;
   font-weight: normal;
+  color :${themecolors.black}
+
 `;

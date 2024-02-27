@@ -9,29 +9,29 @@ import {
   ArrowContainer,
 } from "./styles";
 import { IoIosArrowBack } from "react-icons/io";
-import useBreakpoint from "../../../../utilities/mediaQuery";
-import { breakingPoints } from "../../../../global/theme";
 
 export default function SubGallery({
   images,
-  currentIndex,
-  setcurrentIndex,
+  MainGalleryIndex,
+  setMainGalleryIndex,
   handleleft,
   handleright,
+  SubGalleryIndex,
+  setSubGalleryIndex
 }) {
-  const isSmallScreen = useBreakpoint(breakingPoints.sm);
-  const nbimages = isSmallScreen ? 4 : 5;
-  const [carouselIndex, setcarouselIndex] = useState(0);
+
 
   const carouselleft = () => {
-    if (images.length > carouselIndex + nbimages) {
-      setcarouselIndex(carouselIndex + 1);
-      setcurrentIndex(currentIndex + 1);
-    }
+    // if (images.length > SubGalleryIndex + nbimages) {
+    //   setSubGalleryIndex(SubGalleryIndex + 1);
+    //   setMainGalleryIndex(MainGalleryIndex + 1);
+    // }
   };
 
   const handleimage = (i) => {
-    setcurrentIndex(i);
+    setMainGalleryIndex(i);
+    // setSubGalleryIndex(i)
+
   };
 
   const divRef = useRef(null);
@@ -48,11 +48,11 @@ export default function SubGallery({
 
       if (deltaX > 5) {
         handleright();
-        if (images.length > currentIndex) setcarouselIndex(carouselIndex - 1);
+        // if (images.length > MainGalleryIndex) setSubGalleryIndex(SubGalleryIndex - 1);
       } else if (deltaX < -5) {
         handleleft();
-        if (images.length > currentIndex + 1)
-          setcarouselIndex(carouselIndex + 1);
+        // if (images.length > MainGalleryIndex + 1)
+        //   setSubGalleryIndex(SubGalleryIndex + 1);
       }
 
       setStartX(null);
@@ -62,9 +62,9 @@ export default function SubGallery({
   useEffect(() => {
     const handleScroll = (event) => {
       const scrollDirection = event.deltaX > 0 ? "right" : "left";
-      if (scrollDirection === "right" && currentIndex < images.length - 1) {
+      if (scrollDirection === "right" && MainGalleryIndex < images.length - 1) {
         handleright();
-      } else if (scrollDirection === "left" && currentIndex > 0) {
+      } else if (scrollDirection === "left" && MainGalleryIndex > 0) {
         handleleft();
       }
     };
@@ -74,17 +74,17 @@ export default function SubGallery({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [currentIndex]);
+  }, [MainGalleryIndex]);
 
   return (
     <Container>
       <ArrowContainer>
-        <IoIosArrowBack color="black" onClick={carouselleft} />
+        <IoIosArrowBack color="black" onClick={handleleft} />
       </ArrowContainer>
 
       <CarouselContainer>
         <Carousel
-          carouselIndex={carouselIndex}
+          SubGalleryIndex={SubGalleryIndex}
           ref={divRef}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
@@ -93,7 +93,7 @@ export default function SubGallery({
             return (
               <ImageContainer>
                 <ImageWrapper onClick={() => handleimage(index)}>
-                  <Image src={image} activeIndex={currentIndex} Index={index} />
+                  <Image src={image} activeIndex={MainGalleryIndex} Index={index} />
                 </ImageWrapper>
               </ImageContainer>
             );

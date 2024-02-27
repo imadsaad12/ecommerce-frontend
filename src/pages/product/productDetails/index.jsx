@@ -171,6 +171,7 @@ export default function ProductDetails({ pdata }) {
         >
           Add To Cart
         </LoadingButton>
+        {console.log(pdata)}
       </QuantityPurchase>
     </Container>
   );

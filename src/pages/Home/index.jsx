@@ -7,8 +7,7 @@ import Section5 from "./section5";
 import Section2 from "./section2";
 
 export default function Home({isFadeIn}) {
-
-
+  
   return (
     <Container>
       <Section1 isFadeIn={isFadeIn} />

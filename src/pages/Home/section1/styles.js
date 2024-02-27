@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { breakingPoints } from "../../../global/theme";
-
+import { themecolors } from "../../../global/theme";
 export const Container = styled.div`
 height: 100vh;
 width: 100%;
@@ -26,7 +26,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-color: white;
+color: ${themecolors.white};
 
 `;
 export const TitleTop = styled.span`

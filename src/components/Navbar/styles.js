@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { breakingPoints } from "../../global/theme";
+import { breakingPoints, themecolors } from "../../global/theme";
 
 export const Container = styled.div`
   width: 100%;
@@ -26,13 +26,13 @@ export const Container = styled.div`
 export const Header = styled.div`
   width: 100%;
   background-color: ${(props) =>
-    props.navBackground == "transparent" ? "white" : "black"};
+    props.navBackground == "transparent" ? `${themecolors.white}` : `${themecolors.black}`};
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 0.6;
   color: ${(props) =>
-    props.navBackground == "transparent" ? "black" : "white"};
+    props.navBackground == "transparent" ? `${themecolors.black}` : `${themecolors.white}`};
 `;
 export const NavMain = styled.div`
   width: 95%;
@@ -54,7 +54,7 @@ export const CategoryUnderLine = styled.div`
   height: 2px;
   transition: all 0.4s ease-in-out;
   background-color: ${(props) =>
-    props.navBackground == "transparent" ? "white" : "black"};
+    props.navBackground == "transparent" ? `${themecolors.white}` :`${themecolors.black}`};
 `;
 const DropDownAnimation = keyframes`
   from {
@@ -68,7 +68,7 @@ export const DropDown = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: white;
+  background-color: ${themecolors.white};
   width: 200px;
   height: 200px;
   display: none;
@@ -83,6 +83,8 @@ export const CategoryName = styled.span`
   cursor: pointer;
   font-size: 13px;
   text-transform: capitalize;
+  color :${themecolors.black};
+  font-weight: bold;
 `;
 
 export const CategoryContainer = styled.div`
@@ -106,16 +108,17 @@ export const Category = styled.div`
   cursor: pointer;
   text-transform: capitalize;
   color: ${(props) =>
-    props.navBackground == "transparent" ? "white" : "black"};
+    props.navBackground == "transparent" ? `${themecolors.white}` : `${themecolors.black}`};
+  font-weight:bold;
 `;
 
 export const Logo = styled.div`
-  color: black;
+  color: ${themecolors.black};
   font-size: 20px;
 `;
 
 export const NavBtns = styled.div`
-  background-color: black;
+  background-color: ${themecolors.black};
 `;
 
 export const CartIconContainer = styled.div`
@@ -129,7 +132,7 @@ export const CartIconContainer = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 2;
-    background-color: black;
+    background-color: ${themecolors.black};
     border-radius: 50%;
     bottom: 40px;
     right: 20px;
@@ -144,7 +147,7 @@ export const NumberOfItems = styled.div`
   background-color: red;
   width: 20px;
   height: 20px;
-  color: white;
+  color: ${themecolors.white};
   font-weight: bold;
   display: flex;
   justify-content: center;

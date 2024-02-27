@@ -35,9 +35,9 @@ export const Carousel = styled.div`
   height: 100%;
   transition: all 0.5s ease-in-out;
   white-space: nowrap;
-  transform: ${(props) => `translateX(-${props.carouselIndex * 20}%)`};
+  transform: ${(props) => `translateX(-${props.SubGalleryIndex * 20}%)`};
   @media (max-width: ${breakingPoints.md}px) {
-    transform: ${(props) => `translateX(-${props.carouselIndex * 25}%)`};
+    transform: ${(props) => `translateX(-${props.SubGalleryIndex * 25}%)`};
   }
 `;
 export const ImageContainer = styled.div`

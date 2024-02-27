@@ -13,7 +13,7 @@ export const Carousel = styled.div`
   display: block;
   white-space: nowrap;
   width: 100%;
-  transform: ${(props) => `translateX(-${props.currentIndex * 100}%)`};
+  transform: ${(props) => `translateX(-${props.MainGalleryIndex * 100}%)`};
   transition: all 1s ease-in-out;
   height: 75vh;
 `;

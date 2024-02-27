@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { themecolors } from "../../global/theme";
 
 export const Container = styled.div`
   display: flex;
@@ -33,6 +34,6 @@ export const CategoryTitle = styled.span`
   position: absolute;
   font-size: 30px;
   font-weight: bold;
-  color: white;
+  color :${themecolors.white};
   text-transform: capitalize;
 `;

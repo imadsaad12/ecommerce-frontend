@@ -3,7 +3,7 @@ import { Container, Image, Carousel } from "./styles";
 
 export default function MainGallery({
   images,
-  currentIndex,
+  MainGalleryIndex,
   handleright,
   handleleft,
 }) {
@@ -32,9 +32,9 @@ export default function MainGallery({
   useEffect(() => {
     const handleScroll = (event) => {
       const scrollDirection = event.deltaX > 0 ? "right" : "left";
-      if (scrollDirection === "right" && currentIndex < images.length - 1) {
+      if (scrollDirection === "right" && MainGalleryIndex < images.length - 1) {
         handleright();
-      } else if (scrollDirection === "left" && currentIndex > 0) {
+      } else if (scrollDirection === "left" && MainGalleryIndex > 0) {
         handleleft();
       }
     };
@@ -44,12 +44,12 @@ export default function MainGallery({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [currentIndex]);
+  }, [MainGalleryIndex]);
 
   return (
     <Container>
       <Carousel
-        currentIndex={currentIndex}
+        MainGalleryIndex={MainGalleryIndex}
         ref={divRef}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}

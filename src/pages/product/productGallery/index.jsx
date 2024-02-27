@@ -2,30 +2,38 @@ import React, { useState } from "react";
 import { Container } from "./styles";
 import MainGallery from "./MainGallery";
 import SubGallery from "./SubGallery";
+import useBreakpoint from "../../../utilities/mediaQuery";
+import { breakingPoints } from "../../../global/theme";
 
 export default function ProductGallery({ images }) {
-  const [currentIndex, setcurrentIndex] = useState(0);
-  const handleleft = () =>
-    currentIndex + 1 < images.length && setcurrentIndex(currentIndex + 1);
+  const [MainGalleryIndex, setMainGalleryIndex] = useState(0);
+  const [SubGalleryIndex, setSubGalleryIndex] = useState(0);
+  const isSmallScreen = useBreakpoint(breakingPoints.sm);
+  const subgallerynbimages = isSmallScreen ? 4 : 5;
 
+  const handleleft = () =>{
+  MainGalleryIndex + 1 < images.length && setMainGalleryIndex(MainGalleryIndex + 1);
+  SubGalleryIndex + subgallerynbimages<images.length   && setSubGalleryIndex(SubGalleryIndex+1)
+  }
   const handleright = () => {
-    if (currentIndex - 1 >= 0) {
-      setcurrentIndex(currentIndex - 1);
-
-    }
+    MainGalleryIndex >0 && setMainGalleryIndex(MainGalleryIndex - 1);
+    SubGalleryIndex >0 && setSubGalleryIndex(SubGalleryIndex-1)
   };
   return (
     <Container>
+      {console.log(MainGalleryIndex,SubGalleryIndex)}
       <MainGallery
         images={images}
         handleleft={handleleft}
         handleright={handleright}
-        currentIndex={currentIndex}
+        MainGalleryIndex={MainGalleryIndex}
       />
       <SubGallery
-        setcurrentIndex={setcurrentIndex}
+        setMainGalleryIndex={setMainGalleryIndex}
         images={images}
-        currentIndex={currentIndex}
+        SubGalleryIndex={SubGalleryIndex}
+        setSubGalleryIndex={setSubGalleryIndex}
+        MainGalleryIndex={MainGalleryIndex}
         handleleft={handleleft}
         handleright={handleright}
       />

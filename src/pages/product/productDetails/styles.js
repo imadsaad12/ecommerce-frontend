@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakingPoints } from "../../../global/theme";
+import { breakingPoints, themecolors } from "../../../global/theme";
 
 export const Container = styled.div`
   flex: 1;
@@ -14,6 +14,7 @@ export const Name = styled.span`
   /* font-size: 25px; */
   font-weight: bold;
   text-transform: capitalize;
+  color:${themecolors.black}
 `;
 export const Price = styled.span`
   font-size: 25px;

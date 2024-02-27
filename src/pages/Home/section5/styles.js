@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { breakingPoints } from "../../../global/theme";
+import { breakingPoints, themecolors } from "../../../global/theme";
 
 export const Container = styled.div`
 height: 70vh;
@@ -28,7 +28,7 @@ align-items: center;
 justify-content: center;
 width: 50%;
 text-align: center;
-color: white;
+color: ${themecolors.white};
 z-index: 3;
 `;
 export const Title = styled.span`
@@ -46,6 +46,7 @@ font-weight: normal;
     font-size:15px;
 
   }
+  color: ${themecolors.white};
 `;
 
 export const Gradient = styled.span`
@@ -57,6 +58,5 @@ position: absolute;
 width: 100%;
 height: 100%;
 z-index: 2;
-
 
 `;
