@@ -10,7 +10,7 @@ export const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         products:
-          state?.products.length > 0
+          state?.products?.length > 0
             ? [...state.products, action.payload]
             : [action.payload],
       };
