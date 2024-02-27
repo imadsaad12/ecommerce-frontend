@@ -1,9 +1,11 @@
-import React,{useState,useEffect} from 'react'
-import { Container } from './styles'
-import HomeCarousel from "./HomeCarousel"
-import { useGetProductsQuery } from '../../../apis/products/getProducts'
+import React, { useState, useEffect } from "react";
+import { Container } from "./styles";
+import HomeCarousel from "./HomeCarousel";
+import { useGetProductsQuery } from "../../../apis/products/getProducts";
 export default function Section2() {
-  const { response, isLoading } = useGetProductsQuery([]);
+  const { response, isLoading } = useGetProductsQuery({
+    getProductsWithHightPriority: true,
+  });
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +16,7 @@ export default function Section2() {
 
   return (
     <Container>
-      <HomeCarousel data={products}/>
+      <HomeCarousel data={products} />
     </Container>
-  )
+  );
 }

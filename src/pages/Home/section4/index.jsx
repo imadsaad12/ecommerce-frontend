@@ -7,17 +7,23 @@ import {
   Line,
   RightContainer,
   TitleContainer,
-  Title
+  Title,
 } from "./styles";
 import women from "./women.jpg";
-export default function Section4() {
+export default function Section4({ targetRef, inView }) {
   return (
     <Container>
-      <LeftContainer>
-        <Line />
-        <TitleContainer>
-          <Title>WE <br /> SPARK <br /> PASSION</Title>
-        </TitleContainer>
+      <LeftContainer ref={targetRef}>
+        {inView && (
+          <>
+            <Line />
+            <TitleContainer>
+              <Title>
+                WE <br /> SPARK <br /> PASSION
+              </Title>
+            </TitleContainer>
+          </>
+        )}
       </LeftContainer>
       <RightContainer>
         <Image src={women} />

@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, ProductContainer } from "./styles";
 import ProductGallery from "./productGallery";
 import ProductDetails from "./productDetails";
 import Carousel from "../../components/Carousel";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { formatImages } from "../../utilities/formatProducts";
+import { useGetProductByIdQuery } from "../../apis/products/getProductById";
+import ProductDetailsSkeleton from "./Skeleteon/index";
 
 export default function Product() {
-  const { state = {} } = useLocation();
-  const [product, setProduct] = useState(state?.product || {});
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const { response, isLoading } = useGetProductByIdQuery(id);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setProduct(response.data);
+    }
+  }, [isLoading, response]);
 
   return (
     <Container>
-      {product && (
+      {product ? (
         <>
           <ProductContainer>
             <ProductGallery images={formatImages(product?.images)} />
@@ -20,6 +29,8 @@ export default function Product() {
           </ProductContainer>
           <Carousel selectedProduct={product} setSelectedProduct={setProduct} />
         </>
+      ) : (
+        <ProductDetailsSkeleton />
       )}
     </Container>
   );

@@ -2,9 +2,9 @@ import axios from "axios";
 import { GET_PRODUCTS_URL } from "../URLs";
 import { useQuery } from "@tanstack/react-query";
 
-const getProducts = async (category, type) => {
+const getProducts = async (category, type, getProductsWithHightPriority) => {
   try {
-    const url = GET_PRODUCTS_URL(category, type);
+    const url = GET_PRODUCTS_URL(category, type, getProductsWithHightPriority);
 
     const response = await axios.get(url, { withCredentials: true });
 
@@ -14,9 +14,13 @@ const getProducts = async (category, type) => {
   }
 };
 
-export const useGetProductsQuery = ({ category = "", type = "" }) => {
+export const useGetProductsQuery = ({
+  category = "",
+  type = "",
+  getProductsWithHightPriority = "",
+}) => {
   const { error, isLoading, status, data, refetch } = useQuery({
-    queryFn: () => getProducts(category, type),
+    queryFn: () => getProducts(category, type, getProductsWithHightPriority),
     retry: false,
     queryKey: ["products"],
   });
