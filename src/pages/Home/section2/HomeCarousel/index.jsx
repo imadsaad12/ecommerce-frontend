@@ -16,11 +16,13 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import useBreakpoint from "../../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../../global/theme";
+import { useNavigate } from "react-router";
 
 export default function HomeCarousel({ data }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
   const nbOfVisibleProducts = isSmallScreen ? 1 : 4;
   const [carouselIndex, setcarouselIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleright = () => {
     setcarouselIndex(carouselIndex + 1);
@@ -73,6 +75,7 @@ export default function HomeCarousel({ data }) {
                   <ImageWrapper>
                     <Image
                       src={`https://storage.googleapis.com/ecommerce-bucket-testing/${product?.images[0].url}`}
+                      onClick={() => navigate(`/products/${product._id}`)}
                     />
                   </ImageWrapper>
                   <Details>
