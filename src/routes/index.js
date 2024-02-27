@@ -20,6 +20,7 @@ import Order from "../pages/order";
 import Layout from "../HOCs/mainlayout";
 import Cart from "../pages/cart";
 import Home from "../pages/Home";
+import NotFound from "../pages/notFound";
 
 export default function Routes() {
   const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ export default function Routes() {
           />
           <Route path={"/order"} Component={Layout(Order, "nontransparent")} />
           <Route path={"/cart"} Component={Layout(Cart, "nontransparent")} />
+          <Route path={"/*"} element={<NotFound />} />
         </RoutesWrapper>
       </BrowserRouter>
     </QueryClientProvider>
