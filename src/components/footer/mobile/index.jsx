@@ -33,15 +33,13 @@ export default function MobileFooter() {
         <Wrapper style={{ width: "40%" }}>
           <Title>All Categories</Title>
           <CategoriesContainer>
-            {categories?.slice(0, 4)?.map(({ category }) => (
+            {categories?.slice(0, 2)?.map(({ category }) => (
               <Category>{category}</Category>
             ))}
-            {categories?.length > 4 && (
-              <Category key="more">... and more</Category>
-            )}
+            {categories?.length > 2 && <Category key="more">. . .</Category>}
           </CategoriesContainer>
         </Wrapper>
-        <Wrapper style={{ width: "20%" }}>
+        <Wrapper style={{ width: "20%", alignSelf: "flex-start" }}>
           <Title>Genders</Title>
           <CategoriesContainer>
             <Gender>Men</Gender>
@@ -61,7 +59,7 @@ export default function MobileFooter() {
             </Circle>
           </SocialMediaContainer>
         </Wrapper>
-        <Wrapper style={{ fontSize: "80px", justifyContent: "flex-end" }}>
+        <Wrapper style={{ fontSize: "80px", alignSelf: "flex-end" }}>
           <SiNike />
         </Wrapper>
       </Container>

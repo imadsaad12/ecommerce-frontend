@@ -7,10 +7,10 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 10vh;
+  /* margin-top: 10vh; */
   @media (max-width: ${breakingPoints.sm}px) {
     flex-direction: column;
-    margin-top: 3vh;
+    /* margin-top: 3vh; */
   }
 `;
 

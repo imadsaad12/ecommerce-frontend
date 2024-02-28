@@ -32,25 +32,25 @@ const withLayout = (WrappedComponent, navBackground) => {
       setsideOpen(!sideOpen);
     };
 
-    useEffect(() => {
-      const handleScroll = () => {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollTop = window.scrollY;
+    // useEffect(() => {
+    //   const handleScroll = () => {
+    //     const windowHeight = window.innerHeight;
+    //     const documentHeight = document.documentElement.scrollHeight;
+    //     const scrollTop = window.scrollY;
 
-        if (windowHeight + scrollTop >= documentHeight - 200) {
-          setReachedBottom(true);
-        } else {
-          setReachedBottom(false);
-        }
-      };
+    //     if (windowHeight + scrollTop >= documentHeight - 200) {
+    //       setReachedBottom(true);
+    //     } else {
+    //       setReachedBottom(false);
+    //     }
+    //   };
 
-      window.addEventListener("scroll", handleScroll);
+    //   window.addEventListener("scroll", handleScroll);
 
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, []);
+    //   return () => {
+    //     window.removeEventListener("scroll", handleScroll);
+    //   };
+    // }, []);
 
     useEffect(() => {
       let prevScrollPos = window.pageYOffset;

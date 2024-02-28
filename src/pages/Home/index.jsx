@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Container } from "./styles";
+import { AnimateCharacter, Container } from "./styles";
 import Section1 from "./section1";
 import Section3 from "./section3";
 import Section4 from "./section4";
@@ -59,6 +59,21 @@ export default function Home({ isFadeIn }) {
       <Section3 targetRef={menRef} inView={menInView} />
       <Section4 targetRef={womenRef} inView={womenInView} />
       <Section5 />
+      <div
+        style={{
+          height: "30vh",
+          width: "80%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontStyle: "italic",
+          alignSelf: "center",
+        }}
+      >
+        <AnimateCharacter>
+          Revolutionizing e-commerce for tomorrow.
+        </AnimateCharacter>
+      </div>
     </Container>
   );
 }

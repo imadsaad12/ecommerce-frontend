@@ -9,6 +9,10 @@ export const Container = styled.div`
   width: 90%;
   height: 25vh;
   line-height: 1px;
+  margin-top: 10vh;
+  @media (max-width: ${breakingPoints.sm}px) {
+    margin-top: 5vh;
+  }
 `;
 
 export const Title = styled.p`
