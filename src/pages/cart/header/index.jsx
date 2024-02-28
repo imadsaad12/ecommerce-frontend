@@ -17,7 +17,7 @@ export default function Header({ isFormOpen, setIsFormOpen }) {
           onClick={() => setIsFormOpen(false)}
         />
       )}
-      {isFormOpen && (
+      {isFormOpen && !isSmallScreen && (
         <Button
           startIcon={<FaArrowLeftLong />}
           style={{

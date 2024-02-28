@@ -32,7 +32,7 @@ export const SubTitle = styled.p`
 
 export const buttonStyle = {
   position: "absolute",
-  top: "13px",
-  left: "10px",
+  top: "75px",
+  left: "5px",
   color: "black",
 };
