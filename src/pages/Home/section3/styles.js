@@ -77,7 +77,7 @@ const TraitAnimation1 = keyframes`
 `;
 const TraitAnimation2 = keyframes`
   from {
-    margin-left: 50px;
+    margin-left: 70px;
     opacity: 0;
   }
   to {
@@ -146,7 +146,7 @@ export const BottomTrait = styled.div`
   font-size: 15px;
   color: ${themecolors.black};
   @media (max-width: ${breakingPoints.sm}px) {
-    font-size: 13px;
+    font-size: 11px;
     width: 80%;
   }
 `;
