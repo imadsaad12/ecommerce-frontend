@@ -12,6 +12,8 @@ export default function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const { response, isLoading } = useGetProductByIdQuery(id);
+  const [MainGalleryIndex, setMainGalleryIndex] = useState(0);
+  const [SubGalleryIndex, setSubGalleryIndex] = useState(0);
 
   useEffect(() => {
     if (!isLoading) {
@@ -24,8 +26,19 @@ export default function Product() {
       {product ? (
         <>
           <ProductContainer>
-            <ProductGallery images={formatImages(product?.images)} />
-            <ProductDetails pdata={product} />
+            <ProductGallery
+              images={formatImages(product?.images)}
+              MainGalleryIndex={MainGalleryIndex}
+              setMainGalleryIndex={setMainGalleryIndex}
+              SubGalleryIndex={SubGalleryIndex}
+              setSubGalleryIndex={setSubGalleryIndex}
+            />
+            <ProductDetails
+              pdata={product}
+              setMainGalleryIndex={setMainGalleryIndex}
+              SubGalleryIndex={SubGalleryIndex}
+              setSubGalleryIndex={setSubGalleryIndex}
+            />
           </ProductContainer>
           <Carousel selectedProduct={product} setSelectedProduct={setProduct} />
         </>

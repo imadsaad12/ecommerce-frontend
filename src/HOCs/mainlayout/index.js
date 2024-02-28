@@ -5,6 +5,7 @@ import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
 import MainSidebar from "../../components/mainsidebar";
 import Footer from "../../components/footer";
+import MobileNavbar from "../../components/MobileNavbar";
 
 const withLayout = (WrappedComponent, navBackground) => {
   return function Layout() {
@@ -48,7 +49,13 @@ const withLayout = (WrappedComponent, navBackground) => {
         ) : (
           <Navbar isFadeIn={isFadeIn} navBackground={currentNav} />
         )}
-        {isSmallScreen && <MenuBurger onClick={handleSidebar} />}
+        {isSmallScreen && (
+          <MobileNavbar
+            handleSidebar={handleSidebar}
+            isFadeIn={isFadeIn}
+            navBackground={currentNav}
+          />
+        )}
         <WrappedComponent isFadeIn={isFadeIn} />
         <Footer />
       </Wrapper>

@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 110vh;
   width: 90%;
   display: flex;
+  position: relative;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -19,6 +20,14 @@ export const RightContainer = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 20px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    z-index: 3;
+
+  }
+  
 `;
 export const Image = styled.img`
   width: 100%;
@@ -53,6 +62,12 @@ export const LeftContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  @media (max-width: ${breakingPoints.sm}px) {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    z-index: 2;
+  }
 `;
 
 export const Line = styled.div`
@@ -85,6 +100,17 @@ const TitleAnimation = keyframes`
 
   }
 `;
+const TitleAnimationMobile = keyframes`
+  from {
+    letter-spacing: 20px;
+    opacity: 0;
+  }
+  to {
+    letter-spacing: 0px;
+    opacity: 1;
+
+  }
+`;
 export const Title = styled.span`
   font-size: 60px;
   font-weight: bold;
@@ -92,6 +118,8 @@ export const Title = styled.span`
   animation: 1s ${TitleAnimation} ease-in-out;
   @media (max-width: ${breakingPoints.sm}px) {
     font-size: 25px;
+    animation: 0.6s ${TitleAnimationMobile} ease-in-out;
+
   }
   color: ${themecolors.black};
   text-align: center;

@@ -25,7 +25,7 @@ import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/theme";
 import { formatPrice } from "../../../utilities/formatPrice";
 
-export default function ProductDetails({ pdata }) {
+export default function ProductDetails({ pdata ,setMainGalleryIndex,SubGalleryIndex,setSubGalleryIndex}) {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const { products } = useSelector((state) => state?.cart);
@@ -137,6 +137,10 @@ export default function ProductDetails({ pdata }) {
         colors={colors}
         selectedColor={selectedOptions.color}
         setselectedOptions={setselectedOptions}
+        pdata={pdata}
+        setMainGalleryIndex={setMainGalleryIndex}
+        SubGalleryIndex={SubGalleryIndex}
+        setSubGalleryIndex={setSubGalleryIndex}
       />
       <Sizes
         selectedOptions={selectedOptions}
