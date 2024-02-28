@@ -7,6 +7,7 @@ import {
 } from "./styles";
 
 export default function Colors({ colors, setselectedColor, selectedColor }) {
+  
   useEffect(() => {
     setselectedColor(colors[0]);
   }, []);

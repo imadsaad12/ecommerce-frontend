@@ -41,6 +41,9 @@ export default function ViewProducts() {
       dispatch(addProducts(response.data));
       setProducts(response?.data);
     }
+  }, [isLoading]);
+
+  useEffect(() => {
     if (!isFetchingCategories) {
       const imageUrl = categoriesResponse?.data?.find(
         (elm) => elm.category === category && elm.type === type
@@ -48,11 +51,14 @@ export default function ViewProducts() {
 
       setCategoryImage(imageUrl);
     }
+  }, [isFetchingCategories]);
 
+  useEffect(() => {
+    setProducts([]);
     setIsLoadingCustomized(true);
     refetch()
       .then(({ data: { data } }) => {
-        dispatch(addProducts(data));
+        // dispatch(addProducts(data));
         setProducts(data);
       })
       .catch((err) => console.log(err));
@@ -60,8 +66,7 @@ export default function ViewProducts() {
     setTimeout(() => {
       setIsLoadingCustomized(false);
     }, 500);
-    
-  }, [isLoading, isFetchingCategories, location.search]);
+  }, [location.search]);
 
   return (
     <Container>

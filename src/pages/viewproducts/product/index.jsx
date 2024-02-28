@@ -28,6 +28,7 @@ export default function Product({ product }) {
 
   const findImage = () => {
     const urlPrefix = "https://storage.googleapis.com/ecommerce-bucket-testing";
+
     const selectedColorName = colorsOptions.find(
       ({ color }) => color === selectedColor
     )?.text;
