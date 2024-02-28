@@ -25,7 +25,9 @@ const withLayout = (WrappedComponent, navBackground) => {
     const navigate = useNavigate();
 
     const isSmallScreen = useBreakpoint(breakingPoints.sm);
-
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
     const handleSidebar = () => {
       setsideOpen(!sideOpen);
     };
