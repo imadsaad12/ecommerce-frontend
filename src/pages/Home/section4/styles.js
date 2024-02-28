@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { breakingPoints, themecolors } from "../../../global/theme";
+import { AnimateCharacter } from "../styles";
 
 export const Container = styled.div`
   height: 110vh;
@@ -25,9 +26,7 @@ export const RightContainer = styled.div`
     right: 0;
     width: 50%;
     z-index: 3;
-
   }
-  
 `;
 export const Image = styled.img`
   width: 100%;
@@ -119,8 +118,14 @@ export const Title = styled.span`
   @media (max-width: ${breakingPoints.sm}px) {
     font-size: 25px;
     animation: 0.6s ${TitleAnimationMobile} ease-in-out;
-
   }
   color: ${themecolors.black};
   text-align: center;
+`;
+
+export const AnimatedWords = styled(AnimateCharacter)`
+  font-size: 60px;
+  @media (max-width: ${breakingPoints.sm}px) {
+    font-size: 30px;
+  }
 `;

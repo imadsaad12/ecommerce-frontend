@@ -13,6 +13,7 @@ const textclip = keyframes`
   }
 `;
 export const AnimateCharacter = styled.h3`
+  text-align: center;
   text-transform: uppercase;
   background-image: linear-gradient(
     -225deg,
