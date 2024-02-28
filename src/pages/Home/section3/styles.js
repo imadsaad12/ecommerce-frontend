@@ -9,6 +9,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
   @media (max-width: ${breakingPoints.sm}px) {
     height: 40vh;
   }
