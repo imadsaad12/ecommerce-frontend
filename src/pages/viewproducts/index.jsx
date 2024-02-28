@@ -38,7 +38,7 @@ export default function ViewProducts() {
 
   useEffect(() => {
     if (!isLoading) {
-      dispatch(addProducts(response.data));
+      // dispatch(addProducts(response.data));
       setProducts(response?.data);
     }
   }, [isLoading]);
@@ -54,11 +54,10 @@ export default function ViewProducts() {
   }, [isFetchingCategories]);
 
   useEffect(() => {
-    setProducts([]);
     setIsLoadingCustomized(true);
     refetch()
       .then(({ data: { data } }) => {
-        dispatch(addProducts(data));
+        // dispatch(addProducts(data));
         setProducts(data);
       })
       .catch((err) => console.log(err));
