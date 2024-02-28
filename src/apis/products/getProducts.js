@@ -22,7 +22,7 @@ export const useGetProductsQuery = ({
   const { error, isLoading, status, data, refetch } = useQuery({
     queryFn: () => getProducts(category, type, getProductsWithHightPriority),
     retry: false,
-    queryKey: ["products"],
+    queryKey: [`products-${category}-${type}`],
   });
 
   return { isLoading, error, status, response: data, refetch };
