@@ -26,13 +26,17 @@ export const Container = styled.div`
 export const Header = styled.div`
   width: 100%;
   background-color: ${(props) =>
-    props.navBackground == "transparent" ? `${themecolors.white}` : `${themecolors.black}`};
+    props.navBackground == "transparent"
+      ? `${themecolors.white}`
+      : `${themecolors.black}`};
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 0.6;
   color: ${(props) =>
-    props.navBackground == "transparent" ? `${themecolors.black}` : `${themecolors.white}`};
+    props.navBackground == "transparent"
+      ? `${themecolors.black}`
+      : `${themecolors.white}`};
 `;
 export const NavMain = styled.div`
   width: 95%;
@@ -54,7 +58,9 @@ export const CategoryUnderLine = styled.div`
   height: 2px;
   transition: all 0.4s ease-in-out;
   background-color: ${(props) =>
-    props.navBackground == "transparent" ? `${themecolors.white}` :`${themecolors.black}`};
+    props.navBackground == "transparent"
+      ? `${themecolors.white}`
+      : `${themecolors.black}`};
 `;
 const DropDownAnimation = keyframes`
   from {
@@ -83,7 +89,7 @@ export const CategoryName = styled.span`
   cursor: pointer;
   font-size: 13px;
   text-transform: capitalize;
-  color :${themecolors.black};
+  color: ${themecolors.black};
   font-weight: bold;
 `;
 
@@ -108,8 +114,10 @@ export const Category = styled.div`
   cursor: pointer;
   text-transform: capitalize;
   color: ${(props) =>
-    props.navBackground == "transparent" ? `${themecolors.white}` : `${themecolors.black}`};
-  font-weight:bold;
+    props.navBackground == "transparent"
+      ? `${themecolors.white}`
+      : `${themecolors.black}`};
+  font-weight: bold;
 `;
 
 export const Logo = styled.div`
@@ -131,7 +139,7 @@ export const CartIconContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
+    z-index: 1000;
     background-color: ${themecolors.black};
     border-radius: 50%;
     bottom: 40px;
