@@ -1,10 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
-import {
-  BrowserRouter,
-  Routes as RoutesWrapper,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes as RoutesWrapper, Route } from "react-router";
 import { ADMIN, ORDERS, PRODUCTS, SIGN_IN } from "./URLs";
 import withLayout from "../HOCs/withLayout";
 import Admin from "../pages/admin";
