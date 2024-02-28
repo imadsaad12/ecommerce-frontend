@@ -58,7 +58,7 @@ export default function ViewProducts() {
     setIsLoadingCustomized(true);
     refetch()
       .then(({ data: { data } }) => {
-        // dispatch(addProducts(data));
+        dispatch(addProducts(data));
         setProducts(data);
       })
       .catch((err) => console.log(err));
