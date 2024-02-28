@@ -2,7 +2,8 @@
   "name": "ui",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "homepage":"https://ecommerce-frontend-9u70.onrender.com",
+  "dependencie": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.3.4",
