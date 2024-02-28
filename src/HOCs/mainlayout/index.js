@@ -38,6 +38,10 @@ const withLayout = (WrappedComponent, navBackground) => {
           setIsFadeIn(false);
         }
 
+        if (currentScrollPos < 10) {
+          setIsFadeIn(true);
+        }
+
         prevScrollPos = currentScrollPos;
       };
     });
