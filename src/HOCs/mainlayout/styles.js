@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { CiMenuBurger } from "react-icons/ci";
+import { themecolors } from "../../global/theme";
 
 export const Wrapper = styled.div`
   position: relative;

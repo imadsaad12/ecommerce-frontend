@@ -51,6 +51,7 @@ export const Quantity = styled.div`
   height: 60px;
   width: 30px;
   border-radius: 20px;
+  font-weight: bold;
 `;
 
 export const Buttons = styled.div`

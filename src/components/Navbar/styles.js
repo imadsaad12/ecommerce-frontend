@@ -10,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${(props) =>
-    props.navBackground == "transparent" ? "transparent" : "white"};
+    props.navBackground == "transparent" ? "transparent" : themecolors.white};
   box-shadow: ${(props) =>
     props.navBackground == "transparent"
       ? "null"
@@ -84,6 +84,7 @@ export const DropDown = styled.div`
   gap: 10px;
   padding: 20px;
   z-index: 10000;
+  overflow: hidden;
 `;
 export const CategoryName = styled.span`
   cursor: pointer;

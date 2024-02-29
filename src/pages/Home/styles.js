@@ -18,9 +18,9 @@ export const AnimateCharacter = styled.h3`
   background-image: linear-gradient(
     -225deg,
     #000000 0%,
-    #808080 29%,
-    #d3d3d3 67%,
-    #333333 100%
+    #F9F7F2 29%,
+    #A8C5BC 67%,
+    #161A21 100%
   );
   background-size: auto auto;
   background-clip: border-box;

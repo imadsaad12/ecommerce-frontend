@@ -18,7 +18,7 @@ export const SizeContainer = styled.div`
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: 1px solid ${(props) => (props.stock == 0 ? "#D9D9D9" : "black")};
+  border: 1px solid ${(props) => (props.stock == 0 ? "#D9D9D9" : themecolors.black)};
   background-color: ${(props) =>
     props.size == props.selectedSize && props.availability
       ? themecolors.black

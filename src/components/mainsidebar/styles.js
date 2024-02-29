@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { keyframes } from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
+import { themecolors } from "../../global/theme";
 
 export const Container = styled.div`
   width: 100%;
@@ -12,13 +13,13 @@ export const Container = styled.div`
   align-items: center;
   height: 100vh;
   transition: all 0.5s ease-in-out;
-  background-color: white;
+  background-color: ${themecolors.white};
   z-index: 12;
 
 `;
 export const LogoContainer = styled.div`
   width: 80%;
-  color: black;
+  color: ${themecolors.black};
   font-size: 35px;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -31,14 +32,14 @@ export const Tab = styled.div`
   margin-top: 20px;
 `;
 export const Type = styled.div`
-  color: black;
+  color:  ${themecolors.black};;
   width: 60px;
   font-weight: bold;
   text-transform: capitalize;
 `;
 export const SubCategories = styled.div`
   width: 90%;
-  color: black;
+  color:  ${themecolors.black};;
   overflow: hidden;
   margin-top: 10px;
   max-height: ${(props) =>
@@ -77,4 +78,5 @@ export const CloseIcon = styled(IoMdClose)`
   right: 20px;
   top: 40px;
   font-size: 20px;
+  color: ${themecolors.black};
 `;

@@ -137,6 +137,9 @@ export const Line = styled.span`
   width: 100%;
   background-color: ${themecolors.main};
   position: absolute;
+  @media (max-width: ${breakingPoints.sm}px) {
+    height: 3px;
+  }
 `;
 export const BottomTrait = styled.div`
   flex: 1;

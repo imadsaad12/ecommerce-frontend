@@ -78,14 +78,9 @@ export const Line = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   background-color: ${themecolors.white};
-  gap: 5px;
   z-index: 3;
-  padding: 20px;
+  /* padding: 2px; */
 `;
 
 const TitleAnimation = keyframes`
@@ -111,7 +106,7 @@ const TitleAnimationMobile = keyframes`
   }
 `;
 export const Title = styled.span`
-  font-size: 60px;
+  font-size: 80px;
   font-weight: bold;
   letter-spacing: 0px;
   animation: 1s ${TitleAnimation} ease-in-out;
@@ -121,6 +116,7 @@ export const Title = styled.span`
   }
   color: ${themecolors.black};
   text-align: center;
+
 `;
 
 export const AnimatedWords = styled(AnimateCharacter)`

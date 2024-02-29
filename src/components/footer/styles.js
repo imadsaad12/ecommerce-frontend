@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { themecolors } from "../../global/theme";
 
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: ${themecolors.black};
   color: white;
   display: flex;
   flex-direction: row;
@@ -13,8 +14,8 @@ export const Container = styled.div`
 export const Root = styled.div`
   width: 100%;
   height: 40vh;
-  background-color: black;
-  color: white;
+  background-color: ${themecolors.black};;
+  color: ${themecolors.white};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -31,12 +32,12 @@ export const Wrapper = styled.div`
 
 export const Text = styled.p`
   font-size: 30px;
-  color: white;
+  color: ${themecolors.white};;
   font-weight: bold;
 `;
 export const Title = styled.p`
   font-size: 20px;
-  color: white;
+  color: ${themecolors.white};;
   font-weight: bold;
   align-self: flex-start;
 `;
@@ -74,7 +75,7 @@ export const Circle = styled.div`
   color: black;
   &:hover {
     background-color: #2b2b2b;
-    color: white;
+    color: ${themecolors.white};;
     cursor: pointer;
     transition: all 0.5s;
   }
@@ -83,7 +84,7 @@ export const Circle = styled.div`
 export const PoweredBy = styled.pre`
   font-size: 15px;
   text-align: center;
-  color: white;
+  color: ${themecolors.white};;
   font-style: italic;
   position: absolute;
   bottom: 1px;
@@ -91,7 +92,7 @@ export const PoweredBy = styled.pre`
 `;
 
 export const Link = styled.a`
-  color: white;
+  color: ${themecolors.white};;
   text-decoration: none;
   outline: none;
   &:hover {
