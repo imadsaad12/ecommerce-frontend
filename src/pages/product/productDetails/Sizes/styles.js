@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { themecolors } from "../../../../global/theme";
 
 export const Container = styled.div`
   display: flex;
@@ -20,10 +21,10 @@ export const SizeContainer = styled.div`
   border: 1px solid ${(props) => (props.stock == 0 ? "#D9D9D9" : "black")};
   background-color: ${(props) =>
     props.size == props.selectedSize && props.availability
-      ? "black"
+      ? themecolors.black
       : "transparent"};
   color: ${(props) =>
-    props.size == props.selectedSize && props.availability ? "white" : "black"};
+    props.size == props.selectedSize && props.availability ? themecolors.white : themecolors.black};
   position: relative;
   cursor: ${({ availability }) => (availability ? "pointer" : "not-allowed")};
   border-radius: 5px;
@@ -36,7 +37,7 @@ export const Size = styled.span`
 export const OutOfStock = styled.div`
   position: absolute;
   width: 1px;
-  background-color: black;
+  background-color: ${themecolors.black};
   rotate: 45deg;
   height: 140%;
 `;

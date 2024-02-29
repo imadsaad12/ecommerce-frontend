@@ -43,8 +43,8 @@ export const CounterContainer = styled.div`
   gap: 6px;
 `;
 export const Quantity = styled.div`
-  background-color: black;
-  color: white;
+  background-color: ${themecolors.black};
+  color: ${themecolors.white};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,8 +64,8 @@ export const Buttons = styled.div`
 export const AddtoCart = styled.button`
   width: 150px;
   border-radius: 20px;
-  background-color: ${({ isDisabled }) => (isDisabled ? "lightgray" : "black")};
-  color: white;
+  background-color: ${({ isDisabled }) => (isDisabled ? "lightgray" : themecolors.black)};
+  color: ${themecolors.white};
   height: 40px;
   outline: none;
   border: none;
@@ -74,10 +74,10 @@ export const AddtoCart = styled.button`
 
 export const addToCartStyle = (isDisabled) => ({
   textTransform: "capitalize",
-  color: "white",
+  color: themecolors.white,
   borderRadius: "10px",
   width: "140px",
   height: "40px",
-  backgroundColor: isDisabled ? "lightgray" : "black",
+  backgroundColor: isDisabled ? "lightgray" : themecolors.black,
   cursor: isDisabled ? "not-allowed" : "pointer",
 });

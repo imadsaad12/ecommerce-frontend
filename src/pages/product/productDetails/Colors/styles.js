@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { themecolors } from "../../../../global/theme";
 
 export const Container = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ export const SelectedContainer = styled.div`
   border-radius: 50%;
   border-width: 1px;
   border: ${(props) =>
-    props.color == props.selectedColor ? "1px solid black" : "transparent"};
+    props.color == props.selectedColor ? `1px solid ${themecolors.black}` : "transparent"};
 `;
 
 export const ColorCircle = styled.div`
@@ -32,6 +33,6 @@ export const ColorCircle = styled.div`
   transition: all 0.4s ease-in-out;
   background-color: ${(props) => props.color};
   border: ${({ color, selectedColor }) =>
-    selectedColor === color && "1px solid black"};
+    selectedColor === color && `1px solid ${themecolors.black}`};
   cursor: pointer;
 `;
