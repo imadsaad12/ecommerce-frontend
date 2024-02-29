@@ -39,6 +39,15 @@ const addProduct = async (payload) => {
       throw new Error("Please make sure you at least one image for each color");
     }
 
+    const atLeastOneColorForEachImage = payload?.images?.every(({ color }) =>
+      payload?.sizes?.some(({ color: imageColor }) => imageColor === color)
+    );
+
+    if (!atLeastOneColorForEachImage) {
+      toast.error("Please make sure you at least one color for each image");
+      throw new Error("Please make sure you at least one color for each image");
+    }
+
     formData.append("name", payload.name);
     formData.append("category", payload.category);
     formData.append("description", payload.description);

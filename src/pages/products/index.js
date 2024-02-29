@@ -92,7 +92,10 @@ export default function Products() {
               <Button
                 variant="contained"
                 style={{ backgroundColor: "#3F0097" }}
-                onClick={() => setIsFormOpen(true)}
+                onClick={() => {
+                  setIsFormOpen(true);
+                  setIsEditingMode(false);
+                }}
               >
                 Add Products
               </Button>

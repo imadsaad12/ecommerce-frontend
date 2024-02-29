@@ -9,10 +9,6 @@ const editProduct = async (id, payload) => {
     const url = EDIT_PRODUCT_URL(id);
 
     const formData = new FormData();
-    const atLeastOneValidSize = payload?.sizes?.some(
-      (sizeData) =>
-        sizeData?.size && sizeData?.color && sizeData?.inStock !== undefined
-    );
 
     if (
       !payload.name ||
@@ -25,6 +21,10 @@ const editProduct = async (id, payload) => {
       toast.error("Please make sure all required fields are filled");
       throw new Error("Please make sure all required fields are filled");
     }
+    const atLeastOneValidSize = payload?.sizes?.some(
+      (sizeData) =>
+        sizeData?.size && sizeData?.color && sizeData?.inStock !== undefined
+    );
     if (!atLeastOneValidSize) {
       toast.error("Please make sure you at least one size");
       throw new Error("Please make sure you at least one size");
@@ -37,6 +37,14 @@ const editProduct = async (id, payload) => {
     if (!atLeastOneImageForEachColor) {
       toast.error("Please make sure you at least one image for each color");
       throw new Error("Please make sure you at least one image for each color");
+    }
+    const atLeastOneColorForEachImage = payload?.images?.every(({ color }) =>
+      payload?.sizes?.some(({ color: imageColor }) => imageColor === color)
+    );
+
+    if (!atLeastOneColorForEachImage) {
+      toast.error("Please make sure you at least one color for each image");
+      throw new Error("Please make sure you at least one color for each image");
     }
 
     formData.append("name", payload.name);
