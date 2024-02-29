@@ -12,6 +12,7 @@ import { Button, TextField } from "@mui/material";
 import { useSignInQuery } from "../../apis/auth/sign-in";
 import { ADMIN } from "../../routes/URLs";
 import { useNavigate } from "react-router-dom";
+import { setCookie } from "../../utilities/manageCookies";
 
 export default function SignIn() {
   const [credentials, setCredentials] = useState({
@@ -20,7 +21,8 @@ export default function SignIn() {
   });
   const navigate = useNavigate();
 
-  const onSuccess = () => {
+  const onSuccess = ({ data }) => {
+    setCookie(data.accessToken);
     navigate(ADMIN);
   };
 
@@ -31,7 +33,7 @@ export default function SignIn() {
   const { handleApiCall } = useSignInQuery({
     onSuccess,
   });
-  
+
   const handleOnSubmit = () => handleApiCall(credentials);
   return (
     <Container>

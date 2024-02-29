@@ -2,6 +2,7 @@ import axios from "axios";
 import { ADD_CATEGORY_URL } from "../URLs";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { getCookie } from "../../utilities/manageCookies";
 
 const addCategory = async (payload) => {
   try {
@@ -17,9 +18,9 @@ const addCategory = async (payload) => {
     formData.append("file", payload.file);
 
     const response = await axios.post(url, formData, {
-      withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${getCookie("accessToken")}`,
       },
     });
 

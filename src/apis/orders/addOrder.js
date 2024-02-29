@@ -7,9 +7,7 @@ const addOrder = async (payload) => {
   try {
     const url = ADD_ORDER_URL;
 
-    const response = await axios.post(url, payload, {
-      withCredentials: true,
-    });
+    const response = await axios.post(url, payload);
     return response;
   } catch (error) {
     throw error;

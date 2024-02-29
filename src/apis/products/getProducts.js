@@ -6,7 +6,6 @@ const getProducts = async (category, type, getProductsWithHightPriority) => {
   try {
     const url = GET_PRODUCTS_URL(category, type, getProductsWithHightPriority);
 
-    // const response = await axios.get(url, { withCredentials: true });
     const response = await axios.get(url);
 
     return response;

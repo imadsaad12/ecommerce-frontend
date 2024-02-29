@@ -6,7 +6,7 @@ const getCategories = async () => {
   try {
     const url = GET_CATEGORIES_URL;
 
-    const response = await axios.get(url, { withCredentials: true });
+    const response = await axios.get(url);
 
     return response;
   } catch (error) {

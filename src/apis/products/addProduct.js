@@ -2,6 +2,7 @@ import axios from "axios";
 import { ADD_PRODUCT_URL } from "../URLs";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { getCookie } from "../../utilities/manageCookies";
 
 const addProduct = async (payload) => {
   try {
@@ -66,9 +67,9 @@ const addProduct = async (payload) => {
     });
 
     const response = await axios.post(url, formData, {
-      withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${getCookie("accessToken")}`,
       },
     });
     return response;

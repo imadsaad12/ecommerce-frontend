@@ -6,7 +6,7 @@ const signIn = async (payload) => {
   try {
     const url = SIGNIN_URL;
 
-    const response = await axios.post(url, payload, { withCredentials: true });
+    const response = await axios.post(url, payload);
     localStorage.setItem("isLoggedIn", "true");
     return response;
   } catch (error) {

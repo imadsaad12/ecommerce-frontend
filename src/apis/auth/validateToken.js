@@ -1,12 +1,17 @@
 import axios from "axios";
 import { VALIDATE_TOKEN_URL } from "../URLs";
 import { useQuery } from "@tanstack/react-query";
+import { getCookie } from "../../utilities/manageCookies";
 
 const validateToken = async () => {
   try {
     const url = VALIDATE_TOKEN_URL;
 
-    const response = await axios.get(url, { withCredentials: true });
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${getCookie("accessToken")}`,
+      },
+    });
 
     return response;
   } catch (error) {
