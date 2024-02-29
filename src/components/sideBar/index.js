@@ -37,9 +37,8 @@ export default function SideBar() {
     },
   ];
 
-  const handleLogout = () => deleteCookie();
-
-  function onSuccess() {
+  function handleLogout() {
+    deleteCookie();
     localStorage.setItem("isLoggedIn", "false");
     navigate("/");
   }
