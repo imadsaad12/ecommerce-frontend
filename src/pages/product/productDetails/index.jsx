@@ -25,7 +25,12 @@ import useBreakpoint from "../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../global/theme";
 import { formatPrice } from "../../../utilities/formatPrice";
 
-export default function ProductDetails({ pdata ,setMainGalleryIndex,SubGalleryIndex,setSubGalleryIndex}) {
+export default function ProductDetails({
+  pdata,
+  setMainGalleryIndex,
+  SubGalleryIndex,
+  setSubGalleryIndex,
+}) {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const { products } = useSelector((state) => state?.cart);
@@ -58,7 +63,6 @@ export default function ProductDetails({ pdata ,setMainGalleryIndex,SubGalleryIn
   const handleOnAddToCart = () => {
     setIsLoading(true);
     let newProducts = products;
-
     const formattedProduct = formatProduct({
       pdata,
       selectedOptions,
@@ -70,8 +74,8 @@ export default function ProductDetails({ pdata ,setMainGalleryIndex,SubGalleryIn
         productName === formattedProduct.productName &&
         size === formattedProduct.size &&
         color === formattedProduct.color &&
-        pdata.category === category &&
-        pdata.type === type
+        formattedProduct.category === category &&
+        formattedProduct.type === type
     );
 
     if (productAlreadyAdded) {
@@ -91,8 +95,8 @@ export default function ProductDetails({ pdata ,setMainGalleryIndex,SubGalleryIn
             productName === formattedProduct.productName &&
             size === formattedProduct.size &&
             color === formattedProduct.color &&
-            pdata.category === category &&
-            pdata.type === type
+            formattedProduct.category === category &&
+            formattedProduct.type === type
           ) {
             oldQuantity += quantity;
             totalPrice = oldQuantity * productPrice;

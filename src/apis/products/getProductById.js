@@ -5,9 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 const getProductById = async (id) => {
   try {
     const url = GET_PRODUCT_BY_ID_URL(id);
-    const response = await axios.get(url, {
-      withCredentials: true,
-    });
+    const response = await axios.get(url);
     return response;
   } catch (error) {
     throw error;

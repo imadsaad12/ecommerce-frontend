@@ -1,12 +1,17 @@
 import axios from "axios";
 import { GET_ORDERS_WITH_LIMITS_URL } from "../URLs";
 import { useQuery } from "@tanstack/react-query";
+import { getCookie } from "../../utilities/manageCookies";
 
 const getOrders = async (limit) => {
   try {
     const url = GET_ORDERS_WITH_LIMITS_URL(10);
 
-    const response = await axios.get(url, { withCredentials: true });
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${getCookie("accessToken")}`,
+      },
+    });
 
     return response;
   } catch (error) {

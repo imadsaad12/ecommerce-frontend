@@ -11,9 +11,8 @@ export const Container = styled.div`
   align-items: center;
 `;
 export const Root = styled.div`
-  margin-top: 100px;
   width: 100%;
-  height: 50vh;
+  height: 40vh;
   background-color: black;
   color: white;
   display: flex;
@@ -86,6 +85,9 @@ export const PoweredBy = styled.pre`
   text-align: center;
   color: white;
   font-style: italic;
+  position: absolute;
+  bottom: 1px;
+  width: 100%;
 `;
 
 export const Link = styled.a`

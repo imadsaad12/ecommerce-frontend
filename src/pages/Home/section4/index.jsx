@@ -8,8 +8,10 @@ import {
   RightContainer,
   TitleContainer,
   Title,
+  AnimatedWords,
 } from "./styles";
 import women from "./women.jpg";
+import { AnimateCharacter } from "../styles";
 export default function Section4({ targetRef, inView }) {
   return (
     <Container>
@@ -19,7 +21,9 @@ export default function Section4({ targetRef, inView }) {
             <Line />
             <TitleContainer>
               <Title>
-                WE <br /> SPARK <br /> PASSION
+                <AnimatedWords>
+                  WE <br /> SPARK <br /> PASSION
+                </AnimatedWords>
               </Title>
             </TitleContainer>
           </>

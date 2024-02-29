@@ -13,12 +13,14 @@ export const Container = styled.div`
 `;
 export const Root = styled.div`
   width: 100%;
-  height: 50vh;
+  /* height: fit-content; */
   background-color: black;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding-top: 30px;
+  padding-bottom: 80px;
 `;
 
 export const Wrapper = styled.div`
@@ -36,7 +38,7 @@ export const Text = styled.p`
   font-weight: bold;
 `;
 export const Title = styled.p`
-  font-size: 18px;
+  font-size: 15px;
   color: white;
   font-weight: bold;
   align-self: flex-start;
@@ -86,6 +88,9 @@ export const PoweredBy = styled.pre`
   text-align: center;
   color: white;
   font-style: italic;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
 `;
 
 export const Link = styled.a`

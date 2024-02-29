@@ -16,7 +16,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import useBreakpoint from "../../../../utilities/mediaQuery";
 import { breakingPoints } from "../../../../global/theme";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 export default function HomeCarousel({ data }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);

@@ -40,6 +40,8 @@ export const formatProduct = ({ pdata, selectedOptions, quantity }) => {
   product.totalPrice = pdata.price * quantity;
   product.productName = pdata.name;
   product.productPrice = pdata.price;
+  product.type = pdata.type;
+  product.category = pdata.category;
 
   return product;
 };

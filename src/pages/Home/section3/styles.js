@@ -25,16 +25,14 @@ export const LeftContainer = styled.div`
     left: 0;
     width: 50%;
     z-index: 3;
-
   }
-
 `;
 export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: all 0.5s ease-in-out;
-  &:hover { 
+  &:hover {
     transform: scale(1.5);
   }
 `;
@@ -69,7 +67,7 @@ export const RightContainer = styled.div`
 `;
 const TraitAnimation1 = keyframes`
   from {
-    margin-right: 100px;
+    margin-right: 50px;
     opacity: 0;
   }
   to {
@@ -80,7 +78,7 @@ const TraitAnimation1 = keyframes`
 `;
 const TraitAnimation2 = keyframes`
   from {
-    margin-left: 100px;
+    margin-left: 70px;
     opacity: 0;
   }
   to {
@@ -97,7 +95,7 @@ export const TraitContainer = styled.div`
   justify-content: center;
   gap: 4px;
   @media (max-width: ${breakingPoints.sm}px) {
-    width: 100%;
+    width: calc(100% - 50px);
   }
   &:nth-child(1) {
     animation: 1s ${TraitAnimation1} ease-in-out;
@@ -123,13 +121,13 @@ export const TraitTextTop = styled.span`
   @media (max-width: ${breakingPoints.sm}px) {
     font-size: 15px;
   }
-  color:${themecolors.black}
+  color: ${themecolors.black};
 `;
 export const TraitTextBottom = styled.span`
   font-weight: bold;
   font-size: 25px;
   text-align: center;
-  color:${themecolors.black};
+  color: ${themecolors.black};
   @media (max-width: ${breakingPoints.sm}px) {
     font-size: 15px;
   }
@@ -137,7 +135,7 @@ export const TraitTextBottom = styled.span`
 export const Line = styled.span`
   height: 6px;
   width: 100%;
-  background-color:${themecolors.main};
+  background-color: ${themecolors.main};
   position: absolute;
 `;
 export const BottomTrait = styled.div`
@@ -147,9 +145,9 @@ export const BottomTrait = styled.div`
   justify-content: center;
   text-align: center;
   font-size: 15px;
-  color:${themecolors.black};
+  color: ${themecolors.black};
   @media (max-width: ${breakingPoints.sm}px) {
-    font-size: 13px;
+    font-size: 11px;
     width: 80%;
   }
 `;

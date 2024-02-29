@@ -89,7 +89,7 @@ export default function AddProductForm({
           variant="contained"
           onClick={handleOnAddProduct}
         >
-          Add product
+          {isEditingMode ? "Edit" : "Add"} product
         </LoadingButton>
       </Container>
     </>
