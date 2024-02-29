@@ -28,9 +28,10 @@ export default function SignIn() {
     setCredentials({ ...credentials, [name]: value });
   };
 
-  const { handleApiCall, isLoading } = useSignInQuery({
+  const { handleApiCall } = useSignInQuery({
     onSuccess,
   });
+  
   const handleOnSubmit = () => handleApiCall(credentials);
   return (
     <Container>
