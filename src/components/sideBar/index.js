@@ -13,12 +13,12 @@ import { SlLogout } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 import { useLogOutQuery } from "../../apis/auth/logOut";
+import { deleteCookie } from "../../utilities/manageCookies";
 
 export default function SideBar() {
   const navigate = useNavigate();
   const isActive = (url) => url === window.location.pathname;
   const [isOpen, setIsOpen] = useState(false);
-  const { handleApiCall, isPending } = useLogOutQuery({ onSuccess });
   const menuItems = [
     {
       url: "/admin",
@@ -37,7 +37,7 @@ export default function SideBar() {
     },
   ];
 
-  const handleLogout = () => handleApiCall();
+  const handleLogout = () => deleteCookie();
 
   function onSuccess() {
     localStorage.setItem("isLoggedIn", "false");
