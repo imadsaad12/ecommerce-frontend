@@ -13,13 +13,18 @@ import {
   TraitTextTop,
 } from "./styles";
 import men from "./men.jpg";
+import { useNavigate } from "react-router-dom";
 export default function Section3({ targetRef, inView }) {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <>
         <LeftContainer>
           <Image src={men} />
-          <Button>Shop Men</Button>
+          <Button onClick={() => navigate("/products?type=men&category=*")}>
+            Shop Men
+          </Button>
         </LeftContainer>
         <RightContainer ref={targetRef}>
           {inView && (

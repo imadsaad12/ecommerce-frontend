@@ -11,8 +11,10 @@ import {
   AnimatedWords,
 } from "./styles";
 import women from "./women.jpg";
-import { AnimateCharacter } from "../styles";
+import { useNavigate } from "react-router-dom";
 export default function Section4({ targetRef, inView }) {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <LeftContainer ref={targetRef}>
@@ -31,7 +33,9 @@ export default function Section4({ targetRef, inView }) {
       </LeftContainer>
       <RightContainer>
         <Image src={women} />
-        <Button>Shop Women</Button>
+        <Button onClick={() => navigate("/products?type=women&category=*")}>
+          Shop Women
+        </Button>
       </RightContainer>
     </Container>
   );

@@ -15,6 +15,8 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addProducts } from "../../redux/products/productsActions";
 import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
+import menBackgroundImage from "../Home/section3/men.jpg";
+import womenBackgroundImage from "../Home/section4/women.jpg";
 
 export default function ViewProducts() {
   const location = useLocation();
@@ -45,9 +47,15 @@ export default function ViewProducts() {
 
   useEffect(() => {
     if (!isFetchingCategories) {
-      const imageUrl = categoriesResponse?.data?.find(
-        (elm) => elm.category === category && elm.type === type
-      ).imageUrl;
+      let imageUrl;
+      if (category === "*") {
+        if (type === "men") imageUrl = menBackgroundImage;
+        else imageUrl = womenBackgroundImage;
+      } else {
+        imageUrl = categoriesResponse?.data?.find(
+          (elm) => elm.category === category && elm.type === type
+        ).imageUrl;
+      }
 
       setCategoryImage(imageUrl);
     }
@@ -71,9 +79,13 @@ export default function ViewProducts() {
     <Container>
       <HeaderContainer>
         <Background
-          src={`https://storage.googleapis.com/ecommerce-bucket-testing/${categoryImage}`}
+          src={
+            category === "*"
+              ? categoryImage
+              : `https://storage.googleapis.com/ecommerce-bucket-testing/${categoryImage}`
+          }
         />
-        <CategoryTitle>{category}</CategoryTitle>
+        <CategoryTitle>{category === "*" ? "Men" : category}</CategoryTitle>
       </HeaderContainer>
       <Wrapper>
         {isLoading || isLoadingCustomized ? (

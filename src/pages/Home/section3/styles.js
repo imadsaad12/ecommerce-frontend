@@ -49,6 +49,7 @@ export const Button = styled.button`
   padding-bottom: 10px;
   border: 0;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 export const RightContainer = styled.div`
