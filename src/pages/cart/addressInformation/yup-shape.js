@@ -13,11 +13,17 @@ export const orderSchema = yup.object().shape({
   email: yup.string().email().required("Please enter your email"),
   region: yup
     .string()
-    .matches(/^[a-zA-Z]+$/, "Region must contain only alphabetical characters")
+    .matches(
+      /^[a-zA-Z\s]+$/,
+      "Region must contain only alphabetical characters"
+    )
     .required("Please enter your region"),
   street: yup
     .string()
-    .matches(/^[a-zA-Z]+$/, "Street must contain only alphabetical characters")
+    .matches(
+      /^[a-zA-Z\s]+$/,
+      "Street must contain only alphabetical characters"
+    )
     .required("Please enter your street"),
   building: yup.string().required("Please enter your building"),
   floor: yup
