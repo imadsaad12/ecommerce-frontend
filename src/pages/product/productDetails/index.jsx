@@ -163,7 +163,7 @@ export default function ProductDetails({
             <IoIosArrowDown
               onClick={() =>
                 !isAddToCartDisabled() &&
-                quantity > 2 &&
+                quantity >= 2 &&
                 setquantity(quantity - 1)
               }
             />
