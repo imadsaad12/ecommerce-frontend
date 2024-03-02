@@ -13,6 +13,7 @@ export default function Home({ isFadeIn }) {
   const [womenInView, setWomenInView] = useState(false);
   const section5ref = useRef(null);
   const [section5InView, setSection5InView] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -42,7 +43,7 @@ export default function Home({ isFadeIn }) {
       {
         root: null,
         rootMargin: "0px",
-        threshold: 0.3,
+        threshold: 0.6,
       }
     );
 
@@ -74,7 +75,7 @@ export default function Home({ isFadeIn }) {
       <Section2 />
       <Section3 targetRef={menRef} inView={menInView} />
       <Section4 targetRef={womenRef} inView={womenInView} />
-      <Section5  targetRef={section5ref} inView={section5InView} />
+      <Section5 targetRef={section5ref} inView={section5InView} />
       <div
         style={{
           height: "30vh",

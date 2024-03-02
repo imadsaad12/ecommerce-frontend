@@ -12,15 +12,15 @@ import {
   CategoryName,
   CartIconContainer,
   NumberOfItems,
-  LogoContainer
+  LogoContainer,
 } from "./styles";
 import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { addCategories } from "../../redux/categories/categoriesActions";
-import logoDark from "../../static/logoDark.png"
-import logoLight from "../../static/logoLight.png"
+import logoDark from "../../static/logoDark.png";
+import logoLight from "../../static/logoLight.png";
 
 export default function Navbar({ isFadeIn, navBackground }) {
   const { isLoading, response } = useGetCategoriesQuery();
@@ -68,8 +68,10 @@ export default function Navbar({ isFadeIn, navBackground }) {
           })}
         </CategoriesList>
         <LogoContainer>
-          <Logo src={navBackground=="nontransparent"?logoDark:logoLight}/>
-
+          <Logo
+            src={navBackground == "nontransparent" ? logoDark : logoLight}
+            onClick={() => navigate("/")}
+          />
         </LogoContainer>
         <CartIconContainer>
           {products?.length > 0 && (
