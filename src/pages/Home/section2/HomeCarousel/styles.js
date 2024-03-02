@@ -36,7 +36,8 @@ export const ArrowContainer = styled.div`
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
   top: 35%;
   z-index: 1;
-  color:${themecolors.black}
+  color:${themecolors.black};
+  cursor: pointer;
 `;
 
 export const ProductContainer = styled.div`
