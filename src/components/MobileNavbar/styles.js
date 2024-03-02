@@ -33,10 +33,11 @@ export const Main = styled.div`
   align-items: center;
 
 `;
-export const Logo = styled.span`
+export const Logo = styled.img`
 position: absolute;
 left: 20px;
-font-size: 16px;
+width: 150px;
+height: 55px;
 `;
 
 export const MenuBurger = styled(CiMenuBurger)`

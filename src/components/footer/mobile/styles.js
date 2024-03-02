@@ -31,6 +31,11 @@ export const Wrapper = styled.div`
   align-items: center;
   height: 80%;
 `;
+export const Logo = styled.img`
+width:80px;
+height:80px;
+`;
+
 
 export const Text = styled.p`
   font-size: 18px;

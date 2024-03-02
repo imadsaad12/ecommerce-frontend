@@ -41,6 +41,10 @@ export const Title = styled.p`
   font-weight: bold;
   align-self: flex-start;
 `;
+export const Logo = styled.img`
+width:200px;
+height:80px;
+`;
 
 export const CategoriesContainer = styled.div`
   display: flex;
