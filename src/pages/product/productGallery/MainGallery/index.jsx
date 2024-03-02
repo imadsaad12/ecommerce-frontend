@@ -38,11 +38,11 @@ export default function MainGallery({
         handleleft();
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
-
+  
+    window.addEventListener("wheel", handleScroll, { passive: false });
+  
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleScroll);
     };
   }, [MainGalleryIndex]);
 
