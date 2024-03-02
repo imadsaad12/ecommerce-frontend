@@ -40,7 +40,6 @@ export default function ViewProducts() {
 
   useEffect(() => {
     if (!isLoading) {
-      // dispatch(addProducts(response.data));
       setProducts(response?.data);
     }
   }, [isLoading]);
@@ -59,20 +58,16 @@ export default function ViewProducts() {
 
       setCategoryImage(imageUrl);
     }
-  }, [isFetchingCategories]);
+  }, [isFetchingCategories, location.search]);
 
   useEffect(() => {
     setIsLoadingCustomized(true);
     refetch()
       .then(({ data: { data } }) => {
-        // dispatch(addProducts(data));
         setProducts(data);
+        setIsLoadingCustomized(false);
       })
       .catch((err) => console.log(err));
-
-    setTimeout(() => {
-      setIsLoadingCustomized(false);
-    }, 500);
   }, [location.search]);
 
   return (
@@ -88,16 +83,16 @@ export default function ViewProducts() {
         <CategoryTitle>{category === "*" ? "Men" : category}</CategoryTitle>
       </HeaderContainer>
       <Wrapper>
-        {isLoading || isLoadingCustomized ? (
+        {!isLoading && !isLoadingCustomized ? (
           <>
-            {Array.from({ length: isSmallScreen ? 5 : 10 }, () => {
-              return <ProductSkeleton />;
+            {products?.map((product) => {
+              return <Product product={product} />;
             })}
           </>
         ) : (
           <>
-            {products?.map((product) => {
-              return <Product product={product} />;
+            {Array.from({ length: isSmallScreen ? 5 : 10 }, () => {
+              return <ProductSkeleton />;
             })}
           </>
         )}
