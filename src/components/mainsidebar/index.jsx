@@ -10,11 +10,12 @@ import {
   StyledArrow,
   TypeWrapper,
   CloseIcon,
+  Logo
 } from "./styles";
 
 import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
 import { useNavigate } from "react-router-dom";
-
+import logoDark from "../../static/logoDark.png"
 export default function MainSidebar({ sideOpen, handleSidebar }) {
   const [activeTypes, setactiveTypes] = useState([]);
   const { isLoading, response } = useGetCategoriesQuery();
@@ -44,7 +45,9 @@ export default function MainSidebar({ sideOpen, handleSidebar }) {
     <>
       <Container sideOpen={sideOpen}>
         <CloseIcon onClick={closeHandle} />
-        <LogoContainer>POINT NUL</LogoContainer>
+        <LogoContainer>
+          <Logo src={logoDark}/>
+        </LogoContainer>
         {["men", "women"].map((type) => {
           return (
             <Tab>

@@ -48,10 +48,11 @@ export const NavMain = styled.div`
 export const CategoriesList = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 15px;
   height: 100%;
+  flex: 1;
 `;
 export const CategoryUnderLine = styled.div`
   width: 0%;
@@ -121,9 +122,16 @@ export const Category = styled.div`
   font-weight: bold;
 `;
 
-export const Logo = styled.div`
-  color: ${themecolors.black};
-  font-size: 20px;
+
+export const LogoContainer = styled.div`
+  flex:1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const Logo = styled.img`
+  width: 140px;
+  height: 50px;
 `;
 
 export const NavBtns = styled.div`
@@ -133,6 +141,9 @@ export const NavBtns = styled.div`
 export const CartIconContainer = styled.div`
   width: 40px;
   position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
   @media (max-width: ${breakingPoints.sm}px) {
     width: 55px;
     height: 55px;
@@ -145,6 +156,7 @@ export const CartIconContainer = styled.div`
     border-radius: 50%;
     bottom: 40px;
     right: 20px;
+    z-index: 400;
   }
 `;
 
@@ -153,7 +165,6 @@ export const NumberOfItems = styled.div`
   top: 0;
   right: 0;
   border-radius: 50%;
-  background-color: red;
   width: 20px;
   height: 20px;
   color: ${themecolors.white};

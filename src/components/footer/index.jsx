@@ -12,6 +12,7 @@ import {
   Text,
   Title,
   Wrapper,
+  Logo
 } from "./styles";
 import { SiNike } from "react-icons/si";
 import { FaFacebookF, FaInstagram, FaRegCopyright } from "react-icons/fa";
@@ -19,7 +20,7 @@ import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
 import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
 import MobileFooter from "./mobile";
-
+import logoLight from "../../static/logoLight.png"
 export default function Footer() {
   const { isLoading, response } = useGetCategoriesQuery();
   const [categories, setCategories] = useState([]);
@@ -39,8 +40,7 @@ export default function Footer() {
         <Root>
           <Container>
             <Wrapper>
-              <SiNike style={{ fontSize: isSmallScreen ? "50px" : "200px" }} />
-              <Text>POINT NULL</Text>
+            <Logo src={logoLight} />
             </Wrapper>
             <Wrapper style={{ width: "10%" }}>
               <Title>All Categories</Title>

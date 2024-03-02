@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "./styles";
+import { Container,Text } from "./styles";
 import HomeCarousel from "./HomeCarousel";
 import { useGetProductsQuery } from "../../../apis/products/getProducts";
 export default function Section2() {
@@ -16,6 +16,7 @@ export default function Section2() {
 
   return (
     <Container>
+      <Text>Our New Collection</Text>
       <HomeCarousel data={products} />
     </Container>
   );

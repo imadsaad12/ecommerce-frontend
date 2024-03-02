@@ -12,11 +12,11 @@ import {
   Text,
   Title,
   Wrapper,
+  Logo
 } from "./styles";
-import { SiNike } from "react-icons/si";
 import { FaFacebookF, FaInstagram, FaRegCopyright } from "react-icons/fa";
 import { useGetCategoriesQuery } from "../../../apis/categories/getCategories";
-
+import circlelogo from "../../../static/circlelogo.png"
 export default function MobileFooter() {
   const { isLoading, response } = useGetCategoriesQuery();
   const [categories, setCategories] = useState([]);
@@ -60,7 +60,7 @@ export default function MobileFooter() {
           </SocialMediaContainer>
         </Wrapper>
         <Wrapper style={{ fontSize: "80px", alignSelf: "flex-end" }}>
-          <SiNike />
+          <Logo src={circlelogo} />
         </Wrapper>
       </Container>
       <PoweredBy>

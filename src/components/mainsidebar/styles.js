@@ -14,16 +14,22 @@ export const Container = styled.div`
   height: 100vh;
   transition: all 0.5s ease-in-out;
   background-color: ${themecolors.white};
-  z-index: 12;
+  z-index: 500;
 
 `;
 export const LogoContainer = styled.div`
-  width: 80%;
+  width: 90%;
   color: ${themecolors.black};
   font-size: 35px;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 `;
+export const Logo = styled.img`
+width: 200px;
+height: 80px;
+
+`;
+
 export const Tab = styled.div`
   width: 80%;
   display: flex;
@@ -76,7 +82,7 @@ export const StyledArrow = styled(IoIosArrowDown)`
 export const CloseIcon = styled(IoMdClose)`
   position: absolute;
   right: 20px;
-  top: 40px;
+  top: 60px;
   font-size: 20px;
   color: ${themecolors.black};
 `;
