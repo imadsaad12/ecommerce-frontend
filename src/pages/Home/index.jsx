@@ -11,7 +11,8 @@ export default function Home({ isFadeIn }) {
   const [menInView, setMenInView] = useState(false);
   const womenRef = useRef(null);
   const [womenInView, setWomenInView] = useState(false);
-
+  const section5ref = useRef(null);
+  const [section5InView, setSection5InView] = useState(false);
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -34,6 +35,16 @@ export default function Home({ isFadeIn }) {
         threshold: 0.3,
       }
     );
+    const section5Observer = new IntersectionObserver(
+      ([entry]) => {
+        setSection5InView(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.3,
+      }
+    );
 
     if (menRef.current) {
       observer.observe(menRef.current);
@@ -41,13 +52,18 @@ export default function Home({ isFadeIn }) {
     if (womenRef.current) {
       womenObserver.observe(womenRef.current);
     }
-
+    if (section5ref.current) {
+      section5Observer.observe(section5ref.current);
+    }
     return () => {
       if (menRef.current) {
         observer.unobserve(menRef.current);
       }
       if (womenRef.current) {
         womenObserver.unobserve(womenRef.current);
+      }
+      if (section5ref.current) {
+        section5Observer.unobserve(section5ref.current);
       }
     };
   }, []);
@@ -58,7 +74,7 @@ export default function Home({ isFadeIn }) {
       <Section2 />
       <Section3 targetRef={menRef} inView={menInView} />
       <Section4 targetRef={womenRef} inView={womenInView} />
-      <Section5 />
+      <Section5  targetRef={section5ref} inView={section5InView} />
       <div
         style={{
           height: "30vh",

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled,{keyframes} from "styled-components";
 import { breakingPoints } from "../../../global/theme";
 import { themecolors } from "../../../global/theme";
 export const Container = styled.div`
@@ -24,6 +24,17 @@ transition: all 0.4s ease-in-out;
 border-radius: ${props=>props.isFadeIn?"0px":"40px"};
 `;
 
+const TitleAnimation = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+
+  }
+`;
 export const TitleContainer = styled.div`
 position: absolute;
 display: flex;
@@ -31,21 +42,16 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 color: ${themecolors.white};
-
 `;
+
 export const TitleTop = styled.span`
 font-size:80px;
 font-weight: bolder;
+animation: 0.6s ${TitleAnimation} ease-in-out;
+
 
 @media (max-width: ${breakingPoints.sm}px) {
     font-size:40px;
   }
 `;
-export const TitleBottom = styled.span`
-font-size: 80px;
-font-weight: bolder;
-@media (max-width: ${breakingPoints.sm}px) {
-    font-size:40px;
-  }
 
-`;

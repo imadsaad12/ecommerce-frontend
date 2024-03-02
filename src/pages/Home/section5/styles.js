@@ -19,6 +19,16 @@ height: 100%;
 object-fit: cover;
 `;
 
+const TitleAnimation = keyframes`
+  0% {
+    margin-top: 50px;
+  }
+  100% {
+    margin-top: 0px;
+
+
+  }
+`;
 export const TitleContainer = styled.div`
 display: flex;
 flex-direction: column;
@@ -30,6 +40,7 @@ width: 50%;
 text-align: center;
 color: ${themecolors.white};
 z-index: 3;
+animation:0.5s ${TitleAnimation} ease-in-out;
 `;
 export const Title = styled.span`
 font-size:40px;

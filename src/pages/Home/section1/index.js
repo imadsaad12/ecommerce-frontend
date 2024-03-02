@@ -12,8 +12,7 @@ export default function Section1({ isFadeIn }) {
     <Container>
       <Image src={header} isFadeIn={isFadeIn} />
       <TitleContainer>
-        <TitleTop>FIND YOUR</TitleTop>
-        <TitleBottom>STRENGTH</TitleBottom>
+        <TitleTop>FIND YOUR <br/> STRENGTH</TitleTop>
       </TitleContainer>
     </Container>
   );
