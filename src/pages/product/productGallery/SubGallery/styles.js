@@ -20,6 +20,14 @@ export const ArrowContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
 `;
+
+export const ArrowContainer2 = styled.div`
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
 export const CarouselContainer = styled.div`
   width: 80%;
   height: 100%;

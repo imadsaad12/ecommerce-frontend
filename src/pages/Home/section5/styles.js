@@ -20,10 +20,12 @@ export const Image = styled.img`
 
 const TitleAnimation = keyframes`
   0% {
-    margin-top: 50px;
+    margin-top: 100px;
+    opacity: 0;
   }
   100% {
     margin-top: 0px;
+    opacity: 0;
 
 
   }

@@ -7,8 +7,9 @@ import {
   ImageWrapper,
   CarouselContainer,
   ArrowContainer,
+  ArrowContainer2
 } from "./styles";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export default function SubGallery({
   images,
@@ -100,6 +101,9 @@ export default function SubGallery({
           })}
         </Carousel>
       </CarouselContainer>
+      <ArrowContainer2>
+        <IoIosArrowForward color="black" onClick={handleright} />
+      </ArrowContainer2>
     </Container>
   );
 }
