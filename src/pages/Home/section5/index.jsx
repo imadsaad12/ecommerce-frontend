@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Container,
+  Content,
   Gradient,
   Image,
   SubTitle,
@@ -14,15 +15,7 @@ export default function Section5({ inView, targetRef }) {
     <Container>
       <Image src={back} />
       <TitleContainer>
-        <div
-          ref={targetRef}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
+        <Content ref={targetRef}>
           {inView && (
             <>
               <Title>MORE THAN FASHION</Title>
@@ -33,7 +26,7 @@ export default function Section5({ inView, targetRef }) {
               </SubTitle>
             </>
           )}
-        </div>
+        </Content>
       </TitleContainer>
       <Gradient />
     </Container>

@@ -21,15 +21,12 @@ export const Image = styled.img`
 const TitleAnimation = keyframes`
   0% {
     margin-top: 100px;
-    opacity: 0;
   }
   100% {
     margin-top: 0px;
-    opacity: 0;
-
-
   }
 `;
+
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,11 +38,15 @@ export const TitleContainer = styled.div`
   text-align: center;
   color: ${themecolors.white};
   z-index: 3;
-  animation: 0.5s ${TitleAnimation} ease-in-out;
+  @media (max-width: ${breakingPoints.sm}px) {
+    width: 70%;
+  }
 `;
 export const Title = styled.span`
   font-size: 40px;
   font-weight: bold;
+  animation: 1s ${TitleAnimation} ease;
+
   @media (max-width: ${breakingPoints.sm}px) {
     font-size: 20px;
   }
@@ -53,8 +54,11 @@ export const Title = styled.span`
 export const SubTitle = styled.span`
   font-size: 25px;
   font-weight: normal;
+  margin-top: 10px;
+
   @media (max-width: ${breakingPoints.sm}px) {
-    font-size: 15px;
+    font-size: 12px;
+    margin-top: 5px;
   }
   color: ${themecolors.white};
 `;
@@ -68,4 +72,11 @@ export const Gradient = styled.span`
   width: 100%;
   height: 100%;
   z-index: 2;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
