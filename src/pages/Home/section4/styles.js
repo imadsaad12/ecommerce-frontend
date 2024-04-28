@@ -122,6 +122,6 @@ export const Title = styled.span`
 export const AnimatedWords = styled(AnimateCharacter)`
   font-size: 60px;
   @media (max-width: ${breakingPoints.sm}px) {
-    font-size: 30px;
+    font-size: 25px;
   }
 `;

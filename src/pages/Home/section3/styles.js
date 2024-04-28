@@ -19,6 +19,9 @@ export const LeftContainer = styled.div`
   height: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 20px;
   @media (max-width: ${breakingPoints.sm}px) {
     position: absolute;
@@ -27,10 +30,24 @@ export const LeftContainer = styled.div`
     z-index: 3;
   }
 `;
+
+export const Soon = styled.span`
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+  @media (max-width: ${breakingPoints.sm}px) {
+    font-size: 15px;
+  }
+  color: ${themecolors.white};
+`;
+
 export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter:blur(3px);
   transition: all 0.5s ease-in-out;
   &:hover {
     transform: scale(1.5);
