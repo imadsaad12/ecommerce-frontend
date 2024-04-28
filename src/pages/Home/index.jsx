@@ -88,8 +88,7 @@ export default function Home({ isFadeIn }) {
         }}
       >
         <AnimateCharacter>
-          Revolutionizing e-commerce <br />
-          for tomorrow.
+          Elevate from point zero 
         </AnimateCharacter>
       </div>
     </Container>

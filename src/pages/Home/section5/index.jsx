@@ -20,9 +20,10 @@ export default function Section5({ inView, targetRef }) {
             <>
               <Title>MORE THAN FASHION</Title>
               <SubTitle>
-                Come, embrace the symphony of success, where innovation meets
-                inspiration, and where the boundaries of possibilities are
-                expanded.
+                Through innovative design and advanced fabric technology, we aim
+                to elevate your active lifestyle by delivering sweat-proof,
+                breathable, and stylish pieces that inspire confidence and
+                optimize your every move.
               </SubTitle>
             </>
           )}

@@ -11,6 +11,7 @@ import {
   TraitContainer,
   TraitTextBottom,
   TraitTextTop,
+  Soon
 } from "./styles";
 import men from "./men.jpg";
 import { useNavigate } from "react-router-dom";
@@ -21,38 +22,39 @@ export default function Section3({ targetRef, inView }) {
     <Container>
       <>
         <LeftContainer>
+          <Soon>Men <br/>Coming<br/> Soon</Soon>
           <Image src={men} />
-          <Button onClick={() => navigate("/products?type=men&category=*")}>
-            Shop Men
-          </Button>
+          {/* <Button onClick={() => navigate("/products?type=men&category=*")}> */}
+          {/* <Button>Comming Soon</Button> */}
         </LeftContainer>
         <RightContainer ref={targetRef}>
           {inView && (
             <>
               <TraitContainer>
                 <TopTrait>
-                  <TraitTextTop>Premium</TraitTextTop>
-                  <TraitTextBottom>Quality</TraitTextBottom>
+                  <TraitTextTop>OUR</TraitTextTop>
+                  <TraitTextBottom>MISSON</TraitTextBottom>
                   <Line />
                 </TopTrait>
                 <BottomTrait>
-                  From day one, we made the bold choice to break with
-                  conventions and shape a model and a future where circularity
-                  is the norm. 
+                  Our mission is to empower individuals with a comprehensive
+                  selection of sports and athleisure attire, meticulously
+                  crafted to prioritize your comfort and performance.
                 </BottomTrait>
               </TraitContainer>
-              <TraitContainer>
+              {/* <TraitContainer>
                 <TopTrait>
-                  <TraitTextTop>Premium</TraitTextTop>
-                  <TraitTextBottom>Quality</TraitTextBottom>
+                  <TraitTextTop>MORE THAN</TraitTextTop>
+                  <TraitTextBottom>FASSION</TraitTextBottom>
                   <Line />
                 </TopTrait>
                 <BottomTrait>
-                  From day one, we made the bold choice to break with
-                  conventions and shape a model and a future where circularity
-                  is the norm. 
+                  Through innovative design and advanced fabric technology, we
+                  aim to elevate your active lifestyle by delivering
+                  sweat-proof, breathable, and stylish pieces that inspire
+                  confidence and optimize your every move.
                 </BottomTrait>
-              </TraitContainer>
+              </TraitContainer> */}
             </>
           )}
         </RightContainer>

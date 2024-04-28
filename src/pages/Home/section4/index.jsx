@@ -24,7 +24,7 @@ export default function Section4({ targetRef, inView }) {
             <TitleContainer>
               <Title>
                 <AnimatedWords>
-                  WE <br /> SPARK <br /> PASSION
+                  TAILORED<br />TO YOUR <br /> COMFORT
                 </AnimatedWords>
               </Title>
             </TitleContainer>
