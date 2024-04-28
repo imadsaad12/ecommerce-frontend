@@ -51,7 +51,7 @@ export default function Carousel({ selectedProduct, setSelectedProduct }) {
                 <Product>
                   <ImageWrapper>
                     <Image
-                      src={`https://storage.googleapis.com/ecommerce-bucket-testing/${product?.images[0].url}`}
+                      src={`https://storage.googleapis.com/pointnul-image/${product?.images[0].url}`}
                       onClick={() => setSelectedProduct(product)}
                     />
                   </ImageWrapper>

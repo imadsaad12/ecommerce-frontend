@@ -123,7 +123,7 @@ export default function ProductImages({ formUtils, selectedProductToUpdate }) {
                       src={
                         stringStartsWithBlob(elm.url)
                           ? elm.url
-                          : `https://storage.googleapis.com/ecommerce-bucket-testing/${elm.url}`
+                          : `https://storage.googleapis.com/pointnul-image/${elm.url}`
                       }
                     />
                     <Text>{elm.color}</Text>

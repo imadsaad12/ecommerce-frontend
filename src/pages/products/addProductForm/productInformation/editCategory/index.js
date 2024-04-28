@@ -37,7 +37,7 @@ export default function EditCategoryPopup({
 
     if (categoryImage) {
       setImageUrl(
-        `https://storage.googleapis.com/ecommerce-bucket-testing/${categoryImage}`
+        `https://storage.googleapis.com/pointnul-image/${categoryImage}`
       );
     }
     return () => {

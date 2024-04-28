@@ -3,7 +3,7 @@ import { formatAsDDMMYYYY } from "./dates";
 export const formattedProducts = (products) => {
   const newProductsFormat = products.map(
     ({ sizes, images, updatedAt, price, createdAt, ...rest }) => {
-      const imageURL = `https://storage.googleapis.com/ecommerce-bucket-testing/${images[0].url}`;
+      const imageURL = `https://storage.googleapis.com/pointnul-image/${images[0].url}`;
       const formattedSizes = sizes
         .filter((elm) => elm !== null)
         .map(
@@ -23,7 +23,7 @@ export const formattedProducts = (products) => {
 };
 
 export const formatImages = (images) => {
-  const urlPrefix = "https://storage.googleapis.com/ecommerce-bucket-testing";
+  const urlPrefix = "https://storage.googleapis.com/pointnul-image";
   const formattedImages = images?.map(({ url }) => `${urlPrefix}/${url}`);
   return formattedImages;
 };
