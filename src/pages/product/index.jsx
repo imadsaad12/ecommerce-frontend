@@ -40,7 +40,7 @@ export default function Product() {
               setSubGalleryIndex={setSubGalleryIndex}
             />
           </ProductContainer>
-          <Carousel selectedProduct={product} setSelectedProduct={setProduct} />
+          {/* <Carousel selectedProduct={product} setSelectedProduct={setProduct} /> */}
         </>
       ) : (
         <ProductDetailsSkeleton />

@@ -29,7 +29,9 @@ export default function Carousel({ selectedProduct, setSelectedProduct }) {
     setcarouselIndex(carouselIndex + 1);
   };
   const handleleft = () => {
+    if(carouselIndex>0){
     setcarouselIndex(carouselIndex - 1);
+    }
   };
 
   useEffect(() => {
