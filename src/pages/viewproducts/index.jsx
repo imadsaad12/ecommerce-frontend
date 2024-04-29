@@ -40,6 +40,7 @@ export default function ViewProducts() {
 
   useEffect(() => {
     if (!isLoading) {
+      dispatch(addProducts(response?.data));
       setProducts(response?.data);
     }
   }, [isLoading]);
@@ -64,6 +65,7 @@ export default function ViewProducts() {
     setIsLoadingCustomized(true);
     refetch()
       .then(({ data: { data } }) => {
+        dispatch(addProducts(data));
         setProducts(data);
         setIsLoadingCustomized(false);
       })
