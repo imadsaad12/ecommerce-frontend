@@ -79,7 +79,7 @@ export default function ViewProducts() {
           src={
             category === "*"
               ? categoryImage
-              : `https://storage.googleapis.com/ecommerce-bucket-testing/${categoryImage}`
+              : `https://storage.googleapis.com/pointnul-image/${categoryImage}`
           }
         />
         <CategoryTitle>{category === "*" ? "Men" : category}</CategoryTitle>

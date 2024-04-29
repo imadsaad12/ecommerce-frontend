@@ -82,7 +82,7 @@ export default function Orders() {
               return (
                 <Row>
                   <Image
-                    src={`https://storage.googleapis.com/ecommerce-bucket-testing/${productImage}`}
+                    src={`https://storage.googleapis.com/pointnul-image/${productImage}`}
                   />
                   <Text>{color}</Text>
                   <Text>{size}</Text>

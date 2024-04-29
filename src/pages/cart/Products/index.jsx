@@ -22,7 +22,7 @@ import { formatPrice } from "../../../utilities/formatPrice";
 
 export default function Product({ data }) {
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
-  const urlPrefix = "https://storage.googleapis.com/ecommerce-bucket-testing";
+  const urlPrefix = "https://storage.googleapis.com/pointnul-image";
   const [products, setProducts] = useState(data);
   const dispatch = useDispatch();
 

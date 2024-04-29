@@ -27,7 +27,7 @@ export default function Product({ product }) {
   const [selectedColor, setselectedColor] = useState(colors[0]);
 
   const findImage = () => {
-    const urlPrefix = "https://storage.googleapis.com/ecommerce-bucket-testing";
+    const urlPrefix = "https://storage.googleapis.com/pointnul-image";
 
     const selectedColorName = colorsOptions.find(
       ({ color }) => color === selectedColor
