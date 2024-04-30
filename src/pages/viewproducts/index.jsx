@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { addProducts } from "../../redux/products/productsActions";
 import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
 import menBackgroundImage from "../Home/section3/men.jpg";
-import womenBackgroundImage from "../Home/section4/women.jpg";
+import womenBackgroundImage from "../Home/static/women.jpg";
 
 export default function ViewProducts() {
   const location = useLocation();

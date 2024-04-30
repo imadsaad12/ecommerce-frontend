@@ -10,7 +10,7 @@ import {
   Title,
   AnimatedWords,
 } from "./styles";
-import women from "./women.jpg";
+import women from "../static/women.jpg";
 import { useNavigate } from "react-router-dom";
 export default function Section4({ targetRef, inView }) {
   const navigate = useNavigate();
