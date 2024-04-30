@@ -12,11 +12,13 @@ import {
   Text,
   Title,
   Wrapper,
-  Logo
+  Logo,
 } from "./styles";
 import { FaFacebookF, FaInstagram, FaRegCopyright } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa6";
+import { SiGmail } from "react-icons/si";
 import { useGetCategoriesQuery } from "../../../apis/categories/getCategories";
-import circlelogo from "../../../static/circlelogo.png"
+import circlelogo from "../../../static/circlelogo.png";
 export default function MobileFooter() {
   const { isLoading, response } = useGetCategoriesQuery();
   const [categories, setCategories] = useState([]);
@@ -27,10 +29,18 @@ export default function MobileFooter() {
     }
   }, [isLoading]);
 
+  const handleGmail = () => {
+    const recipientEmail = "info@pointnul.com";
+    const mailtoUrl = `mailto:
+    ${recipientEmail}
+    `;
+    // Open the default email client (Gmail) with the pre-filled recipient email
+    window.open(mailtoUrl);
+  };
   return (
     <Root>
       <Container>
-        <Wrapper style={{ width: "40%" }}>
+        {/* <Wrapper style={{ width: "40%" }}>
           <Title>All Categories</Title>
           <CategoriesContainer>
             {categories?.slice(0, 2)?.map(({ category }) => (
@@ -38,12 +48,12 @@ export default function MobileFooter() {
             ))}
             {categories?.length > 2 && <Category key="more">. . .</Category>}
           </CategoriesContainer>
-        </Wrapper>
-        <Wrapper style={{ width: "20%", alignSelf: "flex-start" }}>
-          <Title>Genders</Title>
+        </Wrapper> */}
+        <Wrapper style={{ width: "80%", alignSelf: "flex-start" }}>
+          <Title>Policy</Title>
           <CategoriesContainer>
-            <Gender>Men</Gender>
-            <Gender>Women</Gender>
+            <Gender>No Refund</Gender>
+            <Gender>Exchange within 7 days</Gender>
           </CategoriesContainer>
         </Wrapper>
       </Container>
@@ -51,11 +61,28 @@ export default function MobileFooter() {
         <Wrapper style={{ width: "40%" }}>
           <Title>Social Media</Title>
           <SocialMediaContainer>
-            <Circle>
-              <FaFacebookF style={{ fontSize: "20px" }} />
+            <Circle
+              onClick={() => {
+                window.open(
+                  "https://www.tiktok.com/@point.nul?_t=8lvf4vo0tyk&_r=1",
+                  "_blank"
+                );
+              }}
+            >
+              <FaTiktok style={{ fontSize: "20px" }} />
             </Circle>
-            <Circle>
+            <Circle
+              onClick={() => {
+                window.open(
+                  "https://www.instagram.com/pointnul?igsh=MTMzdDl2a2p2MTM2bg==",
+                  "_blank"
+                );
+              }}
+            >
               <FaInstagram style={{ fontSize: "20px" }} />
+            </Circle>
+            <Circle onClick={handleGmail}>
+              <SiGmail style={{ fontSize: "20px" }} />
             </Circle>
           </SocialMediaContainer>
         </Wrapper>

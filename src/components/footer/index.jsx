@@ -12,15 +12,15 @@ import {
   Text,
   Title,
   Wrapper,
-  Logo
+  Logo,
 } from "./styles";
-import { SiNike } from "react-icons/si";
-import { FaFacebookF, FaInstagram, FaRegCopyright } from "react-icons/fa";
+import { SiGmail, SiNike } from "react-icons/si";
+import { FaFacebookF, FaInstagram, FaRegCopyright, FaTiktok } from "react-icons/fa";
 import { useGetCategoriesQuery } from "../../apis/categories/getCategories";
 import useBreakpoint from "../../utilities/mediaQuery";
 import { breakingPoints } from "../../global/theme";
 import MobileFooter from "./mobile";
-import logoLight from "../../static/logoLight.png"
+import logoLight from "../../static/logoLight.png";
 export default function Footer() {
   const { isLoading, response } = useGetCategoriesQuery();
   const [categories, setCategories] = useState([]);
@@ -40,9 +40,9 @@ export default function Footer() {
         <Root>
           <Container>
             <Wrapper>
-            <Logo src={logoLight} />
+              <Logo src={logoLight} />
             </Wrapper>
-            <Wrapper style={{ width: "10%" }}>
+            {/* <Wrapper style={{ width: "10%" }}>
               <Title>All Categories</Title>
               <CategoriesContainer>
                 {categories?.slice(0, 4)?.map(({ category }) => (
@@ -52,22 +52,39 @@ export default function Footer() {
                   <Category key="more">... and more</Category>
                 )}
               </CategoriesContainer>
-            </Wrapper>
+            </Wrapper> */}
             <Wrapper style={{ width: isSmallScreen ? "20%" : "10%" }}>
-              <Title>Genders</Title>
+              <Title>Policy</Title>
               <CategoriesContainer>
-                <Gender>Men</Gender>
-                <Gender>Women</Gender>
+                <Gender>No Refund</Gender>
+                <Gender>Exchange within 7 days</Gender>
               </CategoriesContainer>
             </Wrapper>
             <Wrapper style={{ width: isSmallScreen ? "20%" : "10%" }}>
               <Title>Social Media</Title>
               <SocialMediaContainer>
-                <Circle>
-                  <FaFacebookF style={{ fontSize: "20px" }} />
+                <Circle
+                  onClick={() => {
+                    window.open(
+                      "https://www.tiktok.com/@point.nul?_t=8lvf4vo0tyk&_r=1",
+                      "_blank"
+                    );
+                  }}
+                >
+                  <FaTiktok style={{ fontSize: "20px" }} />
                 </Circle>
-                <Circle>
+                <Circle
+                  onClick={() => {
+                    window.open(
+                      "https://www.instagram.com/pointnul?igsh=MTMzdDl2a2p2MTM2bg==",
+                      "_blank"
+                    );
+                  }}
+                >
                   <FaInstagram style={{ fontSize: "20px" }} />
+                </Circle>
+                <Circle onClick={handleGmail}>
+                  <SiGmail style={{ fontSize: "20px" }} />
                 </Circle>
               </SocialMediaContainer>
             </Wrapper>
