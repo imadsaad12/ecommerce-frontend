@@ -25,7 +25,14 @@ export default function Footer() {
   const { isLoading, response } = useGetCategoriesQuery();
   const [categories, setCategories] = useState([]);
   const isSmallScreen = useBreakpoint(breakingPoints.sm);
-
+  const handleGmail = () => {
+    const recipientEmail = "info@pointnul.com";
+    const mailtoUrl = `mailto:
+    ${recipientEmail}
+    `;
+    // Open the default email client (Gmail) with the pre-filled recipient email
+    window.open(mailtoUrl);
+  };
   useEffect(() => {
     if (!isLoading) {
       setCategories(response?.data);
