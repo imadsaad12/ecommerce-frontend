@@ -24,6 +24,7 @@ export const Price = styled.span`
 export const Description = styled.span`
   font-size: 18px;
   /* font-size: 16px; */
+  white-space: pre-wrap;
   font-weight: light;
   @media (max-width: ${breakingPoints.sm}px) {
     font-size: 15px;

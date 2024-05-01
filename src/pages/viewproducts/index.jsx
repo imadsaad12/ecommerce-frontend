@@ -71,7 +71,10 @@ export default function ViewProducts() {
       })
       .catch((err) => console.log(err));
   }, [location.search]);
-
+  function capitalizeFirstLetter(word) {
+    if (!word) return word; // Check if the word is empty or undefined
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
   return (
     <Container>
       <HeaderContainer>
@@ -82,7 +85,7 @@ export default function ViewProducts() {
               : `https://storage.googleapis.com/pointnul-image/${categoryImage}`
           }
         />
-        <CategoryTitle>{category === "*" ? "Men" : category}</CategoryTitle>
+        <CategoryTitle>{category === "*" ? capitalizeFirstLetter(type) : category}</CategoryTitle>
       </HeaderContainer>
       <Wrapper>
         {!isLoading && !isLoadingCustomized ? (

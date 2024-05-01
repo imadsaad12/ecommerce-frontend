@@ -69,7 +69,7 @@ export default function MobileFooter() {
                 );
               }}
             >
-              <FaTiktok style={{ fontSize: "20px" }} />
+              <FaTiktok style={{ fontSize: "18px" }} />
             </Circle>
             <Circle
               onClick={() => {
@@ -79,10 +79,10 @@ export default function MobileFooter() {
                 );
               }}
             >
-              <FaInstagram style={{ fontSize: "20px" }} />
+              <FaInstagram style={{ fontSize: "18px" }} />
             </Circle>
             <Circle onClick={handleGmail}>
-              <SiGmail style={{ fontSize: "20px" }} />
+              <SiGmail style={{ fontSize: "18px" }} />
             </Circle>
           </SocialMediaContainer>
         </Wrapper>

@@ -68,12 +68,12 @@ export const SocialMediaContainer = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 `;
 
 export const Circle = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
