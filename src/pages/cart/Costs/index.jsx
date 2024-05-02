@@ -26,7 +26,7 @@ export default function Costs({ setIsFormOpen, totalPrice }) {
         <DeliveryDetailsContainer>
           <p>$3 in beirut </p>
           <p>/</p>
-          <p>$6 out of beirut</p>
+          <p>$5 out of beirut</p>
         </DeliveryDetailsContainer>
       </Row>
       <Divider />
