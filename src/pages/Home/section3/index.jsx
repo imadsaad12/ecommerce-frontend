@@ -22,10 +22,8 @@ export default function Section3({ targetRef, inView }) {
     <Container>
       <>
         <LeftContainer>
-          <Soon>Men <br/>Coming<br/> Soon</Soon>
           <Image src={men} />
-          {/* <Button onClick={() => navigate("/products?type=men&category=*")}> */}
-          {/* <Button>Comming Soon</Button> */}
+          <Button onClick={() => navigate("/products?type=men&category=*")}>Shop Men</Button>
         </LeftContainer>
         <RightContainer ref={targetRef}>
           {inView && (
