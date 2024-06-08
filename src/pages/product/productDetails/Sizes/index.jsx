@@ -30,7 +30,13 @@ export default function Sizes({ selectedOptions, pdata, setselectedOptions }) {
             selectedSize={selectedSize}
           >
             {!availability && <OutOfStock />}
-            <Size>{size === "x-large" ? "XL" : size[0]}</Size>
+            <Size>
+              {size === "xx-large"
+                ? "XXL"
+                : size === "x-large"
+                ? "XL"
+                : size[0]}
+            </Size>
           </SizeContainer>
         );
       })}

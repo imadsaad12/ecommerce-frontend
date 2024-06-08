@@ -98,6 +98,7 @@ export default function ProductSizes({ formUtils, selectedProductToUpdate }) {
                         onChange={(e) => handleOnChange(e, index, "size")}
                         defaultValue={elm?.size}
                       >
+                        <MenuItem value={"xx-large"}>XX-Large</MenuItem>
                         <MenuItem value={"x-large"}>X-Large</MenuItem>
                         <MenuItem value={"large"}>Large</MenuItem>
                         <MenuItem value={"medium"}>Medium</MenuItem>
