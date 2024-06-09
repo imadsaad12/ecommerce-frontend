@@ -29,22 +29,26 @@ export default function MainGallery({
     }
   };
 
-  useEffect(() => {
-    const handleScroll = (event) => {
-      const scrollDirection = event.deltaX > 0 ? "right" : "left";
-      if (scrollDirection === "right" && MainGalleryIndex < images.length - 1) {
-        handleright();
-      } else if (scrollDirection === "left" && MainGalleryIndex > 0) {
-        handleleft();
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = (event) => {
+  //     if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+  //       // If yes, do nothing and return
+  //       return;
+  //     }
+  //     const scrollDirection = event.deltaX > 0 ? "right" : "left";
+  //     if (scrollDirection === "right" && MainGalleryIndex < images.length - 1) {
+  //       handleright();
+  //     } else if (scrollDirection === "left" && MainGalleryIndex > 0) {
+  //       handleleft();
+  //     }
+  //   };
   
-    window.addEventListener("wheel", handleScroll, { passive: false });
+  //   window.addEventListener("wheel", handleScroll, { passive: false });
   
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-    };
-  }, [MainGalleryIndex]);
+  //   return () => {
+  //     window.removeEventListener("wheel", handleScroll);
+  //   };
+  // }, [MainGalleryIndex]);
 
   return (
     <Container>

@@ -19,7 +19,6 @@ export default function ProductGallery({ images,MainGalleryIndex,setMainGalleryI
   };
   return (
     <Container>
-      {console.log(MainGalleryIndex,SubGalleryIndex)}
       <MainGallery
         images={images}
         handleleft={handleleft}
