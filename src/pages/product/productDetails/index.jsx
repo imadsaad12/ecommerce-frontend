@@ -10,6 +10,9 @@ import {
   Buttons,
   AddtoCart,
   addToCartStyle,
+  PriceContainer,
+  DiscountPrice,
+  Sale,
 } from "./styles";
 import Colors from "./Colors";
 import Sizes from "./Sizes";
@@ -132,11 +135,23 @@ export default function ProductDetails({
     }, 500);
   };
 
+  function calculateDiscountedPrice(originalPrice) {
+    const discount = originalPrice * 0.15;
+    
+    const discountedPrice = originalPrice - discount;
+    
+    return discountedPrice;
+}
+
   return (
     <Container>
       <Name>{pdata.name}</Name>
-      <Price>{formatPrice(pdata.price)}$</Price>
-      <Description>{pdata.description}</Description>
+      <PriceContainer>
+        <Price sale={pdata.type=="women"}>{formatPrice(pdata.price)}$</Price>
+        {pdata.type=="women" && <DiscountPrice>{calculateDiscountedPrice(pdata.price)}$</DiscountPrice>}
+        </PriceContainer>
+        {pdata.type=="women" &&<Sale>Save 15%</Sale>}
+        <Description>{pdata.description}</Description>
       <Colors
         colors={colors}
         selectedColor={selectedOptions.color}

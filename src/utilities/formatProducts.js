@@ -28,6 +28,16 @@ export const formatImages = (images) => {
   return formattedImages;
 };
 
+function calculateDiscountedPrice(originalPrice) {
+  // Calculate 15% of the original price
+  const discount = originalPrice * 0.15;
+  
+  // Subtract the discount from the original price
+  const discountedPrice = originalPrice - discount;
+  
+  return discountedPrice;
+}
+
 export const formatProduct = ({ pdata, selectedOptions, quantity }) => {
   let product = {};
   product.productId = pdata._id;
@@ -37,9 +47,19 @@ export const formatProduct = ({ pdata, selectedOptions, quantity }) => {
   product.color = selectedOptions?.color?.text;
   product.size = selectedOptions?.size;
   product.quantity = quantity;
-  product.totalPrice = pdata.price * quantity;
+  if(pdata.type=="women"){
+    product.totalPrice = calculateDiscountedPrice(pdata.price) * quantity;
+  }else{
+    product.totalPrice = pdata.price * quantity;
+
+  }
   product.productName = pdata.name;
-  product.productPrice = pdata.price;
+  if(pdata.type=="women"){
+    product.productPrice = calculateDiscountedPrice(pdata.price) ;
+  }else{
+    product.productPrice = pdata.price;
+
+  }
   product.type = pdata.type;
   product.category = pdata.category;
 

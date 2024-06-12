@@ -6,6 +6,9 @@ import {
   Name,
   Price,
   ImageContainer,
+  PriceContainer,
+  DiscountPrice,
+  Sale
 } from "./styles";
 import Colors from "./Colors";
 import { colorsOptions } from "../../../global";
@@ -39,7 +42,15 @@ export default function Product({ product }) {
       return `${urlPrefix}/${image.url}`;
     }
   };
-
+  function calculateDiscountedPrice(originalPrice) {
+    // Calculate 15% of the original price
+    const discount = originalPrice * 0.15;
+    
+    // Subtract the discount from the original price
+    const discountedPrice = originalPrice - discount;
+    
+    return discountedPrice;
+}
   return (
     <Container>
       <Wrapper>
@@ -50,7 +61,11 @@ export default function Product({ product }) {
           />
         </ImageContainer>
         <Name>{name}</Name>
-        <Price>{formatPrice(price)}$</Price>
+        <PriceContainer>
+        <Price sale={product.type=="women"}>{formatPrice(price)}$</Price>
+        {product.type=="women" && <DiscountPrice>{calculateDiscountedPrice(price)}$</DiscountPrice>}
+        </PriceContainer>
+        {product.type=="women" &&<Sale>Save 15%</Sale>}
         <Colors
           setselectedColor={setselectedColor}
           colors={colors}

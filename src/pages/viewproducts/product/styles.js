@@ -44,9 +44,40 @@ export const Name = styled.span`
   margin-top:4px;
   color :${themecolors.black}
 `;
+
+
+
+export const PriceContainer = styled.div`
+display: flex;
+flex-direction: row;
+gap:10px
+
+
+`;
 export const Price = styled.span`
   font-size: 18px;
   font-weight: normal;
+  color :${themecolors.black};
+  text-decoration-line:${props=>props.sale?"line-through":"null"};
+
+`;
+
+export const DiscountPrice = styled.span`
+  font-size: 18px;
+  font-weight: normal;
   color :${themecolors.black}
+
+`;
+
+export const Sale = styled.span`
+  font-size: 11px;
+  font-weight: normal;
+  background-color: red;
+  color :${themecolors.white};
+  border-radius:10px;
+  width: 70px;
+  text-align: center;
+  padding-top: 3px;
+  padding-bottom: 3px;
 
 `;
