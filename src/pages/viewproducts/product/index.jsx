@@ -62,10 +62,13 @@ export default function Product({ product }) {
         </ImageContainer>
         <Name>{name}</Name>
         <PriceContainer>
+        <Price>{formatPrice(price)}$</Price>
+        </PriceContainer>
+        {/* <PriceContainer>
         <Price sale={product.type=="women"}>{formatPrice(price)}$</Price>
         {product.type=="women" && <DiscountPrice>{calculateDiscountedPrice(price)}$</DiscountPrice>}
         </PriceContainer>
-        {product.type=="women" &&<Sale>Save 15%</Sale>}
+        {product.type=="women" &&<Sale>Save 15%</Sale>} */}
         <Colors
           setselectedColor={setselectedColor}
           colors={colors}

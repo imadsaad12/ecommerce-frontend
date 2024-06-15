@@ -47,19 +47,21 @@ export const formatProduct = ({ pdata, selectedOptions, quantity }) => {
   product.color = selectedOptions?.color?.text;
   product.size = selectedOptions?.size;
   product.quantity = quantity;
-  if(pdata.type=="women"){
-    product.totalPrice = calculateDiscountedPrice(pdata.price) * quantity;
-  }else{
-    product.totalPrice = pdata.price * quantity;
+  // if(pdata.type=="women"){
+  //   product.totalPrice = calculateDiscountedPrice(pdata.price) * quantity;
+  // }else{
+  //   product.totalPrice = pdata.price * quantity;
 
-  }
+  // }
+  product.totalPrice = pdata.price * quantity;
   product.productName = pdata.name;
-  if(pdata.type=="women"){
-    product.productPrice = calculateDiscountedPrice(pdata.price) ;
-  }else{
-    product.productPrice = pdata.price;
+  // if(pdata.type=="women"){
+  //   product.productPrice = calculateDiscountedPrice(pdata.price) ;
+  // }else{
+  //   product.productPrice = pdata.price;
 
-  }
+  // }
+  product.productPrice = pdata.price;
   product.type = pdata.type;
   product.category = pdata.category;
 

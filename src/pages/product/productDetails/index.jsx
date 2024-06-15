@@ -147,10 +147,13 @@ export default function ProductDetails({
     <Container>
       <Name>{pdata.name}</Name>
       <PriceContainer>
+        <Price >{formatPrice(pdata.price)}$</Price>
+        </PriceContainer>
+      {/* <PriceContainer>
         <Price sale={pdata.type=="women"}>{formatPrice(pdata.price)}$</Price>
         {pdata.type=="women" && <DiscountPrice>{calculateDiscountedPrice(pdata.price)}$</DiscountPrice>}
         </PriceContainer>
-        {pdata.type=="women" &&<Sale>Save 15%</Sale>}
+        {pdata.type=="women" &&<Sale>Save 15%</Sale>} */}
         <Description>{pdata.description}</Description>
       <Colors
         colors={colors}
