@@ -35,6 +35,8 @@ export default function Sizes({ selectedOptions, pdata, setselectedOptions }) {
                 ? "XXL"
                 : size === "x-large"
                 ? "XL"
+                : size === "x-small"
+                ? "XS"
                 : size[0]}
             </Size>
           </SizeContainer>

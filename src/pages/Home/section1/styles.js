@@ -49,6 +49,6 @@ export const TitleTop = styled.span`
   text-align: center;
 
   @media (max-width: ${breakingPoints.sm}px) {
-    font-size: 40px;
+    font-size: 25px;
   }
 `;

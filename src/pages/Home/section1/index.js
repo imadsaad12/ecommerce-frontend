@@ -12,9 +12,13 @@ export default function Section1({ isFadeIn }) {
     <Container>
       <Image src={header} isFadeIn={isFadeIn} />
       <TitleContainer>
-        <TitleTop>
+        {/* <TitleTop>
           UR POINT
           <br /> OF ORIGIN
+        </TitleTop> */}
+        <TitleTop>
+          UR POINT
+           OF ORIGIN
         </TitleTop>
       </TitleContainer>
     </Container>

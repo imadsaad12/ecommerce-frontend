@@ -103,6 +103,8 @@ export default function ProductSizes({ formUtils, selectedProductToUpdate }) {
                         <MenuItem value={"large"}>Large</MenuItem>
                         <MenuItem value={"medium"}>Medium</MenuItem>
                         <MenuItem value={"small"}>Small</MenuItem>
+                        <MenuItem value={"x-small"}>X-Small</MenuItem>
+
                       </Select>
                     </FormControl>
                     <FormControl
