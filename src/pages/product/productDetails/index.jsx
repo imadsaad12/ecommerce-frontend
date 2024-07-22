@@ -136,7 +136,7 @@ export default function ProductDetails({
   };
 
   function calculateDiscountedPrice(originalPrice) {
-    const discount = originalPrice * 0.15;
+    const discount = originalPrice * 0.30;
     
     const discountedPrice = originalPrice - discount;
     
@@ -146,14 +146,14 @@ export default function ProductDetails({
   return (
     <Container>
       <Name>{pdata.name}</Name>
-      <PriceContainer>
-        <Price >{formatPrice(pdata.price)}$</Price>
-        </PriceContainer>
       {/* <PriceContainer>
+        <Price >{formatPrice(pdata.price)}$</Price>
+        </PriceContainer> */}
+      <PriceContainer>
         <Price sale={pdata.type=="women"}>{formatPrice(pdata.price)}$</Price>
         {pdata.type=="women" && <DiscountPrice>{calculateDiscountedPrice(pdata.price)}$</DiscountPrice>}
         </PriceContainer>
-        {pdata.type=="women" &&<Sale>Save 15%</Sale>} */}
+        {pdata.type=="women" &&<Sale>Save 30%</Sale>}
         <Description>{pdata.description}</Description>
       <Colors
         colors={colors}
