@@ -47,7 +47,7 @@ export const formatProduct = ({ pdata, selectedOptions, quantity }) => {
   product.color = selectedOptions?.color?.text;
   product.size = selectedOptions?.size;
   product.quantity = quantity;
-  if(pdata.type=="women" && pdata.category!="su24"){
+  if(pdata.type=="women" && pdata.category!="su24" && pdata.category!="burkini" ){
     product.totalPrice = calculateDiscountedPrice(pdata.price) * quantity;
   }else{
     product.totalPrice = pdata.price * quantity;
@@ -55,7 +55,7 @@ export const formatProduct = ({ pdata, selectedOptions, quantity }) => {
   }
   // product.totalPrice = pdata.price * quantity;
   product.productName = pdata.name;
-  if(pdata.type=="women" && pdata.category!="su24"){
+  if(pdata.type=="women" && pdata.category!="su24" && pdata.category!="burkini"){
     product.productPrice = calculateDiscountedPrice(pdata.price) ;
   }else{
     product.productPrice = pdata.price;

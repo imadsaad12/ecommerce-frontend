@@ -150,10 +150,10 @@ export default function ProductDetails({
         <Price >{formatPrice(pdata.price)}$</Price>
         </PriceContainer> */}
       <PriceContainer>
-        <Price sale={pdata.type=="women" && pdata.category!="su24"}>{formatPrice(pdata.price)}$</Price>
-        {pdata.type=="women" && pdata.category!="su24" && <DiscountPrice>{calculateDiscountedPrice(pdata.price)}$</DiscountPrice>}
+        <Price sale={pdata.type=="women" && pdata.category!="su24"&& pdata.category!="burkini"}>{formatPrice(pdata.price)}$</Price>
+        {pdata.type=="women" && pdata.category!="su24" && pdata.category!="burkini" &&<DiscountPrice>{calculateDiscountedPrice(pdata.price)}$</DiscountPrice>}
         </PriceContainer>
-        {pdata.type=="women" && pdata.category!="su24" &&<Sale>Save 30%</Sale>}
+        {pdata.type=="women" && pdata.category!="su24" && pdata.category!="burkini" && <Sale>Save 30%</Sale>}
 
         
         <Description>{pdata.description}</Description>
