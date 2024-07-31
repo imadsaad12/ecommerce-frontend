@@ -61,14 +61,14 @@ export default function Product({ product }) {
           />
         </ImageContainer>
         <Name>{name}</Name>
-        {/* <PriceContainer>
-        <Price>{formatPrice(price)}$</Price>
-        </PriceContainer> */}
         <PriceContainer>
+        <Price>{formatPrice(price)}$</Price>
+        </PriceContainer>
+        {/* <PriceContainer>
         <Price sale={product.type=="women" && product.category!="su24" && product.category!="burkini" }>{formatPrice(price)}$</Price>
         {product.type=="women" && product.category!="su24" && product.category!="burkini" && <DiscountPrice>{calculateDiscountedPrice(price)}$</DiscountPrice>}
         </PriceContainer>
-        {product.type=="women" && product.category!="su24" && product.category!="burkini" && <Sale>Save 30%</Sale>}
+        {product.type=="women" && product.category!="su24" && product.category!="burkini" && <Sale>Save 30%</Sale>} */}
         <Colors
           setselectedColor={setselectedColor}
           colors={colors}

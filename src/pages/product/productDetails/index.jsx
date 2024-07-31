@@ -146,14 +146,14 @@ export default function ProductDetails({
   return (
     <Container>
       <Name>{pdata.name}</Name>
-      {/* <PriceContainer>
-        <Price >{formatPrice(pdata.price)}$</Price>
-        </PriceContainer> */}
       <PriceContainer>
+        <Price >{formatPrice(pdata.price)}$</Price>
+        </PriceContainer>
+      {/* <PriceContainer>
         <Price sale={pdata.type=="women" && pdata.category!="su24"&& pdata.category!="burkini"}>{formatPrice(pdata.price)}$</Price>
         {pdata.type=="women" && pdata.category!="su24" && pdata.category!="burkini" &&<DiscountPrice>{calculateDiscountedPrice(pdata.price)}$</DiscountPrice>}
         </PriceContainer>
-        {pdata.type=="women" && pdata.category!="su24" && pdata.category!="burkini" && <Sale>Save 30%</Sale>}
+        {pdata.type=="women" && pdata.category!="su24" && pdata.category!="burkini" && <Sale>Save 30%</Sale>} */}
 
         
         <Description>{pdata.description}</Description>
